@@ -4,20 +4,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import RoutingButtons from "./RoutingButtons";
-
+//need some styling here to create the look we are going for
 const QuestionPage = (props) => {
-    return<div>
+    //the array of buttons
+    let arrays = props.buttonList
+    return (arrays.map(list => <div className= "pages">
 
-        <RoutingButtons button = {props.name}> </RoutingButtons>
+        <RoutingButtons button = {list}> </RoutingButtons>
 
-    </div>
+    </div>)
+    )
+
 }
 
 QuestionPage.defaultProps = {
-    name: 'hello',
+name: "hello",
+image: "nothing here for now",
+buttonList: ["Rod", "Cone", "Spheroid"]
 }
 
-QuestionPage.prototype = {name: PropTypes.Object}
+QuestionPage.propTypes = {
+    name: PropTypes.string,
+    image: PropTypes.string,
+    buttonList: PropTypes.arrayOf(PropTypes.string),}
 //buttonInfoObject: {name: string, [Object.typeOf(SpecialButton): {name: string, image: string}]
 //database button: {name: string, image: string, ArrayOfButtons : [name: String...]
 export default QuestionPage
