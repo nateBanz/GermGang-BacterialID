@@ -1,7 +1,9 @@
 {
   "name": "src",
   "version": "1.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "firebase": "^8.2.9"
+  },
   "devDependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
