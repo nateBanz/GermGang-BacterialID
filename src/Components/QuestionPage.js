@@ -4,25 +4,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import RoutingButtons from "./RoutingButtons";
+import {useState} from 'react';
 //need some styling here to create the look we are going for
-const QuestionPage = (props) => {
-    //the array of buttons
-    let arrays = props.buttonList
-    return (arrays.map(list => <div className= "pages">
 
-        <RoutingButtons button = {list}> </RoutingButtons>
+//takes a parameter, an object defined below with the name of the germ, a picture and the list of germ names.
+const QuestionPage = (props) => {
+    const [specificGerm, updateGerm] = useState(props);
+
+    console.log(specificGerm)
+    //the array of names stored here!
+
+    const arrays = specificGerm.buttonList
+    console.log(arrays)
+
+    //for every name in the array, create a div containing a button that passes in the name of the germ.
+
+    return (arrays.map((list, index)=> <div className= "pages" key = {index}>
+
+        <RoutingButtons button = {list} updateGerm = {updateGerm}> </RoutingButtons>
 
     </div>)
     )
 
 }
-
+//this is what the object passed into props should look like by default
 QuestionPage.defaultProps = {
 name: "hello",
 image: "nothing here for now",
 buttonList: ["Rod", "Cone", "Spheroid"]
 }
-
+//this is what the object passed into props should look like in general (essentially creating a class definition here for the object i want to pass in)
 QuestionPage.propTypes = {
     name: PropTypes.string,
     image: PropTypes.string,

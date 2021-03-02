@@ -2,15 +2,15 @@
 // rerender based upon changes to the person object (idea1)
 //function to fetch info from database here!
 import PropTypes from 'prop-types'
-function fetchFirebaseData (germ) {
-    console.log(germ);
+function fetchFirebaseData () {
+    //need to figure out a way to create custom global object type
+    return new Object({name: "cone", image: "noneyet", buttonList: ["hello"] })
 }
 const RoutingButton = (props) => {
-    console.log(props.button)
-    return <button onClick = { () => fetchFirebaseData(props.button)}> {props.button} </button>
+    return <button onClick = { () =>
+        props.updateGerm({name: "cone", image: "noneyet", buttonList: ["hello", "dog"] })
+    }> {props.button} </button>
 }
 
-RoutingButton.propTypes = {
-    name: PropTypes.string,
-}
+
 export default RoutingButton
