@@ -21,7 +21,10 @@ const QuestionPage = (props) => {
 
 
     //the array of names stored here!
+
     const arrays = specificGerm.buttonList
+
+    //todo : need code here to check if the array is empty. If so, return the name only.
 
 
     //for every name in the array, create a div containing a button that passes in the name of the germ.
@@ -35,9 +38,9 @@ const QuestionPage = (props) => {
 }
 //this is what the object passed into props should look like by default
 QuestionPage.defaultProps = {
-name: "hello",
+name: "Homepage",
 image: "nothing here for now",
-buttonList: ["Rod", "Cone", "Spheroid"]
+buttonList: ["Gram Positive", "Gram Negative"]
 }
 //this is what the object passed into props should look like in general (essentially creating a class definition here for the object i want to pass in)
 QuestionPage.propTypes = {
