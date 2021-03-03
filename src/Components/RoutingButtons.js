@@ -1,23 +1,13 @@
 //clicking a button will take you to the next page
 import firebase from 'firebase'
 import console from 'console'
+
+//this function takes in a name and returns a firebase object of the germ
 import {getName} from "./firebaseUtils";
 
 
-//returns a promise query data. Takes in the name of the current germ.
-let fetchFirebaseData = async (nameOfGerm) => {
 
-    //find reference to the part of database containing germs
-    let con = firebase.database().ref("germs");
 
-    //takes a slice of this data based upon the parameters (name) and only the first one
-    let snap = await con.orderByChild("name").limitToFirst(1).equalTo(nameOfGerm).once('value');
-
-    //takes the value of that slice and return it
-    let germ = snap.val();
-    return germ;
-
-}
 // -props.button- is the name of the current germ button. -props.updateGerm- is a function to update the germ in the parent
 const RoutingButton = (props) => {
 
@@ -30,13 +20,13 @@ try {
     return <button onClick={ async () => {
 
         //stores the return germ object wrapped in another firebase created object
-        let constant = await getName(props.button)
+
 
         //stores the first key of the return data (firebase generated id). Only 1 here (from the use of limit so use index = 0
-        let cat = Object.keys(constant)[0];
+
 
         //gets the germ object based upon the key
-        let fullGerm = constant[cat]
+        let fullGerm = await getName(props.button)
 
         //console.log(fullGerm)**testing
 

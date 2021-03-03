@@ -19,7 +19,15 @@ const QuestionPage = (props) => {
 
     const [specificGerm, updateGerm] = useState(props);
 
-    const {germName, updateGermName} = useContext(PersonTracker);
+    const {buttonNameArray, updateArray} = useContext(PersonTracker);
+
+    console.log(specificGerm.name)
+
+    updateArray(...buttonNameArray, [specificGerm.name])
+
+    console.log(buttonNameArray)
+
+
 
     //now need an empty array to keep track of and change depending on the flowchart of the individual. Use this for back button
 

@@ -11,7 +11,12 @@ async function getName(nameOfGerm) {
 
     //takes the value of that slice and return it
     let germ = snap.val();
-    return germ;
+
+    let index = Object.keys(germ)[0]
+
+    let finalGerm = germ[index]
+
+    return finalGerm;
 
 }
 export {getName}
