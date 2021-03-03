@@ -1,11 +1,23 @@
 import React from 'react'
+import PersonTracker from "./PersonTracker";
+import {useContext} from "react/cjs/react.production.min";
+//you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
-//you can make this dynamic and turn into something based on some outside factors. If I send info to the parent from another
-//component, you can pass that info here using hooks.
+
+//button names contained here
+//const {name, updateName} = useContext(PersonTracker)
+
+//back button
+
+
+//reset button
+
+
+
 
 const Header = () => {
     return <div>
-
+Hello
     </div>
 }
 

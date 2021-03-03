@@ -1,13 +1,25 @@
-import logo from './logo.svg';
+
 import './App.css';
 import QuestionPage from "./Components/QuestionPage";
 import {useState} from "react";
 import firebase from './firebase';
+import Header from "./Components/Header";
+import * as React from "react";
+import PersonTracker from "./Components/PersonTracker";
 
 function App() {
+    //set a state to use for updating array
+   const [buttonNameArray, updateArray]= useState(["Homepage"])
+
+    //capture the values in an object
+    const value = {buttonNameArray, updateArray}
+
+    //create a context that can be used anywhere
 
 
-  //This needs to be a function that executes once with our entire datastore. Once we do this, one person should run it.
+
+  //TODO : This needs to be a function that executes once with our entire datastore. Once we do this, one person should run it. Everyone should add to this,
+
 
     //create a firebase object that contains the entire formatted database
     const germBase = firebase.database().ref();
@@ -61,7 +73,7 @@ function App() {
 
 
 
-    //push this object to the database. Makes it easy to add/update from a gui if needed
+    //push this object to the database. Makes it easy to add/update from a gui if we make this a function that can run in the header! Maybe a good candidate to be moved there
     germs.push(germ);
     germs.push(child1);
     germs.push(child2);
@@ -71,14 +83,23 @@ function App() {
     germs.push(child6);
 
 
-
-  return (
-      <div>
-
-   <QuestionPage></QuestionPage>
+//this needs a bunch of styling. Add a classname and use the index.css for this and/or bootstrap or similar
 
 
-</div>
+    return (
+  <div>
+
+      <PersonTracker.Provider value = {value} >
+
+          <div>
+              <Header></Header>
+          </div>
+          <div>
+              <QuestionPage></QuestionPage>
+          </div>
+      </PersonTracker.Provider>
+
+  </div>
   );
 }
 
