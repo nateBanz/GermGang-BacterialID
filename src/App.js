@@ -5,7 +5,7 @@ import {useState} from "react";
 import firebase from './firebase';
 import Header from "./Components/Header";
 import * as React from "react";
-import PersonTracker from "./Components/PersonTracker";
+import PersonTracker from "./Components/PersonTracker"; //context (global variables essentially) that can be used anywhere and trigger a refresh on updates
 
 function App() {
     //set a state to use for updating array
@@ -19,13 +19,16 @@ function App() {
     //capture the values in an object
     const value = {buttonNameArray, updateArray}
 
-    console.log(buttonNameArray)
-
-    //create a context that can be used anywhere
+    console.log(buttonNameArray) //testing
 
 
 
-  //TODO : This needs to be a function that executes once with our entire datastore. Once we do this, one person should run it. Everyone should add to this,
+
+
+  //TODO : This needs to be a function that executes once with our entire datastore. Once we do this, one person should run it. Can be placed somewhere else. Just put here for testing the push
+    // Everyone should add to this, and this will be removed once everything is in!
+    //Be careful! When testing, this will push ALOT to the database. Make sure to clear it every couple of button clicks.
+    //This should be done first
 
 
     //create a firebase object that contains the entire formatted database
@@ -99,10 +102,10 @@ function App() {
       <PersonTracker.Provider value = {value} >
 
           <div>
-              <Header germ = {buttonNameArray[buttonNameArray.length -1]} update = {updateArray}></Header>
+              <Header germ = {buttonNameArray[buttonNameArray.length -1]} ></Header>
           </div>
           <div>
-              <QuestionPage germ = {buttonNameArray[buttonNameArray.length -1]} update = {updateArray} ></QuestionPage>
+              <QuestionPage germ = {buttonNameArray[buttonNameArray.length -1]} ></QuestionPage>
           </div>
       </PersonTracker.Provider>
 

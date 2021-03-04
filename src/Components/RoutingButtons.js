@@ -42,6 +42,8 @@ try {
         if(fullGerm.buttonList) {
 
             //console.log(fullGerm.name) **testing
+
+            //update the array with the new germ node if clicked
             updateArray([...buttonNameArray, fullGerm])
 
             //props.updateGerm(fullGerm) **deprecated

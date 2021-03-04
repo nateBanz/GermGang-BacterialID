@@ -33,7 +33,7 @@ const QuestionPage = (props) => {
     const arrays = buttonNameArray[buttonNameArray.length-1].buttonList
 
 
-    //for every name in the array, create a div containing a button that passes in the name of the germ.
+    //for every name in the array, create a div containing a button that passes in the name of the node.
     return <div> {
 
         (arrays.map((list, index)=> <div className= "pages" key = {index}>
@@ -52,6 +52,7 @@ name: "Homepage",
 image: "nothing here for now",
 buttonList: ["Gram Positive", "Gram Negative"]
 }
+
 //this is what the object passed into props should look like in general (essentially creating a class definition here for the object i want to pass in)
 QuestionPage.propTypes = {
     name: PropTypes.string,

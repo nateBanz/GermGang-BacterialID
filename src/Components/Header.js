@@ -25,10 +25,18 @@ const Header = (props) => {
         if(buttonNameArray.length > 1) {
 
             //console.log(buttonNameArray) **testing
+
+            //create a copy
             let newArray = [...buttonNameArray]
+
+            //remove the last thing from the copy
             newArray.pop()
+
+            //update the global array with the copy
             updateArray(newArray)
             //console.log(newArray) **testing
+
+            //test to make sure it fires
             console.log("sliced")
         }
 
@@ -38,6 +46,7 @@ const Header = (props) => {
 
     return <div>
             <button onClick={()=> {
+
                 goBack();
 
             }}>Back</button>

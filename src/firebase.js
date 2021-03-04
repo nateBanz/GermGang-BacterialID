@@ -1,4 +1,4 @@
-//for testing!
+//for testing! Connects the app to firebase
 
 import firebase from "firebase"
 
