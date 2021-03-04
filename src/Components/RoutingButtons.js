@@ -4,12 +4,16 @@ import console from 'console'
 
 //this function takes in a name and returns a firebase object of the germ
 import {getName} from "./firebaseUtils";
+import PersonTracker from "./PersonTracker";
+import {useContext} from "react";
 
 
 
 
 // -props.button- is the name of the current germ button. -props.updateGerm- is a function to update the germ in the parent
 const RoutingButton = (props) => {
+
+    const {buttonNameArray, updateArray} = useContext(PersonTracker);
 
 try {
 
@@ -38,7 +42,7 @@ try {
         if(fullGerm.buttonList) {
 
             //console.log(fullGerm.name) **testing
-
+            updateArray([...buttonNameArray, fullGerm])
             props.updateGerm(fullGerm)
         }
         else {

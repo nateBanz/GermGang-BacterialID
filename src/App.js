@@ -9,7 +9,17 @@ import PersonTracker from "./Components/PersonTracker";
 
 function App() {
     //set a state to use for updating array
-   const [buttonNameArray, updateArray]= useState(["Homepage"])
+   const [buttonNameArray, updateArray]= useState([{
+       name: "Homepage",
+       image: "nothing here for now",
+       buttonList: ["Gram Positive", "Gram Negative"]
+   }])
+
+    function update(germ) {
+       return [...buttonNameArray, germ]
+    }
+
+
 
     //capture the values in an object
     const value = {buttonNameArray, updateArray}

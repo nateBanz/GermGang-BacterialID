@@ -7,6 +7,7 @@ import RoutingButtons from "./RoutingButtons";
 import {useState} from 'react';
 import {useContext} from "react";
 import PersonTracker from "./PersonTracker";
+import {useEffect} from "react";
 
 
 //need some styling here to create the look we are going for
@@ -21,11 +22,14 @@ const QuestionPage = (props) => {
 
     const {buttonNameArray, updateArray} = useContext(PersonTracker);
 
-    console.log(specificGerm.name)
-
-    updateArray(...buttonNameArray, [specificGerm.name])
-
     console.log(buttonNameArray)
+    console.log(specificGerm)
+
+
+
+
+
+    //console.log(buttonNameArray.length)
 
 
 
@@ -45,7 +49,7 @@ const QuestionPage = (props) => {
 
         (arrays.map((list, index)=> <div className= "pages" key = {index}>
 
-        <RoutingButtons button = {list} updateGerm = {updateGerm}> </RoutingButtons>
+        <RoutingButtons button = {list} updateGerm = {updateGerm} > </RoutingButtons>
 
     </div>))}
 
