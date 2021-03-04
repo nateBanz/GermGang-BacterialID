@@ -18,30 +18,19 @@ let Person = {
 //takes a parameter, an object defined below with the name of the germ, a picture and the list of germ names.
 const QuestionPage = (props) => {
 
-    const [specificGerm, updateGerm] = useState(props);
+    //const [specificGerm, updateGerm] = useState(props); **deprecated
 
-    const {buttonNameArray, updateArray} = useContext(PersonTracker);
+    //console.log(specificGerm) **testing
 
-    console.log(buttonNameArray)
-    console.log(specificGerm)
+    //array of button objects from the global context.
+    const {buttonNameArray, updateArray} = useContext(PersonTracker)
 
+    //console.log(buttonNameArray.length) **testing
 
-
-
-
-    //console.log(buttonNameArray.length)
-
-
-
-    //now need an empty array to keep track of and change depending on the flowchart of the individual. Use this for back button
-
-    const [flowOrder, updateFlow] = useState([]);
-
-    //need something to keep track of user. Future build maybe.
-
+    //specificGerm = buttonNameArray[buttonNameArray.length-1] **deprecated
 
     //the array of names stored here!
-    const arrays = specificGerm.buttonList
+    const arrays = buttonNameArray[buttonNameArray.length-1].buttonList
 
 
     //for every name in the array, create a div containing a button that passes in the name of the germ.
@@ -49,7 +38,7 @@ const QuestionPage = (props) => {
 
         (arrays.map((list, index)=> <div className= "pages" key = {index}>
 
-        <RoutingButtons button = {list} updateGerm = {updateGerm} > </RoutingButtons>
+        <RoutingButtons button = {list}  > </RoutingButtons>
 
     </div>))}
 

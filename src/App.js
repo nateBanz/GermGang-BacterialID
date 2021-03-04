@@ -15,14 +15,11 @@ function App() {
        buttonList: ["Gram Positive", "Gram Negative"]
    }])
 
-    function update(germ) {
-       return [...buttonNameArray, germ]
-    }
-
-
 
     //capture the values in an object
     const value = {buttonNameArray, updateArray}
+
+    console.log(buttonNameArray)
 
     //create a context that can be used anywhere
 
@@ -102,10 +99,10 @@ function App() {
       <PersonTracker.Provider value = {value} >
 
           <div>
-              <Header></Header>
+              <Header germ = {buttonNameArray[buttonNameArray.length -1]} update = {updateArray}></Header>
           </div>
           <div>
-              <QuestionPage></QuestionPage>
+              <QuestionPage germ = {buttonNameArray[buttonNameArray.length -1]} update = {updateArray} ></QuestionPage>
           </div>
       </PersonTracker.Provider>
 

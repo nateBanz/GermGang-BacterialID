@@ -43,7 +43,8 @@ try {
 
             //console.log(fullGerm.name) **testing
             updateArray([...buttonNameArray, fullGerm])
-            props.updateGerm(fullGerm)
+
+            //props.updateGerm(fullGerm) **deprecated
         }
         else {
 
