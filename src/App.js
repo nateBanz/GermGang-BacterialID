@@ -44,6 +44,8 @@ function App() {
         image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
         buttonList: ["Gram Positive", "Gram Negative"]
     }
+
+
     let child1 =  {
         name: "Gram Positive",
         image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
@@ -107,6 +109,7 @@ function App() {
           <div>
               <QuestionPage germ = {buttonNameArray[buttonNameArray.length -1]} ></QuestionPage>
           </div>
+
       </PersonTracker.Provider>
 
   </div>
