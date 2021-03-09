@@ -1,4 +1,4 @@
-//for testing!
+//for testing! Connects the app to firebase
 
 import firebase from "firebase"
 
@@ -12,5 +12,7 @@ firebase.initializeApp({
     appId: "1:1060499409594:web:dbc946b85a2c5231e01083"
 
 });
+
+
 
 export default  firebase
