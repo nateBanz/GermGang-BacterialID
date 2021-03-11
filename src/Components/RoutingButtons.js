@@ -15,6 +15,10 @@ const RoutingButton = (props) => {
 
     const {buttonNameArray, updateArray} = useContext(PersonTracker);
 
+    //cut the identifier of the name so that it can be displayed properly
+    let modifiedName = props.button.slice(0,-4)
+
+
 try {
 
     //need to use an async onclick to wait until the database retrieves the queried data

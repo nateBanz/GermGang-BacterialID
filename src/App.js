@@ -25,7 +25,7 @@ function App() {
 
 
 
-  //TODO : This needs to be a function that executes once with our entire datastore. Once we do this, one person should run it. Can be placed somewhere else. Just put here for testing the push
+  //TODO : This needs to be a function that executes once with our entire datastore. Once we do this, one person should run it.
     // Everyone should add to this, and this will be removed once everything is in!
     //Be careful! When testing, this will push ALOT to the database. Make sure to clear it every couple of button clicks.
     //This should be done first
@@ -82,22 +82,59 @@ function App() {
         buttonList: []
     }
 
+    //testing contents of an array
+    let practiceArray = [
 
+        { name: "Homepage",
+        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
+        buttonList: ["Gram Positive", "Gram Negative"]},
+        { name: "Gram Positive",
+        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
+        buttonList: ["rod", "cone"]},
+        {name: "rod",
+        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
+        buttonList: []},
+        {name: "cone",
+        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
+        buttonList: []},
+        {name: "cat",
+        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
+        buttonList: []},
+        {name: "dog",
+        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
+        buttonList: []}
 
+        ];
+
+    //testing object rather than just the contents
+    let practice2 = [
+        child1, child2, child3, child4
+    ]
+
+    //This function will push every object to the firebase.
+    function pusher() {
+        console.log(practiceArray)
+        for (const germNode in practiceArray) {
+
+            germs.push(practiceArray[germNode])
+
+        }
+
+        console.log('test')
+
+        for (const germNode in practice2) {
+
+            germs.push(practice2[germNode])
+
+        }
+    }
 
     //push this object to the database. Makes it easy to add/update from a gui if we make this a function that can run in the header! Maybe a good candidate to be moved there
-    germs.push(germ);
-    germs.push(child1);
-    germs.push(child2);
-    germs.push(child3);
-    germs.push(child4);
-    germs.push(child5);
-    germs.push(child6);
+    pusher()
+
 
 
 //this needs a bunch of styling. Add a classname and use the index.css for this and/or bootstrap or similar
-
-
     return (
   <div>
 
@@ -106,10 +143,11 @@ function App() {
           <div>
               <Header germ = {buttonNameArray[buttonNameArray.length -1]} ></Header>
           </div>
+
           <div>
               <QuestionPage germ = {buttonNameArray[buttonNameArray.length -1]} ></QuestionPage>
           </div>
-
+E
       </PersonTracker.Provider>
 
   </div>
