@@ -21,10 +21,9 @@ const RoutingButton = (props) => {
 
 try {
 
-    //need to use an async onclick to wait until the database retrieves the queried data
+
 
     //if clicked, load the new identifier name into the update function passed into this component. Passing anything to update will launch a rerender
-
     return <button onClick={ async () => {
 
         //stores the return germ object wrapped in another firebase created object

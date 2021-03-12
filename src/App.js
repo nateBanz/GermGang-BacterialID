@@ -39,59 +39,80 @@ function App() {
 
     //create an object. All objects should look like this
 
-    let germ = {
-        name: "Homepage",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: ["Gram Positive", "Gram Negative"]
-    }
 
+    //Growth on Mac section
+    let gramNegativeMac = [
 
-    let child1 =  {
-        name: "Gram Positive",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: ["rod", "cone"]
-    }
+        //lactose + start
 
-    let child2 =  {
-        name: "Gram Negative",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: ["cat", "dog"]
-    }
+        { name: "Gram Negative 0000",
+        image: "",
+        buttonList: ["Non Stool 0000, Stool 0000"]},
 
-    let child3 =  {
-        name: "rod",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: []
-    }
+        { name: "Non Stool 0000",
+        image: "",
+        buttonList: ["Lactose(+) 0000", "Lactose(-) 0000"]},
 
-    let child4 =  {
-        name: "cone",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: []
-    }
+        { name: "Lactose(+) 0000",
+            image: "",
+            buttonList: ["indole 0000"]},
 
-    let child5 =  {
-        name: "cat",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: []
-    }
+        { name: "indole 0000",
+            image: "",
+            buttonList: ["(-) 0000", "(+) 0000"]},
 
-    let child6 =  {
-        name: "dog",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: []
-    }
+        { name: "(-) 0000",
+            image: "hasimage",
+            buttonList: ["Colony mucoid. Odor of fresh bread? 0000"]},
 
-    //testing contents of an array
-    let practiceArray = [
+        { name: "Colony mucoid. Odor of fresh bread? 0000",
+            image: "",
+            buttonList: ["No 0000", "Yes 0000"]},
 
-        { name: "Homepage",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: ["Gram Positive", "Gram Negative"]},
-        { name: "Gram Positive",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: ["rod", "cone"]},
-        {name: "rod",
+        { name: "No 0000",
+            image: "image",
+            buttonList: ["Enterobacter, Providencia, Citrobacter, Cronobacter, Others 0000"]},
+
+        { name: "Yes 0000",
+            image: "image",
+            buttonList: ["Klebsiella, Rare Enterobacter 0000"]},
+
+        //see a chart?
+        { name: "(+) 0000",
+            image: "",
+            buttonList: ["Colony mucoid. Odor of fresh bread? 0001", "Non-Mucoid E.Coli 0000"]},
+
+        { name: "Colony mucoid. Odor of fresh bread? 0001",
+            image: "",
+            buttonList: ["Yes 0001"]},
+
+        { name: "Yes 0001",
+            image: "",
+            buttonList: ["Kiebsiella, Rare Enterobacter"]},
+
+        { name: "Non-Mucoid E.Coli 0000",
+            image: "",
+            buttonList: ["Rare Citrobacter or other Enteric GNR 0000"]},
+
+        { name: "Rare Citrobacter or other Enteric GNR 0000",
+            image: "",
+            buttonList: []},
+
+        { name: "Klebsiella, Rare Enterobacter 0000",
+            image: "",
+            buttonList: []},
+
+        { name: "Enterobacter, Providencia, Citrobacter, Cronobacter, Others 0000",
+            image: "",
+            buttonList: []},
+
+        { name: "Rare Citrobacter or other Enteric GNR 0000",
+            image: "",
+            buttonList: []},
+
+        //end
+
+        {name: "Stool 0000",
         image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
         buttonList: []},
         {name: "cone",
@@ -113,7 +134,7 @@ function App() {
 
     //This function will push every object to the firebase.
     function pusher() {
-        console.log(practiceArray)
+
         for (const germNode in practiceArray) {
 
             germs.push(practiceArray[germNode])
