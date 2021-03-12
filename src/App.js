@@ -82,7 +82,43 @@ function App() {
         buttonList: []
     }
 
+//EZEKIEL ADDITION
+    let gst1 =  {
+        name: "Gram Stain Morphology ",
+        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
+        buttonList: ["Cocci pairs and chains", "Cocci clusters and tetrads"]
+    }
 
+    let gst2 =  {
+        name: "Cocci pairs and chains",
+        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
+        buttonList: ["Catalase(+)", "Catalase(-)"]
+    }
+
+    let gst3 =  {
+        name: "Cocci clusters and tetrads",
+        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
+        buttonList: ["Catalase(-)", "Catalase(+)"]
+    }
+
+    let gst =  {
+        name: "Catalase(+)",
+        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
+        buttonList: ["See Staphylococci ID Chart"]
+    }
+
+    let gst5 =  {
+        name: "Catalase(-)",
+        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
+        buttonList: ["See appropraite Streptococci on BAP Flowchart"]
+    }
+
+   germs.push(gst1);
+   germs.push(gst2);
+   germs.push(gst3);
+   germs.push(gst4);
+   germs.push(gst5);
+//ENDING
 
 
     //push this object to the database. Makes it easy to add/update from a gui if we make this a function that can run in the header! Maybe a good candidate to be moved there
@@ -93,6 +129,8 @@ function App() {
     germs.push(child4);
     germs.push(child5);
     germs.push(child6);
+
+
 
 
 //this needs a bunch of styling. Add a classname and use the index.css for this and/or bootstrap or similar
