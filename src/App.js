@@ -21,13 +21,6 @@ function App() {
 
     console.log(buttonNameArray) //testing
 
-
-
-
-
-
-
-
     //create a firebase object that contains the entire formatted database
     const germBase = firebase.database().ref();
 
@@ -201,13 +194,11 @@ function App() {
             buttonList: ["See appropriate Streptococci on BAP flowchart 0000"]
         },
 
-
         {
             name: "See appropriate Streptococci on BAP flowchart 0000",
             image: "",
             buttonList: []
         },
-
 
 
         {
@@ -396,9 +387,98 @@ function App() {
             image: "",
             buttonList: ['Proteus spp. 0000']},
 
-        {name: "Proteus spp. 0000",
+        {name: "Stool 0000",
+            image: "",
+            buttonList: ['Lac(-) on MAC 0000', 'Lac(+) on MAC 0000']},
+
+        {name: "Lac(-) on MAC 0000",
+            image: "",
+            buttonList: ["Oxidase (-) 0001", "Oxidase (+) 0001"]},
+
+        {name: "Oxidase (-) 0001",
+            image: "",
+            buttonList: ['Possible Salmonella, Shigella, Yersinia enterocolitica, pathogenic E.Coli, or Proteus spp. 0000']},
+
+        {name: "Possible Salmonella, Shigella, Yersinia enterocolitica, pathogenic E.Coli, or Proteus spp. 0000",
+            image: "",
+            buttonList: ['Swarming on BAP 0001']},
+
+        {name: 'Swarming on BAP 0001',
+            image: "",
+            buttonList: ['No 0003','Yes 0004']},
+
+        {name: "No 0003",
+            image: "",
+            buttonList: ["Indole 0002"]},
+
+        {name: "Indole 0002",
+            image: "",
+            buttonList: ['(+) 0002','(-) 0002']},
+
+        {name: "(+) 0002",
+            image: "",
+            buttonList: ["Potential pathogenic E.coli ~ See GNR Stool Pathogens Lactose Positive Flowchart and follow ID for E.coli 0000"]},
+
+        {name: "Potential pathogenic E.coli ~ See GNR Stool Pathogens Lactose Positive Flowchart and follow ID for E.coli 0000",
             image: "",
             buttonList: []},
+
+        {name: "(-) 0002",
+            image: "",
+            buttonList: ["Refer to GNR Stool Pathogens Lactose Negative Flowchart 0000"]},
+
+        {name: "Refer to GNR Stool Pathogens Lactose Negative Flowchart 0000",
+            image: "",
+            buttonList: []},
+
+        {name: "Yes 0004",
+            image: "",
+            buttonList: ["Proteus spp. 0000"]},
+
+        {name: "Lac(+) on MAC 0000",
+            image: "",
+            buttonList: ["See GNR Stool Pathogens Lactose Positive Flowchart 0000"]},
+
+        {name: "See GNR Stool Pathogens Lactose Positive Flowchart 0000",
+            image: "",
+            buttonList: []},
+
+        {name: "Oxidase (+) 0001",
+            image: "",
+            buttonList: ["Growth on TCBS 0000"]},
+
+        {name: "Growth on TCBS 0000",
+            image: "",
+            buttonList: ['Yellow 0000','Green 0000','None 0000']},
+
+        {name: "Yellow 0000",
+            image: "",
+            buttonList: ["Possible Vibrio Cholerae or V. alginolyticus"]},
+
+        {name: "Possible Vibrio Cholerae or V. alginolyticus",
+            image: "",
+            buttonList: []},
+
+        {name: "Green 0000",
+            image: "",
+            buttonList: ["Possible Vibrio parahemolyticus 0000"]},
+
+        {name: "Possible Vibrio parahemolyticus 0000",
+            image: "",
+            buttonList: ["Refer to GNR Stool Pathogens Lactose Negative Flowchart 0000"]},
+
+        {name: 'None 0000',
+            image: "",
+            buttonList: ["Yellow Colonies on HE"]},
+
+        {name: "Yellow Colonies on HE",
+            image: "",
+            buttonList: ["Oxidase (+) 0002"]},
+
+        {name: "Oxidase (+) 0002",
+            image: "",
+            buttonList: ["Possible Aeromonas"]},
+
 
 
         //end
@@ -428,11 +508,6 @@ function App() {
 
         }
     }
-
-    //Aerobic gram-positive cocci flowchart ends
-    //
-
-//This function will push every object to the firebase.
 
     pusher()
 
