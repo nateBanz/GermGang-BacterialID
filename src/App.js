@@ -405,10 +405,11 @@ function App() {
 
         ];
 
+    //TODO: fix or clean up the practice2 array as child1... child4 are undefined.
     //testing object rather than just the contents
-    let practice2 = [
-        child1, child2, child3, child4
-    ]
+    // let practice2 = [
+    //     child1, child2, child3, child4
+    // ]
 
     //This function will push every object to the firebase.
     function pusher() {
@@ -421,12 +422,13 @@ function App() {
 
         console.log('test')
 
-        for (const germNode in practice2) {
+        //TODO: fix or clean this up please otherwise the build fails.
+        // for (const germNode in practice2) {
 
-            germs.push(practice2[germNode])
+        //     germs.push(practice2[germNode])
 
 
-        }
+        // }
     }
 
     //Aerobic gram-positive cocci flowchart ends

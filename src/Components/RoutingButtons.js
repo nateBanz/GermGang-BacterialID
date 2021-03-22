@@ -1,6 +1,6 @@
 //clicking a button will take you to the next page
 import firebase from 'firebase'
-import console from 'console'
+// import console from 'console'
 
 //this function takes in a name and returns a firebase object of the germ
 import {getName} from "./firebaseUtils";
@@ -72,7 +72,7 @@ try {
 }
 catch (Exception) {
 
-    console.log("weird result")
+    // console.log("weird result")
 }
 }
 
