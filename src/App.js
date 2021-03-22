@@ -82,7 +82,7 @@ function App() {
         buttonList: []
     }
 
-//EZEKIEL ADDITION
+//z ADDITION
     let gst1 =  {
         name: "Gram Stain Morphology ",
         image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
@@ -119,6 +119,100 @@ function App() {
    germs.push(gst4);
    germs.push(gst5);
 //ENDING
+
+//new beginning
+let GramCoccipairs = [
+
+
+
+        { name: "Gram Cocci Pairs(+)",
+        image: "",
+        buttonList: ["Catalase(-)"]},
+
+        { name: "Catalase(-)",
+        image: "",
+        buttonList: ["Alpha or non hemolytic(gamma)"]},
+
+
+
+        { name: "Alpha or non hemolytic(gamma)",
+            image: "",
+            buttonList: ["Pinpoint colony < 0.5mm", "Large size colony"]},
+
+        //PINPPOINT COLONY
+        { name: "Pinpoint colony < 0.5mm",
+            image: "",
+            buttonList: ["Caramel, burnt sugar, or butterscotch smell**. can have Group A,C,G or F antigen"]},
+
+        { name: "Caramel, burnt sugar, or butterscotch smell**. can have Group A,C,G or F antigen",
+            image: "hasimage",
+            buttonList: ["S. anginosus (S.milleri) group"]},
+
+    //Large size colony
+        { name: "Large size colony",
+            image: "",
+            buttonList: ["Alpha hemolytic", "Gamma hemolytic"]},
+
+        { name: "Alpha hemolytic",
+            image: "image",
+            buttonList: ["Bile soluble"]},
+
+        { name: "Bile soluble",
+            image: "image",
+            buttonList: ['No', 'Yes']},
+
+        { name: "No",
+            image: "",
+            buttonList: ["PYR(+)"]},
+
+        { name: ""PYR(+)"]",
+            image: "",
+            buttonList: ['YES', 'NO']},
+
+        { name: "YES",
+            image: "",
+            buttonList: ['Entercoccus']},
+
+        { name: "NO",
+            image: "",
+            buttonList: ['Other alpha strep']},
+
+        { name: "Other alpha strep",
+            image: "",
+            buttonList: ['See alpha Streptococcus versus S.pneumoniae']},
+
+        { name: "Yes",
+            image: "",
+            buttonList: ['S.pneumoniae']},
+
+        { name: "S.pneumoniae",
+            image: "",
+            buttonList: ['See alpha Streptococcus versus S.pneumoniae']},
+
+
+        //Gamma-hemolytic
+        { name: "PYR(+)",
+            image: "",
+            buttonList: ['no', 'yes']},
+
+        //Lactose - start
+
+        {name: "no",
+            image: "",
+            buttonList: ['Other alpha strep']},
+
+        {name: "yes",
+            image: "",
+            buttonList: ['Enterococcus']},
+
+        ];
+
+    //testing object rather than just the contents
+  /*  let practice2 = [
+        child1, child2, child3, child4
+    ]*/
+
+    //new ending
 
 
     //push this object to the database. Makes it easy to add/update from a gui if we make this a function that can run in the header! Maybe a good candidate to be moved there
