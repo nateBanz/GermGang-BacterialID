@@ -12,9 +12,6 @@ import {useEffect} from "react";
 
 //need some styling here to create the look we are going for
 
-let Person = {
-    name: string
-}
 //takes a parameter, an object defined below with the name of the germ, a picture and the list of germ names.
 const QuestionPage = (props) => {
 
@@ -31,6 +28,8 @@ const QuestionPage = (props) => {
 
     //the array of names stored here!
     const arrays = buttonNameArray[buttonNameArray.length-1].buttonList
+
+
 
 
     //for every name in the array, create a div containing a button that passes in the name of the node.
