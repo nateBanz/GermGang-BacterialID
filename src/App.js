@@ -39,7 +39,7 @@ function App() {
         {
             name: "Homepage 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Gram Positive", "Gram Negative"]
+            buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
         },
 
         //Aerobic Gram-Positive Rods flowchart begins
@@ -47,114 +47,163 @@ function App() {
         {
             name: "Gram Positive 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Gram (+) rod", "Gram Stain Morphology"]
+            buttonList: ["Gram (+) rod 0000", "Gram Stain Morphology 0000"]
         },
 
         {
             name: "Gram (+) rod 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Regular shape", "Irregular/pleomorphic shape"]
+            buttonList: ["Regular shape 0000", "Irregular/pleomorphic shape 0000"]
         },
 
         {
             name: "Regular shape 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Catalase(+) gp1", "Catalase(-) gp1"]
+            buttonList: ["Catalase(+) 0001", "Catalase(-) 0000"]
         },
         {
             name: "Catalase(+) 0001",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Colony size"]
+            buttonList: ["Colony size 0000"]
         },
 
         {
             name: "Colony size 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Small non-hemolytic and small Gram(+) rods", "Small beta-hemolytic, tiny Gram(+) rods", "Large Gram(+) rods and large colony"]
+            buttonList: ["Small non-hemolytic and small Gram(+) rods 0000", "Small beta-hemolytic, tiny Gram(+) rods 0000", "Large Gram(+) rods and large colony 0000"]
         },
 
         {
             name: "Small non-hemolytic and small Gram(+) rods 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Corynebacterium spp."]
+            buttonList: ["Corynebacterium spp. 0000"]
+        },
+
+        {
+            name: "Corynebacterium spp. 0000",
+            image: "",
+            buttonList: []
         },
 
         {
             name: "Small beta-hemolytic, tiny Gram(+) rods 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Listeria spp."]
+            buttonList: ["Listeria spp. 0000"]
+        },
+
+        {
+            name: "Listeria spp. 0000",
+            image: "",
+            buttonList: []
         },
 
         {
             name: "Large Gram(+) rods and large colony 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Bacillus spp."]
+            buttonList: ["Bacillus spp. 0000"]
         },
 
         {
-            name: "Catalase(-) gp1 0000",
+            name: "Bacillus spp. 0000",
+            image: "",
+            buttonList: []
+        },
+
+        {
+            name: "Catalase(-) 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Small to long sized Gram(+) rods"]
+            buttonList: ["Small to long sized Gram(+) rods 0000"]
         },
 
         {
             name: "Small to long sized Gram(+) rods 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Lactobacillus spp. or Erysipelothrix spp."]
+            buttonList: ["Lactobacillus spp. or Erysipelothrix spp. 0000"]
         },
+
 
         {
             name: "Lactobacillus spp. or Erysipelothrix spp. 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["H2S Positive", "H2S Negative"]
+            buttonList: ["H2S Positive 0000", "H2S Negative 0000"]
         },
 
         {
             name: "H2S Positive 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Possible Erysipelothrix spp."]
+            buttonList: ["Possible Erysipelothrix spp. 0000"]
+        },
+
+        {
+            name: "Possible Erysipelothrix spp. 0000",
+            image: "",
+            buttonList: []
         },
 
         {
             name: "H2S Negative 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Possible Lactobacillus spp."]
+            buttonList: ["Possible Lactobacillus spp. 0000"]
+        },
+
+        {
+            name: "Possible Lactobacillus spp. 0000",
+            image: "",
+            buttonList: []
         },
 
         {
             name: "Irregular/pleomorphic shape 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Catalase(-) gp2", "Catalase(+) gp2"]
+            buttonList: ["Catalase(-) 0002", "Catalase(+) 0002"]
         },
 
         {
             name: "Catalase(-) 0002",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Non-motile, non-hemolytic gp1", "Non-motile, hemolytic"]
+            buttonList: ["Non-motile, non-hemolytic 0001", "Non-motile, hemolytic 0000"]
         },
 
         {
             name: "Non-motile, non-hemolytic 0001",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Lactobacillus spp. or Erysipelothrix spp."]
+            buttonList: ["Lactobacillus spp. or Erysipelothrix spp. 0000"]
+        },
+
+        {
+            name: "Lactobacillus spp. or Erysipelothrix spp. 0000",
+            image: "",
+            buttonList: []
         },
 
         {
             name: "Non-motile, hemolytic 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Gardnerella spp."]
+            buttonList: ["Gardnerella spp. 0000"]
+        },
+
+        {
+            name: "Gardnerella spp. 0000",
+            image: "",
+            buttonList: []
         },
 
         {
             name: "Catalase(+) 0002",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Non-motile, non-hemolytic gp2"]
+            buttonList: ["Non-motile, non-hemolytic 0002"]
         },
 
         {
             name: "Non-motile, non-hemolytic 0002",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Corynebacterium spp."]
+            buttonList: ["Corynebacterium spp. 0000"]
+        },
+
+        {
+            name: "Corynebacterium spp. 0000",
+            image: "",
+            buttonList: []
         },
 
         //aerobic gram-positive rods flowchart ends
@@ -162,37 +211,49 @@ function App() {
         {
             name: "Gram Stain Morphology 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Cocci pairs and chains", "Cocci clusters and tetrads"]
+            buttonList: ["Cocci pairs and chains 0000", "Cocci clusters and tetrads 0000"]
         },
 
         {
             name: "Cocci pairs and chains 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Catalase(+) gp3", "Catalase(-) gp3"]
+            buttonList: ["Catalase(+) 0003", "Catalase(-) 0003"]
         },
 
         {
             name: "Cocci clusters and tetrads 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["Catalase(-) gp3", "Catalase(+) gp4"]
+            buttonList: ["Catalase(-) 0003", "Catalase(+) 0004"]
         },
 
         {
             name: "Catalase(+) 0003",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["See Staphylococci ID chart"]
+            buttonList: ["See Staphylococci ID chart 0000"]
+        },
+
+        {
+            name: "See Staphylococci ID chart 0000",
+            image: "",
+            buttonList: []
         },
 
         {
             name: "Catalase(-) 0003",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["See appropriate Streptococci on BAP flowchart"]
+            buttonList: ["See appropriate Streptococci on BAP flowchart 0000"]
         },
 
         {
-            name: "Catalase(+) 0004",
-            image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-            buttonList: ["See Staphylococci ID chart"]
+            name: "See appropriate Streptococci on BAP flowchart 0000",
+            image: "",
+            buttonList: []
+        },
+
+        {
+            name: "See Staphylococci ID chart 0000",
+            image: "",
+            buttonList: []
         },
     ];
 
