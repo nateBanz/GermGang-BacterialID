@@ -43,7 +43,7 @@ function App() {
     //Growth on Mac section
     let gramNegativeMac = [
 
-        //lactose + start
+
 
         { name: "Gram Negative 0000",
         image: "",
@@ -53,11 +53,13 @@ function App() {
         image: "",
         buttonList: ["Lactose(+) 0000", "Lactose(-) 0000"]},
 
+        //lactose + start
+
         { name: "Lactose(+) 0000",
             image: "",
-            buttonList: ["indole 0000"]},
+            buttonList: ["Indole 0000"]},
 
-        { name: "indole 0000",
+        { name: "Indole 0000",
             image: "",
             buttonList: ["(-) 0000", "(+) 0000"]},
 
@@ -77,7 +79,8 @@ function App() {
             image: "image",
             buttonList: ["Klebsiella, Rare Enterobacter 0000"]},
 
-        //see a chart?
+        //Positive side
+
         { name: "(+) 0000",
             image: "",
             buttonList: ["Colony mucoid. Odor of fresh bread? 0001", "Non-Mucoid E.Coli 0000"]},
@@ -110,20 +113,78 @@ function App() {
             image: "",
             buttonList: []},
 
-        //end
+        //Lactose - start
 
-        {name: "Stool 0000",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: []},
-        {name: "cone",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: []},
-        {name: "cat",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: []},
-        {name: "dog",
-        image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
-        buttonList: []}
+        {name: "Lactose(-) 0000",
+            image: "",
+            buttonList: ['Oxidase (+) 0000','Oxidase (-) 0000']},
+
+        {name: "Oxidase (+) 0000",
+            image: "",
+            buttonList: ['Colony metallic. Odor of Grapes 0000']},
+
+        {name: "Colony metallic. Odor of Grapes 0000",
+            image: "",
+            buttonList: ['No 0001','Yes 0002']},
+
+        {name: "No 0001",
+            image: "",
+            buttonList: ["B. cepacia, B. pseudomallei, Pasteurella, Others (Refer to your laboratory's BT rule out charts 0000"]},
+
+        {name: "B. cepacia, B. pseudomallei, Pasteurella, Others (Refer to your laboratory's BT rule out charts 0000",
+            image: "",
+            buttonList: []},
+
+        {name: "Yes 0002",
+            image: "",
+            buttonList: ['P. aeruginosa 0000']},
+
+        {name: "P. aeruginosa 0000",
+            image: "",
+            buttonList: []},
+
+        {name: "Oxidase (-) 0000",
+            image: "",
+            buttonList: ['Swarming on BAP 0000']},
+
+        {name: 'Swarming on BAP 0000',
+            image: "",
+            buttonList: ['No 0002','Yes 0003']},
+
+        {name: "No 0002",
+            image: "",
+            buttonList: ['Indole 0001']},
+
+        {name: 'Indole 0001',
+            image: "",
+            buttonList: ['(-) 0001','(+) 0001']},
+
+        {name: '(-) 0001',
+            image: "",
+            buttonList: ["Serratia, Citrobacter, Enterobacter, S. maltophilia, Acinetobacter, Others ~ B. mallei, Y. pestis (Refer to your laboratory's BT rule out charts 0000"]},
+
+        {name: "Serratia, Citrobacter, Enterobacter, S. maltophilia, Acinetobacter, Others ~ B. mallei, Y. pestis (Refer to your laboratory's BT rule out charts 0000",
+            image: "",
+            buttonList: []},
+
+        {name: "(+) 0001",
+            image: "",
+            buttonList: ['E.coli (Use E.coli ID Chart) 0000']},
+
+        {name: "E.coli (Use E.coli ID Chart) 0000",
+            image: "",
+            buttonList: []},
+
+        {name: "Yes 0003",
+            image: "",
+            buttonList: ['Proteus spp. 0000']},
+
+        {name: "Proteus spp. 0000",
+            image: "",
+            buttonList: []},
+
+
+        //end
 
         ];
 
