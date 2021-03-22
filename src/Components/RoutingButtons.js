@@ -55,7 +55,7 @@ try {
 }
 catch (Exception) {
 
-    console.log("weird result")
+    console.log(Exception)
 }
 }
 
