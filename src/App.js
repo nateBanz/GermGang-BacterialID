@@ -10,9 +10,9 @@ import PersonTracker from "./Components/PersonTracker"; //context (global variab
 function App() {
     //set a state to use for updating array
    const [buttonNameArray, updateArray]= useState([{
-       name: "Homepage",
+       name: "Homepage 0000",
        image: "nothing here for now",
-       buttonList: ["Gram Positive", "Gram Negative"]
+       buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
    }])
 
 
@@ -28,7 +28,7 @@ function App() {
     const germs = germBase.child("germs");
 
     //create an object. All objects should look like this
-    let practiceArray = [
+    let gramPositiveAerobic = [
         {
             name: "Homepage 0000",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
@@ -485,26 +485,19 @@ function App() {
 
         ];
 
-    //testing object rather than just the contents
-    let practice2 = [
-        child1, child2, child3, child4
-    ]
 
     //This function will push every object to the firebase.
     function pusher() {
-        console.log(practiceArray)
-        for (const germNode in practiceArray) {
 
-            germs.push(practiceArray[germNode])
+        for (const germNode in gramNegativeMac) {
+
+            germs.push(gramNegativeMac[germNode])
         }
 
 
-        console.log('test')
+        for (const germX in gramPositiveAerobic) {
 
-        for (const germNode in practice2) {
-
-            germs.push(practice2[germNode])
-
+            germs.push(gramPositiveAerobic[germX])
 
         }
     }
@@ -526,7 +519,7 @@ function App() {
           <div>
               <QuestionPage germ = {buttonNameArray[buttonNameArray.length -1]} ></QuestionPage>
           </div>
-E
+
       </PersonTracker.Provider>
 
   </div>

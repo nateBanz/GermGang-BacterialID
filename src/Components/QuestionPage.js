@@ -15,21 +15,13 @@ import {useEffect} from "react";
 //takes a parameter, an object defined below with the name of the germ, a picture and the list of germ names.
 const QuestionPage = (props) => {
 
-    //const [specificGerm, updateGerm] = useState(props); **deprecated
-
-    //console.log(specificGerm) **testing
 
     //array of button objects from the global context.
     const {buttonNameArray, updateArray} = useContext(PersonTracker)
 
-    //console.log(buttonNameArray.length) **testing
 
-    //specificGerm = buttonNameArray[buttonNameArray.length-1] **deprecated
-
-    //the array of names stored here!
+    //the array of names stored here, gets the most recent name from context
     const arrays = buttonNameArray[buttonNameArray.length-1].buttonList
-
-
 
 
     //for every name in the array, create a div containing a button that passes in the name of the node.
@@ -47,9 +39,9 @@ const QuestionPage = (props) => {
 }
 //this is what the object passed into props should look like by default
 QuestionPage.defaultProps = {
-name: "Homepage",
+name: "Homepage 0000",
 image: "nothing here for now",
-buttonList: ["Gram Positive", "Gram Negative"]
+buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
 }
 
 //this is what the object passed into props should look like in general (essentially creating a class definition here for the object i want to pass in)
@@ -58,5 +50,5 @@ QuestionPage.propTypes = {
     image: PropTypes.string,
     buttonList: PropTypes.arrayOf(PropTypes.string),}
 
-//database button: {name: string, image: string, ArrayOfButtons : [name: String...]
+
 export default QuestionPage

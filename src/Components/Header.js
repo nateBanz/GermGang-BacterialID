@@ -24,8 +24,6 @@ const Header = (props) => {
 
         if(buttonNameArray.length > 1) {
 
-            //console.log(buttonNameArray) **testing
-
             //create a copy
             let newArray = [...buttonNameArray]
 
@@ -34,10 +32,28 @@ const Header = (props) => {
 
             //update the global array with the copy
             updateArray(newArray)
-            //console.log(newArray) **testing
 
             //test to make sure it fires
             console.log("sliced")
+        }
+
+    }
+
+    function reset() {
+
+        if(buttonNameArray.length > 1) {
+
+            //create a copy
+            let newArray = [...buttonNameArray]
+
+            //remove the last thing from the copy
+            newArray.splice(1)
+
+            //update the global array with the copy
+            updateArray(newArray)
+
+            //test to make sure it fires
+            console.log("sliced and reset")
         }
 
     }

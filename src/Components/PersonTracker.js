@@ -5,9 +5,9 @@ import * as React from "react";
  const PersonTracker = React.createContext(
     {
         buttonNameArray: [{
-            name: "Homepage",
+            name: "Homepage 0000",
             image: "nothing here for now",
-            buttonList: ["Gram Positive", "Gram Negative"]
+            buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
         }],
         updateArray: () => {}
     }
