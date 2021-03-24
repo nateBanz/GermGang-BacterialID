@@ -217,7 +217,7 @@ function App() {
 
         { name: "Gram Negative 0000",
         image: "",
-        buttonList: ["Non Stool 0000, Stool 0000"]},
+        buttonList: ["Non Stool 0000", "Stool 0000"]},
 
         { name: "Non Stool 0000",
         image: "",

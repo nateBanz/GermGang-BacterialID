@@ -1,1 +1,0 @@
-//The reset button will go back one index on the person object and rerender the page (idea1)

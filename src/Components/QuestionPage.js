@@ -24,6 +24,7 @@ const QuestionPage = (props) => {
     const arrays = buttonNameArray[buttonNameArray.length-1].buttonList
 
 
+
     //for every name in the array, create a div containing a button that passes in the name of the node.
     return <div> {
 
