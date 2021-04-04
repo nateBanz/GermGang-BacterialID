@@ -8,13 +8,13 @@ import {useState} from 'react';
 import {useContext} from "react";
 import PersonTracker from "./PersonTracker";
 import {useEffect} from "react";
+import Button from 'react-bootstrap/Button';
 
 
 //need some styling here to create the look we are going for
 
 //takes a parameter, an object defined below with the name of the germ, a picture and the list of germ names.
 const QuestionPage = (props) => {
-
 
     //array of button objects from the global context.
     const {buttonNameArray, updateArray} = useContext(PersonTracker)
@@ -26,14 +26,14 @@ const QuestionPage = (props) => {
 
 
     //for every name in the array, create a div containing a button that passes in the name of the node.
-    return <div> {
+    return <div className="center-bottom">
+             <div className="flex"> {
+            (arrays.map((list, index)=> <div className= "pages" key = {index}>
 
-        (arrays.map((list, index)=> <div className= "pages" key = {index}>
+                <RoutingButtons button = {list}  > </RoutingButtons>
 
-        <RoutingButtons button = {list}  > </RoutingButtons>
-
-    </div>))}
-
+            </div>))}
+     </div>
     </div>
 
 

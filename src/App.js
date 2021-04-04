@@ -6,14 +6,16 @@ import firebase from './firebase';
 import Header from "./Components/Header";
 import * as React from "react";
 import PersonTracker from "./Components/PersonTracker"; //context (global variables essentially) that can be used anywhere and trigger a refresh on updates
+import {Button} from 'react-bootstrap';
+
 
 function App() {
-    //set a state to use for updating array
-   const [buttonNameArray, updateArray]= useState([{
-       name: "Homepage 0000",
-       image: "nothing here for now",
-       buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
-   }])
+        //set a state to use for updating array
+        const [buttonNameArray, updateArray]= useState([{
+            name: "Homepage 0000",
+            image: "nothing here for now",
+            buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
+        }])
 
 
     //capture the values in an object
@@ -821,6 +823,7 @@ function App() {
 
   </div>
   );
+
 }
 
 export default App;

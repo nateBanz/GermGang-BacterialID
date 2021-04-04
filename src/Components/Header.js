@@ -1,18 +1,11 @@
 import React from 'react'
 import PersonTracker from "./PersonTracker";
 import {useContext} from "react";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {Button, Alert, Breadcrumb} from 'react-bootstrap';
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
-
-
-
-
-
-
-
 //reset button
-
-
 
 
 const Header = (props) => {
@@ -61,11 +54,11 @@ const Header = (props) => {
     //use the getname function here to get a germ object.
 
     return <div>
-            <button onClick={()=> {
+            <Button variant="secondary" onClick={()=> {
 
                 goBack();
 
-            }}>Back</button>
+            }}>Back</Button>
 
 
     </div>

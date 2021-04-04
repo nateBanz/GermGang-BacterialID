@@ -15,10 +15,21 @@ code {
 This is just the initial styling. We need to change this to match what we're looking for in the final production version.
  */
 .pages {
-  font-size: 10vh;
-  margin: 10px;
-  padding: 10px;
+  font-size: 0vh;
+  margin: 70px;
+  padding: 0px;
   border-radius: 5px;
-  box-shadow: 10px 10px 20px #65404ff7;
+  box-shadow: 3px 3px 15px #65404ff7;
   display: inline-block;
 }
+
+.flex {
+  display: flex;
+  top: 75%;
+  justify-content: center;
+}
+
+.center-bottom {
+  top: 75%;
+}
+
