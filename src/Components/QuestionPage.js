@@ -23,10 +23,12 @@ const QuestionPage = (props) => {
     //the array of names stored here, gets the most recent name from context
     const arrays = buttonNameArray[buttonNameArray.length-1].buttonList
 
+    const currentName = buttonNameArray[buttonNameArray.length-1].name.slice(0,-4);
 
 
     //for every name in the array, create a div containing a button that passes in the name of the node.
     return <div className="center-bottom">
+        <h1 className={"h1"}>{currentName}</h1>
              <div className="flex"> {
             (arrays.map((list, index)=> <div className= "pages" key = {index}>
 

@@ -29,7 +29,11 @@ This is just the initial styling. We need to change this to match what we're loo
   justify-content: center;
 }
 
-.center-bottom {
-  top: 75%;
+.h1 {
+  text-align: center;
+  margin: 50px;
+  padding: 0px;
+  border-radius: 5px;
+
 }
 

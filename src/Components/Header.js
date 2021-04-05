@@ -4,6 +4,7 @@ import {useContext} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown} from 'react-bootstrap';
 import {getName} from "./firebaseUtils";
+import RoutingButton from "./RoutingButtons";
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
 //reset button
