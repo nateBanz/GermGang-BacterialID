@@ -249,7 +249,13 @@ function App() {
         {
             name: "Non-hemolytic or beta-hemlytic after 48 hours 0000",
             image: "",
-            buttonList: ["Staphylococcus lugdunensis"]
+            buttonList: ["Staphylococcus lugdunensis 0000"]
+        },
+
+        {
+            name: "Staphylococcus lugdunensis 0000",
+            image: "",
+            buttonList: []
         },
 
         {
@@ -287,6 +293,13 @@ function App() {
             image: "",
             buttonList: ["Staphylococcus aureus 0000"]
         },
+
+        {
+            name: "Staphylococcus aureus 0000",
+            image: "",
+            buttonList: []
+        },
+
 
         {
             name: "If PYR(-) & coagulas(-) 0000",

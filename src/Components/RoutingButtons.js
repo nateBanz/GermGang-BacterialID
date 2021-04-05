@@ -7,7 +7,7 @@ import {getName} from "./firebaseUtils";
 import PersonTracker from "./PersonTracker";
 import {useContext} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button, Alert, Breadcrumb} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 
 
 
@@ -26,11 +26,8 @@ const RoutingButton = (props) => {
 try {
 
 
-
     //if clicked, load the new identifier name into the update function passed into this component. Passing anything to update will launch a rerender
     return <Button variant = "secondary" onClick={ async () => {
-
-
         //gets the particular germNode object based upon the name of the node
         let fullGerm = await getName(props.button)
 

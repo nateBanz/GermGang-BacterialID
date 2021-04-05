@@ -37,6 +37,8 @@ const QuestionPage = (props) => {
     </div>
 
 
+
+
 }
 //this is what the object passed into props should look like by default
 QuestionPage.defaultProps = {
@@ -49,7 +51,7 @@ buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
 QuestionPage.propTypes = {
     name: PropTypes.string,
     image: PropTypes.string,
-    buttonList: PropTypes.arrayOf(PropTypes.string),}
+    buttonList: PropTypes.arrayOf(PropTypes.string)}
 
 
 export default QuestionPage
