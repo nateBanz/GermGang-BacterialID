@@ -208,7 +208,7 @@ function App() {
         },
 
 
-]
+];
 
     //Growth on Mac section
     let gramNegativeMac = [
@@ -484,6 +484,95 @@ function App() {
         //end
 
         ];
+
+    //new beginning
+    let GramCoccipairs = [
+        { name: "Gram Cocci Pairs(+) 3000",
+            image: "",
+            buttonList: ["Catalase(-) 3001"]},
+
+        { name: "Catalase(-) 3001",
+            image: "",
+            buttonList: ['Alpha or non hemolytic(gamma) 3002']},
+
+
+
+        { name: "Alpha or non hemolytic(gamma) 3002",
+            image: "",
+            buttonList: ['Pinpoint colony < 0.5mm 3003', 'Large size colony 3004']},
+
+        //PINPPOINT COLONY
+        { name: "Pinpoint colony < 0.5mm 3003",
+            image: "",
+            buttonList: ['Caramel, burnt sugar, or butterscotch smell**. can have Group A,C,G or F antigen 3005']},
+
+        { name: "Caramel, burnt sugar, or butterscotch smell**. can have Group A,C,G or F antigen 3005",
+            image: "hasimage",
+            buttonList: ['S. anginosus (S.milleri) group 3006']},
+
+        //Large size colony
+        { name: "Large size colony 3004",
+            image: "",
+            buttonList: ['Alpha hemolytic 3007', 'Gamma hemolytic 3008']},
+
+        { name: "Alpha hemolytic 3007",
+            image: "image",
+            buttonList: ['Bile soluble 3009']},
+
+        { name: "Bile soluble 3009",
+            image: "image",
+            buttonList: ['No 3009', 'Yes 3009']},
+
+        { name: "No 3009",
+            image: "",
+            buttonList: ['PYR(+) 3015']},
+
+        { name: "PYR(+) 3015",
+            image: "",
+            buttonList: ['YES 3010', 'NO 3010']},
+
+        { name: "YES 3010",
+            image: "",
+            buttonList: ['Entercoccus 3011']},
+
+        { name: "NO 3010",
+            image: "",
+            buttonList: ['Other alpha strep 3012']},
+
+        { name: "Other alpha strep 3012",
+            image: "",
+            buttonList: ['See alpha Streptococcus versus S.pneumoniae 3013']},
+
+        { name: "Yes 3009",
+            image: "",
+            buttonList: ['S.pneumoniae 3014']},
+
+        { name: "S.pneumoniae 3014",
+            image: "",
+            buttonList: ['See alpha Streptococcus versus S.pneumoniae 3013']},
+
+
+        //Gamma-hemolytic
+        { name: "Gamma hemolytic 3008",
+            image: "",
+            buttonList: ['PYR(+) 3016']},
+
+        { name: "PYR(+) 3016",
+            image: "",
+            buttonList: ['no 3017', 'yes 3017']},
+
+        //Lactose - start
+
+        {name: "no 3017",
+            image: "",
+            buttonList: ['Other alpha strep 3018']},
+
+        {name: "yes 3017",
+            image: "",
+            buttonList: ['Enterococcus 3018']},
+
+    ];
+
 
 
     //This function will push every object to the firebase.
