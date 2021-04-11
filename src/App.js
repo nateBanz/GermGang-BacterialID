@@ -6,6 +6,7 @@ import firebase from './firebase';
 import Header from "./Components/Header";
 import * as React from "react";
 import PersonTracker from "./Components/PersonTracker"; //context (global variables essentially) that can be used anywhere and trigger a refresh on updates
+import {Update} from "./Components/firebaseUtils";
 
 function App() {
     //set a state to use for updating array
@@ -502,7 +503,10 @@ function App() {
         }
     }
 
-    pusher()
+    //pusher()
+    //germBase.remove()
+    Update("Homepage", "homepager").then(r => console.log(r))
+
 
 
 

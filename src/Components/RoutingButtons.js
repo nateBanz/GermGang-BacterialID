@@ -1,7 +1,5 @@
 //clicking a button will take you to the next page
 
-import console from 'console'
-
 //this function takes in a name and returns a firebase object of the germ
 import {getName} from "./firebaseUtils";
 import PersonTracker from "./PersonTracker";
@@ -19,6 +17,7 @@ const RoutingButton = (props) => {
     let modifiedName = props.button.slice(0,-4)
 
 
+
 try {
 
 
@@ -26,6 +25,8 @@ try {
     //if clicked, load the new identifier name into the update function passed into this component. Passing anything to update will launch a rerender
     return <button onClick={ async () => {
 
+        //see the name
+        console.log(modifiedName)
 
         //gets the particular germNode object based upon the name of the node
         let fullGerm = await getName(props.button)
