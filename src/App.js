@@ -6,14 +6,16 @@ import firebase from './firebase';
 import Header from "./Components/Header";
 import * as React from "react";
 import PersonTracker from "./Components/PersonTracker"; //context (global variables essentially) that can be used anywhere and trigger a refresh on updates
+import {Button} from 'react-bootstrap';
+
 
 function App() {
-    //set a state to use for updating array
-   const [buttonNameArray, updateArray]= useState([{
-       name: "Homepage 0000",
-       image: "nothing here for now",
-       buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
-   }])
+        //set a state to use for updating array
+        const [buttonNameArray, updateArray]= useState([{
+            name: "Homepage 0000",
+            image: "nothing here for now",
+            buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
+        }])
 
 
     //capture the values in an object
@@ -28,6 +30,7 @@ function App() {
     const germs = germBase.child("germs");
 
     //create an object. All objects should look like this
+    //----------------------------------------------------------Gram Positive Side Begins -----------------------------------------------------------------------
     let gramPositiveAerobic = [
         {
             name: "Homepage 0000",
@@ -156,7 +159,8 @@ function App() {
             buttonList: []
         },
 
-        //aerobic gram-positive rods flowchart ends
+        //-------------------------------------aerobic gram-positive rods flowchart ends----------------------------------------------------------
+        // -----------------------------------Arobic gram-positive Flowchart Cocci Begins---------------------------------------------------------
 
         {
             name: "Gram Stain Morphology 0000",
@@ -182,12 +186,12 @@ function App() {
             buttonList: ["See Staphylococci ID chart 0000"]
         },
 
-
         {
             name: "See Staphylococci ID chart 0000",
-                image: "",
-            buttonList: []
+            image: "",
+            buttonList: ["Gram + cocci clusters 0000"]
         },
+
         {
             name: "Catalase(-) 0003",
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
@@ -197,18 +201,326 @@ function App() {
         {
             name: "See appropriate Streptococci on BAP flowchart 0000",
             image: "",
+            buttonList: ["Alpha or Gamma-Hemolytic Streptococci Gram(+) cocci pairs & chains 0000", "Beta-Hemolytic Streptococci Gram(+) cocci pairs and chains 0000"]
+        },
+
+        {
+            name: "See Staphylococci ID chart 0001",
+                image: "",
+            buttonList: ["Gram + cocci clusters 0000"]
+        },
+        //----------------------------------------------Staphylococci ID Begins -----------------------------------------------------------------
+        {
+            name: "Gram + cocci clusters 0000",
+            image: "",
+            buttonList: ["Catalase(+) 0004"]
+        },
+
+        {
+            name: "Catalase(+) 0004",
+            image: "",
+            buttonList: ["Slide Coagulase(+) 0000", "Slide Coagulase(+) but clumpy. Colony more white; non-hemolytic on day 1 0000", "Slide Coagulase(-) 0000"]
+        },
+
+        {
+            name: "Slide Coagulase(+) 0000",
+            image: "",
+            buttonList: ["Typical beta-hemolytic colony 0000"]
+        },
+
+        {
+            name: "Typical beta-hemolytic colony 0000",
+            image: "",
+            buttonList: ["Staphylococcus aureus 0000"]
+        },
+
+        {
+            name: "Slide Coagulase(+) but clumpy. Colony more white; non-hemolytic on day 1 0000",
+            image: "",
+            buttonList: ["PYR(+) 0000" , "PYR(-) 0000"]
+        },
+
+        {
+            name: "PYR(+) 0000",
+            image: "",
+            buttonList: ["Non-hemolytic or beta-hemlytic after 48 hours 0000"]
+        },
+
+        {
+            name: "Non-hemolytic or beta-hemlytic after 48 hours 0000",
+            image: "",
+            buttonList: ["Staphylococcus lugdunensis 0000"]
+        },
+
+        {
+            name: "Staphylococcus lugdunensis 0000",
+            image: "",
+            buttonList: []
+        },
+
+        {
+            name: "PYR(-) 0000",
+            image: "",
+            buttonList: ["Perform tube coagulase test 0000"]
+        },
+
+        {
+            name: "Slide Coagulase(-) 0000",
+            image: "",
+            buttonList: ["Perform tube coagulase test 0000"]
+        },
+
+        {
+            name: "Perform tube coagulase test 0000",
+            image: "",
+            buttonList: ["Tube coagulase(+) 0000", "If PYR(-) & coagulas(-) 0000"]
+        },
+
+        {
+            name: "Tube coagulase(+) 0000",
+            image: "",
+            buttonList: ["Typical beta-hemolytic colony 0000"]
+        },
+
+        {
+            name: "Tube coagulase(+) 0000",
+            image: "",
+            buttonList: ["Typical beta-hemolytic colony 0000"]
+        },
+
+        {
+            name: "Typical beta-hemolytic colony 0000",
+            image: "",
+            buttonList: ["Staphylococcus aureus 0000"]
+        },
+
+        {
+            name: "Staphylococcus aureus 0000",
+            image: "",
             buttonList: []
         },
 
 
         {
-            name: "See Staphylococci ID chart 0000",
-                image: "",
-            buttonList: []
+            name: "If PYR(-) & coagulas(-) 0000",
+            image: "",
+            buttonList: ["Typical non-hemolytic colony 0000"]
         },
 
+        {
+            name: "Typical non-hemolytic colony 0000",
+            image: "",
+            buttonList: ["Coagulase(-) Staphylococci 0000"]
+        },
 
-]
+        {
+            name: "Typical non-hemolytic colony 0000",
+            image: "",
+            buttonList: ["Further testing required to ID 0000"]
+        },
+        // ---------------------------Alpha or Gamma-Hemolytic Streptococci BAP Flowchart ---------------------------------------------------------
+        {
+            name: "Alpha or Gamma-Hemolytic Streptococci Gram(+) cocci pairs & chains 0000",
+            image: "",
+            buttonList: ["Catalase(-) 0004"]
+        },
+
+        {
+            name: "Catalase(-) 0004",
+            image: "",
+            buttonList: ["Alpha or non hemolytic(gamma) 0000"]
+        },
+
+        {
+            name: "Alpha or non hemolytic(gamma) 0000",
+            image: "",
+            buttonList: ["Pinpoint colony < 0.5mm 0000" , "Large size colony 0000"]
+        },
+
+        {
+            name: "Pinpoint colony < 0.5mm 0000",
+            image: "",
+            buttonList: ["Caramel, burnt sugar, or butterscotch smell**. Can have Group A, C, G, or F antigen. 0000"]
+        },
+
+        {
+            name: "Caramel, burnt sugar, or butterscotch smell**. Can have Group A, C, G, or F antigen. 0000",
+            image: "",
+            buttonList: ["S.anginosus (S.milleri) group 0000"]
+        },
+
+        {
+            name: "Large size colony 0000",
+            image: "",
+            buttonList: ["Alpha-hemolytic 0000" , "Gamma-hemolytic 0000"]
+        },
+
+        {
+            name: "Alpha-hemolytic 0000",
+            image: "",
+            buttonList: ["Bile soluble 0000"]
+        },
+
+        {
+            name: "Bile soluble 0000",
+            image: "",
+            buttonList: ["No 1000", "Yes 1000"]
+        },
+
+        {
+            name: "No 1000",
+            image: "",
+            buttonList: ["PYR(+) 0001"]
+        },
+
+        {
+            name: "Bile soluble 0000",
+            image: "",
+            buttonList: ["No 1001", "Yes 1001"]
+        },
+
+        {
+            name: "No 1001",
+            image: "",
+            buttonList: ["Other alpha strep"]
+        },
+
+        {
+            name: "Yes 1001",
+            image: "",
+            buttonList: ["Enterococcus 0000"]
+        },
+
+        {
+            name: "Yes 1000",
+            image: "",
+            buttonList: ["S.pneumoniae 0000"]
+        },
+
+        {
+            name: "S.pneumoniae 0000",
+            image: "",
+            buttonList: ["See alpha Streptococcus versus S. pneumoniae 0000"]
+        },
+
+        {
+            name: "Gamma-hemolytic 0000",
+            image: "",
+            buttonList: ["PYR(+) 0002"]
+        },
+
+        {
+            name: "PYR(+) 0002",
+            image: "",
+            buttonList: ["No 1002" , "Yes 1002"]
+        },
+
+        {
+            name: "No 1002",
+            image: "",
+            buttonList: ["other alpha strep 0001"]
+        },
+
+        {
+            name: "Yes 1002",
+            image: "",
+            buttonList: ["Enterococcus 0001"]
+        },
+        //---------------------------------------------Beta-H Strep BAP Tree begins ------------------------------------------------------------------
+        {
+            name: "Beta-Hemolytic Streptococci Gram(+) cocci pairs and chains 0000",
+            image: "",
+            buttonList: ["Catalase(-) 0005"]
+        },
+
+        {
+            name: "Catalase(-) 0005",
+            image: "",
+            buttonList: ["Beta-homolytic 0002"]
+        },
+
+        {
+            name: "Beta-homolytic 0002",
+            image: "",
+            buttonList: ["Small-Medium colony > 0.5mm 0000"]
+        },
+
+        {
+            name: "Pinpoint colony < 0.5mm 0002",
+            image: "",
+            buttonList: ["Small-Medium colony > 0.5mm 0000"]
+        },
+
+        {
+            name: "Small-Medium colony > 0.5mm 0000",
+            image: "",
+            buttonList: ["Soft hemolysis is only under colony 0000"]
+        },
+
+        {
+            name: "Soft hemolysis is only under colony",
+            image: "",
+            buttonList: ["Yes 1004", "No and PYR(+) 0000"]
+        },
+
+        {
+            name: "Yes 1004",
+            image: "",
+            buttonList: ["Group B Strep or rarely Enterococcus (PYR +)"]
+        },
+
+        {
+            name: "Group B Strep or rarely Enterococcus (PYR +)",
+            image: "",
+            buttonList: ["See beta-homolytic Streptococci ID Chart 0000"]
+        },
+
+        {
+            name: "No and PYR(+) 0000",
+            image: "",
+            buttonList: ["Yes 1023" , "No 1023"]
+        },
+
+        {
+            name: "Yes 1023",
+            image: "",
+            buttonList: ["S. pyogenes"]
+        },
+
+        {
+            name: "S. pyogenes",
+            image: "",
+            buttonList: ["See beta-homolytic Streptococci ID Chart 0001"]
+        },
+
+        {
+            name: "No 1023",
+            image: "",
+            buttonList: ["Other beta strep 0000"]
+        },
+
+        {
+            name: "Other beta strep 0000",
+            image: "",
+            buttonList: ["See beta-homolytic Streptococci ID Chart 0002"]
+        },
+
+        {
+            name: "Pinpoint colony < 0.5mm 0002",
+            image: "",
+            buttonList: ["Caramel, burnt sugar, or butterscotch smell**. Can have Group A, C, G, or F antigen. 0001"]
+        },
+
+        {
+            name: "Caramel, burnt sugar, or butterscotch smell**. Can have Group A, C, G, or F antigen. 0001",
+            image: "",
+            buttonList: ["S.anginosus (S.milleri) group 0001"]
+        },
+
+    ]
+
+
+    // --------------------------------------------------Gram Negative Tree-------------------------------------------------------------------------
 
     //Growth on Mac section
     let gramNegativeMac = [
@@ -524,6 +836,7 @@ function App() {
 
   </div>
   );
+
 }
 
 export default App;

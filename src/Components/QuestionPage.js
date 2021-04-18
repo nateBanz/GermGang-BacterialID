@@ -8,13 +8,13 @@ import {useState} from 'react';
 import {useContext} from "react";
 import PersonTracker from "./PersonTracker";
 import {useEffect} from "react";
+import Button from 'react-bootstrap/Button';
 
 
 //need some styling here to create the look we are going for
 
 //takes a parameter, an object defined below with the name of the germ, a picture and the list of germ names.
 const QuestionPage = (props) => {
-
 
     //array of button objects from the global context.
     const {buttonNameArray, updateArray} = useContext(PersonTracker)
@@ -23,18 +23,22 @@ const QuestionPage = (props) => {
     //the array of names stored here, gets the most recent name from context
     const arrays = buttonNameArray[buttonNameArray.length-1].buttonList
 
+    const currentName = buttonNameArray[buttonNameArray.length-1].name.slice(0,-4);
 
 
     //for every name in the array, create a div containing a button that passes in the name of the node.
-    return <div> {
+    return <div className="center-bottom">
+        <h1 className={"h1"}>{currentName}</h1>
+             <div className="flex"> {
+            (arrays.map((list, index)=> <div className= "pages" key = {index}>
 
-        (arrays.map((list, index)=> <div className= "pages" key = {index}>
+                <RoutingButtons button = {list}  > </RoutingButtons>
 
-        <RoutingButtons button = {list}  > </RoutingButtons>
-
-    </div>))}
-
+            </div>))}
+     </div>
     </div>
+
+
 
 
 }
@@ -49,7 +53,7 @@ buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
 QuestionPage.propTypes = {
     name: PropTypes.string,
     image: PropTypes.string,
-    buttonList: PropTypes.arrayOf(PropTypes.string),}
+    buttonList: PropTypes.arrayOf(PropTypes.string)}
 
 
 export default QuestionPage
