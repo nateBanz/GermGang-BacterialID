@@ -2,12 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+
+
 import reportWebVitals from './reportWebVitals';
+import AddForm from "./Components/AddForm";
 
 
 ReactDOM.render(
 
-    <App />
+    //<App />
+    < AddForm/>
   ,
   document.getElementById('root')
 );

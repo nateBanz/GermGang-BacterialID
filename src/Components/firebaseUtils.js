@@ -48,6 +48,7 @@ async function Add(arrayOfNodes = []) {
 
     //push the array of object to firebase
 
+    pusher(arrayOfNodes, con)
 
 }
 
