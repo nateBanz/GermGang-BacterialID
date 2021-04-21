@@ -479,97 +479,63 @@ function App() {
             image: "",
             buttonList: ["Possible Aeromonas"]},
 
-
-
-        //end
-
         ];
+    //end
 
-    //new beginning
-    let GramCoccipairs = [
-        { name: "Gram Cocci Pairs(+) 3000",
+    //Escherichia coli (non-stool) ID CHART
+    let SpotIndole = [
+        { name: "Spot indole-positive, oxidase-negative Gram negative rod 3000",
             image: "",
-            buttonList: ["Catalase(-) 3001"]},
+            buttonList: ["Fermentation of lactose observed on EMB or MAC 3001"]},
 
-        { name: "Catalase(-) 3001",
+        { name: "Fermentation of lactose observed on EMB or MAC 3001",
             image: "",
-            buttonList: ['Alpha or non hemolytic(gamma) 3002']},
+            buttonList: ['Positive 3002', 'Negative 3002']},
 
-
-
-        { name: "Alpha or non hemolytic(gamma) 3002",
+        { name: "Positive 3002",
             image: "",
-            buttonList: ['Pinpoint colony < 0.5mm 3003', 'Large size colony 3004']},
+            buttonList: ['Check hemolysis on BAP 3003']},
 
-        //PINPPOINT COLONY
-        { name: "Pinpoint colony < 0.5mm 3003",
+        { name: "Negative 3002",
             image: "",
-            buttonList: ['Caramel, burnt sugar, or butterscotch smell**. can have Group A,C,G or F antigen 3005']},
+            buttonList: ['Do MUG test* 3003']},
 
-        { name: "Caramel, burnt sugar, or butterscotch smell**. can have Group A,C,G or F antigen 3005",
-            image: "hasimage",
-            buttonList: ['S. anginosus (S.milleri) group 3006']},
-
-        //Large size colony
-        { name: "Large size colony 3004",
+        { name: "Check hemolysis on BAP 3003",
             image: "",
-            buttonList: ['Alpha hemolytic 3007', 'Gamma hemolytic 3008']},
+            buttonList: ['Non-hemolytic 3004', 'Beta-hemolytic = E. coli^1(Further ID may be required) 3004']},
 
-        { name: "Alpha hemolytic 3007",
+        { name: "Do MUG test* 3003",
+            image: "",
+            buttonList: ['Beta-hemolytic = E. coli^1(Further ID may be required) 3004','Negative = Further ID Required 3004', 'Positive = E.coli 3004']},
+
+        { name: "Non-hemolytic 3004",
+            image: "",
+            buttonList: ['Do PYR test* 3005']},
+
+        { name: "Do PYR test* 3005",
             image: "image",
-            buttonList: ['Bile soluble 3009']},
+            buttonList: ['Negative = E.coli 3006', 'Positive = NOT E.coli; Further ID required 3006']},
 
-        { name: "Bile soluble 3009",
-            image: "image",
-            buttonList: ['No 3009', 'Yes 3009']},
+    ];
+        //Yersinia pestis ID fLOWCHART
 
-        { name: "No 3009",
+        let Gramnegetiverods = [
+            { name: "Gram negative rods 3010",
+                image: "",
+                buttonList: ["Oxidase Negative, Catalase Positive, Indole Negative, Urease Negative 3011"]},
+
+        { name: "Oxidase Negative, Catalase Positive, Indole Negative, Urease Negative 3011",
             image: "",
-            buttonList: ['PYR(+) 3015']},
+            buttonList: ['Yes 3011', 'No 3011']},
 
-        { name: "PYR(+) 3015",
+
+        {name: "Yes 3011",
             image: "",
-            buttonList: ['YES 3010', 'NO 3010']},
+            buttonList: ['y.pestis is not ruled out. Consult with your supervisor/ Refer to your BT laboratory.']},
 
-        { name: "YES 3010",
+        {name: "No 3011",
             image: "",
-            buttonList: ['Entercoccus 3011']},
-
-        { name: "NO 3010",
-            image: "",
-            buttonList: ['Other alpha strep 3012']},
-
-        { name: "Other alpha strep 3012",
-            image: "",
-            buttonList: ['See alpha Streptococcus versus S.pneumoniae 3013']},
-
-        { name: "Yes 3009",
-            image: "",
-            buttonList: ['S.pneumoniae 3014']},
-
-        { name: "S.pneumoniae 3014",
-            image: "",
-            buttonList: ['See alpha Streptococcus versus S.pneumoniae 3013']},
-
-
-        //Gamma-hemolytic
-        { name: "Gamma hemolytic 3008",
-            image: "",
-            buttonList: ['PYR(+) 3016']},
-
-        { name: "PYR(+) 3016",
-            image: "",
-            buttonList: ['no 3017', 'yes 3017']},
-
-        //Lactose - start
-
-        {name: "no 3017",
-            image: "",
-            buttonList: ['Other alpha strep 3018']},
-
-        {name: "yes 3017",
-            image: "",
-            buttonList: ['Enterococcus 3018']},
+            buttonList: ['Not Yersinia pestis. Continue identication per routine laboratory procedures. May be other Yersinia spp.']},
 
     ];
 
@@ -597,15 +563,15 @@ function App() {
 
 //this needs a bunch of styling. Add a classname and use the index.css for this and/or bootstrap or similar
     return (
-  <div>
+  <div >
 
       <PersonTracker.Provider value = {value} >
 
-          <div>
+          <div >
               <Header germ = {buttonNameArray[buttonNameArray.length -1]} ></Header>
           </div>
 
-          <div>
+          <div >
               <QuestionPage germ = {buttonNameArray[buttonNameArray.length -1]} ></QuestionPage>
           </div>
 
