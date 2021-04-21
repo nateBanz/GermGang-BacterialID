@@ -791,9 +791,102 @@ function App() {
             image: "",
             buttonList: ["Possible Aeromonas"]},
 
-
-
         //end
+
+// GNR Stool Pathogens Lactose Positive Flowchart (Sedina Start)
+        {
+            name: "Lactose fermenter on MAC 0001",
+            image: "",
+            buttonList: ["Oxidase (+) 0001", "Oxidase (-) 0001"],
+        },
+        {
+            name: "Oxidase (+) 0001",
+            image: "",
+            buttonList: ["Growth on TCBS 0001"],
+        },
+        {
+            name: "Growth on TCBS 0001",
+            image: "",
+            buttonList: ["Yellow 0097", "Green 0098", "None 0099"],
+        },
+        {
+            name: "Yellow 0097",
+            image: "",
+            buttonList: [
+                "Possible Vibrio cholerae(left), V. alginolyticus(right) 0000",
+            ],
+        },
+        {
+            name: "Green 0098",
+            image: "",
+            buttonList: ["Possible Vibrio parahemolyticus 0000"],
+        },
+        {
+            name: "None 0099",
+            image: "",
+            buttonList: ["Yellow colonies on HE 0096"],
+        },
+        {
+            name: "Yellow colonies on HE 0096",
+            image: "",
+            buttonList: ["Oxidase (+) 0095"],
+        },
+        {
+            name: "Oxidase (+) 0095",
+            image: "",
+            buttonList: ["Possible Aeromonas 0000"],
+        },
+        {
+            name: "Oxidase (-) 0001",
+            image: "",
+            buttonList: ["Indole (-) 0002", "Indole (+) 0002"],
+        },
+        {
+            name: "Indole (-) 0002",
+            image: "",
+            buttonList: ["Normal Stool flora 0000"],
+        },
+        {
+            name: "Indole (+) 0002",
+            image: "",
+            buttonList: ["Possible pathogenic E. coli 0004"],
+        },
+        {
+            name: "Possible pathogenic E. coli 0004",
+            image: "",
+            buttonList: [
+                "CT-SMAC plate, sorbitol (-) clear colonies 0001",
+                "CT-SMAC plate sorbitol (+) pink colonies 0001",
+            ],
+        },
+        {
+            name: "CT-SMAC plate sorbitol (+) pink colonies 0001",
+            image: "",
+            buttonList: ["Normal Stool flora 0001"],
+        },
+        {
+            name: "CT-SMAC plate, sorbitol (-) clear colonies 0001",
+            image: "",
+            buttonList: [
+                "Negative latex agglutination test for O157 0001",
+                "Positive latex agglutination test for O157 0001",
+            ],
+        },
+        {
+            name: "Negative latex agglutination test for O157 0001",
+            image: "",
+            buttonList: ["Normal Stool flora 0003"],
+        },
+        {
+            name: "Positive latex agglutination test for O157 0001",
+            image: "",
+            buttonList: ["Confirm ID as E. coli or test for Shiga toxin 0005"],
+        },
+        {
+            name: "Confirm ID as E. coli or test for Shiga toxin 0005",
+            image: "",
+            buttonList: [""],
+        },
 
     //GNR Stool Pathogens Lactose Negative Flowchart
     {
