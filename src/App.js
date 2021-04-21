@@ -910,7 +910,7 @@ function App() {
 
     //end
 
-    // GNR Stool Pathogens Lactose Positive Flowchart
+    // GNR Stool Pathogens Lactose Positive Flowchart (Sedina Start)
     {
       name: "Lactose fermenter on MAC 0001",
       image: "",
@@ -1058,6 +1058,7 @@ function App() {
     },
     { name: "", image: "", buttonList: [""] },
   ];
+  //(Sedina end)
 
   //This function will push every object to the firebase.
   function pusher() {
