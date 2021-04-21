@@ -53,11 +53,6 @@ const Header = (props) => {
         }
     }
 
-    function printName() {
-        let newArray = [...buttonNameArray]
-        console.log(getName(newArray.pop()))
-    }
-
 
     return (<div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">

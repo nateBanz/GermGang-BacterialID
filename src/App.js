@@ -799,22 +799,22 @@ function App() {
 
 
     //This function will push every object to the firebase.
-    function pusher() {
-
-        for (const germNode in gramNegativeMac) {
-
-            germs.push(gramNegativeMac[germNode])
-        }
-
-
-        for (const germX in gramPositiveAerobic) {
-
-            germs.push(gramPositiveAerobic[germX])
-
-        }
-    }
-
-    pusher()
+    // function pusher() {
+    //
+    //     for (const germNode in gramNegativeMac) {
+    //
+    //         germs.push(gramNegativeMac[germNode])
+    //     }
+    //
+    //
+    //     for (const germX in gramPositiveAerobic) {
+    //
+    //         germs.push(gramPositiveAerobic[germX])
+    //
+    //     }
+    // }
+    //
+    // pusher()
 
 
 

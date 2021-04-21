@@ -28,6 +28,8 @@ const QuestionPage = (props) => {
 
     //for every name in the array, create a div containing a button that passes in the name of the node.
     return <div className="center-bottom">
+        <h4 className={"h4"}> Directions: </h4>
+        <p className={"p"}> Click on the navigation buttons below to identify bacteria.</p>
         <h1 className={"h1"}>{currentName}</h1>
              <div className="flex"> {
             (arrays.map((list, index)=> <div className= "pages" key = {index}>
