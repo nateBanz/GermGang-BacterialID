@@ -10,12 +10,12 @@ import {Button} from 'react-bootstrap';
 
 
 function App() {
-        //set a state to use for updating array
-        const [buttonNameArray, updateArray]= useState([{
-            name: "Homepage 0000",
-            image: "nothing here for now",
-            buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
-        }])
+    //set a state to use for updating array
+   const [buttonNameArray, updateArray]= useState([{
+       name: "Homepage 0000",
+       image: "nothing here for now",
+       buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
+   }])
 
 
     //capture the values in an object
@@ -185,6 +185,7 @@ function App() {
             image: "kisspng-computer-icons-home-clip-art-black-home-icon-5ab0be31073f68.5448178115215324650297.jpg",
             buttonList: ["See Staphylococci ID chart 0000"]
         },
+
 
         {
             name: "See Staphylococci ID chart 0000",
@@ -790,6 +791,8 @@ function App() {
         {name: "Oxidase (+) 0002",
             image: "",
             buttonList: ["Possible Aeromonas"]},
+
+
 
         //end
 
