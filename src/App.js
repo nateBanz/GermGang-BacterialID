@@ -795,8 +795,60 @@ function App() {
 
         //end
 
+    //GNR Stool Pathogens Lactose Negative Flowchart
+    {
+      name:
+        "TSI or KIA reaction. See TSI Reactions ID chart. Perform spot test from BAP subculture only. 0001",
+      image: "",
+      buttonList: [
+        "H2S (+) with A/A, K/A Gas, K/A No Gas 0001",
+        "Alkaline / no change (K/K) 0001",
+        "H2S (-) (acid butt) with A/A, A/A Gas, K/A, K/A Gas 0001",
+      ],
+    },
+    {
+      name: "H2S (+) with A/A, K/A Gas, K/A No Gas 0001",
+      image: "",
+      buttonList: [
+        "Urea (+) or oxidase (+) 0008",
+        "Urea (-) and oxidase (-) 0008",
+      ],
+    },
+    {
+      name: "Urea (+) or oxidase (+) 0008",
+      image: "",
+      buttonList: ["NSF 0003"],
+    },
+    {
+      name: "Urea (-) and oxidase (-) 0008",
+      image: "",
+      buttonList: ["PYR (-) 0066", "PYR (+) 0066"],
+    },
+    { name: "PYR (+) 0066", image: "", buttonList: ["NSF 0004"] },
+    {
+      name: "PYR (-) 0066",
+      image: "",
+      buttonList: ["Indole (+) 0045", "Indole (-) 0045"],
+    },
+    {
+      name: "Indole (+) 0045",
+      image: "",
+      buttonList: ["r/o Edwardsiella 0032"],
+    },
+    { name: "Indole (-) 0045", image: "", buttonList: ["r/o Salmonella 0032"] },
+    {
+      name: "Alkaline / no change (K/K) 0001",
+      image: "",
+      buttonList: ["NSF 0051"],
+    },
+    {
+      name: "H2S (-) (acid butt) with A/A, A/A Gas, K/A, K/A Gas 0001",
+      image: "",
+      buttonList: ["See page 2 0045"],
+    },
+    { name: "", image: "", buttonList: [""] },
         ];
-
+  //(Sedina end)
 
     //This function will push every object to the firebase.
     // function pusher() {
