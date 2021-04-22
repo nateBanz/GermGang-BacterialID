@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AdminLogin from "./Components/AdminLogin";
 
 
 ReactDOM.render(
-
-    <App />
-  ,
+    <React.StrictMode>
+        <AdminLogin />
+    </React.StrictMode>,
   document.getElementById('root')
 );
 

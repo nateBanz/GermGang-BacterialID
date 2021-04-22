@@ -6,7 +6,15 @@ import firebase from './firebase';
 import Header from "./Components/Header";
 import * as React from "react";
 import PersonTracker from "./Components/PersonTracker"; //context (global variables essentially) that can be used anywhere and trigger a refresh on updates
-import {Button} from 'react-bootstrap';
+import Dashboard from "./Components/Dashboard.js"
+import Login from "./Components/Login"
+import PrivateRoute from "./Components/PrivateRoute"
+import ForgotPassword from "./Components/ForgotPassword"
+import UpdateProfile from "./Components/UpdateProfile"
+import { Container } from "react-bootstrap"
+import { AuthProvider } from "./contexts/AuthContext"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import AdminLogin from "./Components/AdminLogin";
 
 
 function App() {
@@ -793,8 +801,59 @@ function App() {
             buttonList: ["Possible Aeromonas"]},
 
 
-
         //end
+        //EZEKIELS PART
+        //Escherichia coli (non-stool) ID CHART
+            { name: "Spot indole-positive, oxidase-negative Gram negative rod 3000",
+                image: "",
+                buttonList: ["Fermentation of lactose observed on EMB or MAC 3001"]},
+
+            { name: "Fermentation of lactose observed on EMB or MAC 3001",
+                image: "",
+                buttonList: ['Positive 3002', 'Negative 3002']},
+
+            { name: "Positive 3002",
+                image: "",
+                buttonList: ['Check hemolysis on BAP 3003']},
+
+            { name: "Negative 3002",
+                image: "",
+                buttonList: ['Do MUG test* 3003']},
+
+            { name: "Check hemolysis on BAP 3003",
+                image: "",
+                buttonList: ['Non-hemolytic 3004', 'Beta-hemolytic = E. coli^1(Further ID may be required) 3004']},
+
+            { name: "Do MUG test* 3003",
+                image: "",
+                buttonList: ['Beta-hemolytic = E. coli^1(Further ID may be required) 3004','Negative = Further ID Required 3004', 'Positive = E.coli 3004']},
+
+            { name: "Non-hemolytic 3004",
+                image: "",
+                buttonList: ['Do PYR test* 3005']},
+
+            { name: "Do PYR test* 3005",
+                image: "image",
+                buttonList: ['Negative = E.coli 3006', 'Positive = NOT E.coli; Further ID required 3006']},
+
+    //Yersinia pestis ID fLOWCHART
+
+        { name: "Gram negative rods 3010",
+            image: "",
+            buttonList: ["Oxidase Negative, Catalase Positive, Indole Negative, Urease Negative 3011"]},
+
+        { name: "Oxidase Negative, Catalase Positive, Indole Negative, Urease Negative 3011",
+            image: "",
+            buttonList: ['Yes 3011', 'No 3011']},
+
+
+        {name: "Yes 3011",
+            image: "",
+            buttonList: ['y.pestis is not ruled out. Consult with your supervisor/ Refer to your BT laboratory.']},
+
+        {name: "No 3011",
+            image: "",
+            buttonList: ['Not Yersinia pestis. Continue identication per routine laboratory procedures. May be other Yersinia spp.']},
 
 // GNR Stool Pathogens Lactose Positive Flowchart (Sedina Start)
         {
@@ -981,7 +1040,6 @@ function App() {
           </div>
 
       </PersonTracker.Provider>
-
   </div>
   );
 

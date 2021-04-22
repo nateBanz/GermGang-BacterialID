@@ -3,6 +3,8 @@ import PersonTracker from "./PersonTracker";
 import {useContext} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown} from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route ,Link, NavLink} from "react-router-dom"
+import Login from "./Login"
 import {getName} from "./firebaseUtils";
 import RoutingButton from "./RoutingButtons";
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
@@ -85,7 +87,7 @@ const Header = (props) => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">Sign in</Nav.Link>
+                        <NavLink to="/login" className="btn btn-primary">Sign in</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
