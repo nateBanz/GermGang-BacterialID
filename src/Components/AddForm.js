@@ -1,18 +1,19 @@
-import {useState} from 'react'
+import React, {useState} from "react";
 import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
-import FormHelper from "./FormHelper"
+import {DropdownHelper, FormHelper} from "./FormHelper"
 
 
 const AddForm = ()=> {
 
-    const initialValues = {
 
+    const initialValues = {
+        location: "",
         nodeGerms: [{
             name: "",
             image: "",
-            buttonList: [""]
+            buttonList: []
 
-        }]
+        }],
 
 
     }
@@ -31,9 +32,12 @@ return(
           { ({values}) => (
 
                   <Form>
+                      <Field name = "location" id = "location" component = {DropdownHelper}>
+
+                      </Field>
                       <FieldArray name = "nodeGerms">
                           {
-                              ({remove, push, handleChange}) => (
+                              ({remove, push}) => (
 
                                   <div>
                                       {values.nodeGerms.map((nodes , index) => (
@@ -150,6 +154,10 @@ return(
 
 )
 }
+require('react-dom');
+window.React2 = require('react');
+console.log(window.React1 === window.React2);
+
 
 export default AddForm
 
