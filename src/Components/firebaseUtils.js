@@ -40,7 +40,7 @@ async function Update(name, newName) {
 
 }
 
-async function Add(arrayOfNodes = []) {
+async function Add(arrayOfNodes = [], name = "", location = "") {
 
     let con = firebase.database().ref("germs");
 
@@ -48,7 +48,12 @@ async function Add(arrayOfNodes = []) {
 
     //push the array of object to firebase
 
-    pusher(arrayOfNodes, con)
+
+    pusher(arrayOfNodes, con, name, location)
+
+    con.on("value", function(snapshot) {
+        console.log("There are "+snapshot.numChildren()+ " records");
+    })
 
 }
 
@@ -136,17 +141,32 @@ function validateArrayEquality(a, b) {
 
 //takes an array of objects and a connection to firebase and pushes the objects to the firebase ref
 
-function pusher (array = [], con) {
+function pusher (array = [], con, name, location) {
+
+    con.orderByChild("name").limitToFirst(1).equalTo(location).once('value').then( function (snapshot) {
+        snapshot.forEach(function (childSnap) {
+            console.log(location)
+            console.log(childSnap.val())
+            let cat = childSnap.child("buttonList")
+            console.log(cat.val())
+            let array = (cat.val()?cat.val().slice() : [])
+            console.log(array)
+            array.push(name)
+            console.log(array)
+
+            cat.ref.update(array)
+        })
+    })
 
     if(array!== []) {
 
-        for (const germNode in array) {
+       for (const germNode in array) {
 
             con.push(array[germNode])
         }
     }
 }
 
-export {getName, Update}
+export {getName, Update, Add}
 
 

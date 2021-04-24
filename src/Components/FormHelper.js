@@ -2,17 +2,36 @@ import React, {useEffect} from 'react'
 import {useState} from 'react'
 import firebase from "firebase";
 
-const FormHelper = ({theArray, theUpdater, theHandler, placeholder, form}) => {
+const FormHelper = ({ theHandler, placeholder, form,}) => {
 
 
     const [input, inputChange] = useState("");
     const [inputArray, arrayChanges] = useState([])
 
+    function deleteArrayElement(nameer) {
+
+       let index = inputArray.indexOf(nameer)
+
+        let copyArray = inputArray.slice()
+
+        copyArray.splice(index, 1)
+
+        console.log(copyArray)
+
+
+        arrayChanges(copyArray)
+
+
+        form.setFieldValue(`nodeGerms.${index}.buttonList`, copyArray)
+
+
+    }
+
     return (
         <div>
             <div>
                 <input placeholder={placeholder} type =  "text" value = {input} onChange={ e=> (inputChange(e.target.value))} />
-                <button type = "button" onClick={() => {arrayChanges(inputArray =>([...inputArray, input ]));theHandler(input)}}> Add Button Name </button>
+                <button type = "button" disabled = {input === undefined || input == null || input === ""} onClick={() => {arrayChanges(inputArray =>([...inputArray, input ]));theHandler(input)}}> Add Button Name </button>
             </div>
 
             <ul>
@@ -24,7 +43,7 @@ const FormHelper = ({theArray, theUpdater, theHandler, placeholder, form}) => {
                             <div>
                                 <span>{buttonsName}</span>
                             <button type = "button"
-                                onClick={() => arrayChanges(inputArray.filter( deleted => deleted !== buttonsName)) }> - </button>
+                                onClick={() => {deleteArrayElement(buttonsName)}}> - </button>
                             </div>
                        </li>
 
@@ -39,13 +58,14 @@ const FormHelper = ({theArray, theUpdater, theHandler, placeholder, form}) => {
     )
 }
 
-const DropdownHelper = ({form})=> {
+const DropdownHelper = ({form, index})=> {
 
+    const [input, inputChange] = useState(null);
 
 
     const [groupOfNodes, updateNodes] = useState([])
 
-    const [preview, updatePreview] = useState({buttonList: ["Loading"]})
+    const [preview, updatePreview] = useState({buttonList: ["The preview will show up here"], name: '', image: ''})
 
     //important! This gets the database reference and finds the list of objects. Then, it updates the state containing the list when it fires
    async function fetcher() {
@@ -56,7 +76,7 @@ const DropdownHelper = ({form})=> {
         let panelbase = firebase.database().ref("germs");
 
         //gets the part that contains the key 'panels' then returns a snapshot
-        let snapshot = await panelbase.orderByChild("name").limitToFirst(30).once("value");
+        let snapshot = await panelbase.orderByChild("name").once("value");
 
 
             if (snapshot.exists()) {
@@ -98,16 +118,55 @@ const DropdownHelper = ({form})=> {
          fetcher()
     }, [])
 
+    const ShowPreviewHandler = (name, nodeArrays)=> {
+
+
+
+
+
+                    for(let node in nodeArrays) {
+
+                        if(nodeArrays[node].name === name) {
+                            console.log(nodeArrays[node])
+                            updatePreview(nodeArrays[node])
+                            break;
+                        }
+                    }
+
+
+
+
+
+
+
+    }
+
+
+    useEffect(() => {
+        console.log(preview)
+    }, [preview])
+
+
+
     return (
         <div>
-            <select onChange={ (e) => {form.setFieldValue('location', JSON.parse(e.target.value).name); console.log(JSON.parse(e.target.value)); updatePreview(JSON.parse(e.target.value))}}>
-                {groupOfNodes.map((node, index) => (
-                    <option key = {index} value={JSON.stringify(node)}> {node.name}</option>
-                ))}
-            </select>
+            <label htmlFor={`nodeGerms.${index}.buttonList`}>Flowchart Options</label>
+
 
             <div>
-                {preview.buttonList.join()}
+                <input type =  "text"  onChange={ e=> {(inputChange(e.target.value)); form.setFieldValue('location', input); ShowPreviewHandler(input, groupOfNodes);  }} list = "dropdown" onKeyUp={e=>{(form.setFieldValue("location", input)); ShowPreviewHandler(input, groupOfNodes);}}  />
+                <datalist id = "dropdown" >  <select>
+                    {groupOfNodes.map((node, index) => (
+                        <option key = {index} value={JSON.stringify(node).name} > {(node).name}</option>
+                    ))}
+                </select></datalist>
+                <button type = "button" onClick={()=>{( console.log(preview))}}> Check </button>
+            </div>
+
+
+
+            <div>
+                {preview.buttonList!== undefined? preview.buttonList.join(): "loading"}
             </div>
         </div>
 
