@@ -273,7 +273,8 @@ const DropdownHelperForDelete = ({form, arrayUpdater })=> {
             if(nodeArrays[node].name === name) {
                 console.log(nodeArrays[node])
                 let arrayPiece = (nodeArrays[node]).buttonList
-                arrayUpdater([...arrayPiece])
+
+                arrayPiece !== undefined || false ? arrayUpdater([...arrayPiece])  : alert("no buttons here")
                 break;
             }
         }
@@ -292,7 +293,7 @@ const DropdownHelperForDelete = ({form, arrayUpdater })=> {
         <div className= "row">
             <div className= "col">
                 <div className= "form-group">
-                    <label htmlFor={`nodeGerms.${index}.buttonList`} className= "col-form-label invisible">Where do you want to Delete?</label>
+                    <label htmlFor={"deletelabel"} className= "col-form-label invisible">Where do you want to Delete?</label>
 
                     <div className= "row align-items-center">
 
@@ -322,4 +323,4 @@ const DropdownHelperForDelete = ({form, arrayUpdater })=> {
 }
 
 
-export {FormHelper, DropdownHelper}
+export {FormHelper, DropdownHelper, DropdownHelperForDelete}

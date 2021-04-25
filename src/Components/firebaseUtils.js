@@ -20,23 +20,36 @@ async function getName(nameOfGerm) {
 
 }
 
-async function Update(name, newName) {
+async function Update(name = '', newName= '', newImage = '' ,toggle = '') {
     //given image
     //Something to report if a piece of info doesnt exist
 
     let con = firebase.database().ref("germs");
 
-    con.orderByChild("name").startAt(name).endAt(name+ '~').on('value', function (snapshot) {
+    if(toggle) {
 
-        snapshot.forEach(function (childSnap) {
-            childSnap.child("name").ref.set(newName)
+        con.orderByChild("name").startAt(name).endAt(name + '~').on('value', function (snapshot) {
+
+            snapshot.forEach(function (childSnap) {
+                childSnap.child("name").ref.set(newName)
+            })
+
+
         })
-        
 
-    })
+        console.log("all the names were updated to " + newName)
+    }
 
-    console.log("all the names were updated to " + newName)
+    else {
+        con.orderByChild("name").startAt(name).endAt(name + '~').on('value', function (snapshot) {
 
+            snapshot.forEach(function (childSnap) {
+                childSnap.child("image").ref.set(newImage)
+            })
+
+
+        })
+    }
 
 }
 
@@ -191,6 +204,6 @@ function pusher (array = [], con, name, location) {
     }
 }
 
-export {getName, Update, Add, Delete, Update}
+export {getName, Update, Add, Delete}
 
 

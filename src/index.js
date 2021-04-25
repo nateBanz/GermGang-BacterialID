@@ -7,12 +7,16 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import reportWebVitals from './reportWebVitals';
 import AddForm from "./Components/AddForm";
+import UpdateForm from "./Components/UpdateForm";
+import DeleteForm from "./Components/DeleteForm";
 
 
 ReactDOM.render(
 
     //<App />
-    < AddForm/>
+    //< AddForm/>
+    //<UpdateForm/>
+    <DeleteForm/>
   ,
   document.getElementById('root')
 );

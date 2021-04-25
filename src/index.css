@@ -105,3 +105,155 @@ input[type=text] {
     border-radius: 30px;
   }
 
+
+/* Styles for hiding the native checkbox */
+input[type='checkbox'].check-custom {
+  position: absolute;
+  overflow: hidden;
+  opacity: 0;
+  z-index: 1;
+  margin-top: .45em;
+  margin-left: .5em;
+}
+
+
+
+/* Styles for the basic appearance of the toggle switch */
+input[type='checkbox'].check-custom.toggle-switch ~ .check-toggle {
+  width: 1.5rem;
+  height: 1rem;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* Common styles for the ::before and ::after pseudo-elements of the toggle switch */
+input[type='checkbox'].check-custom.toggle-switch ~ .check-toggle::before,
+input[type='checkbox'].check-custom.toggle-switch ~ .check-toggle::after {
+  content: '';
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+/* Styles for the ::before pseudo-element (the outer frame) of the toggle switch */
+input[type='checkbox'].check-custom.toggle-switch ~ .check-toggle::before {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  background: #dbdbdb;
+}
+
+/* Styles for the ::after pseudo-element (the inner slider) of the toggle switch */
+input[type='checkbox'].check-custom.toggle-switch ~ .check-toggle::after {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin: 0.125rem;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+/* Styles for the ::before pseudo-element of the toggle switch in hover state */
+input[type='checkbox'].check-custom.toggle-switch:hover ~ .check-toggle::before {
+  background: #c4c4c4;
+}
+
+/* Styles for the ::before pseudo-element of the toggle switch in focus state */
+input[type='checkbox'].check-custom.toggle-switch:focus ~ .check-toggle::before {
+  box-shadow: 0 0 0 2px rgba(23, 133, 255, 0.5);
+}
+
+/* Styles for the ::before pseudo-element of the toggle switch in both focus and checked or enabled state */
+input[type='checkbox'].check-custom.toggle-switch:focus:checked ~ .check-toggle::before {
+  box-shadow: 0 0 0 2px rgba(97, 191, 158, 0.5);
+}
+
+/* Styles for the ::before pseudo-element of the toggle switch in checked or enabled state */
+input[type='checkbox'].check-custom.toggle-switch:checked ~ .check-toggle::before {
+  background: #61bf9e;
+}
+
+/* Styles for the ::after pseudo-element of the toggle switch in checked or enabled state */
+input[type='checkbox'].check-custom.toggle-switch:checked ~ .check-toggle::after {
+  left: auto;
+  right: 0;
+}
+
+/* Styles for hiding the native checkbox */
+input[type='checkbox'].check-custom2 {
+  position: absolute;
+  overflow: hidden;
+   opacity: 0;
+  z-index: 1;
+  margin-top: .45em;
+  margin-left: 12em;
+  /* float: right; */
+
+}
+
+
+
+/* Styles for the basic appearance of the toggle switch */
+input[type='checkbox'].check-custom2.toggle-switch2 ~ .check-toggle2 {
+  width: 1.5rem;
+  height: 1.0rem;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* Common styles for the ::before and ::after pseudo-elements of the toggle switch */
+input[type='checkbox'].check-custom2.toggle-switch2 ~ .check-toggle2::before,
+input[type='checkbox'].check-custom2.toggle-switch2 ~ .check-toggle2::after {
+  content: '';
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+/* Styles for the ::before pseudo-element (the outer frame) of the toggle switch */
+input[type='checkbox'].check-custom2.toggle-switch2 ~ .check-toggle2::before {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  background: #dbdbdb;
+}
+
+/* Styles for the ::after pseudo-element (the inner slider) of the toggle switch */
+input[type='checkbox'].check-custom2.toggle-switch2 ~ .check-toggle2::after {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin: 0.125rem;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+/* Styles for the ::before pseudo-element of the toggle switch in hover state */
+input[type='checkbox'].check-custom2.toggle-switch2:hover ~ .check-toggle2::before {
+  background: #c4c4c4;
+}
+
+/* Styles for the ::before pseudo-element of the toggle switch in focus state */
+input[type='checkbox'].check-custom2.toggle-switch2:focus ~ .check-toggle2::before {
+  box-shadow: 0 0 0 2px rgba(23, 133, 255, 0.5);
+}
+
+/* Styles for the ::before pseudo-element of the toggle switch in both focus and checked or enabled state */
+input[type='checkbox'].check-custom2.toggle-switch2:focus:checked ~ .check-toggle2::before {
+  box-shadow: 0 0 0 2px rgba(97, 191, 158, 0.5);
+}
+
+/* Styles for the ::before pseudo-element of the toggle switch in checked or enabled state */
+input[type='checkbox'].check-custom2.toggle-switch2:checked ~ .check-toggle2::before {
+  background: #61bf9e;
+}
+
+/* Styles for the ::after pseudo-element of the toggle switch in checked or enabled state */
+input[type='checkbox'].check-custom2.toggle-switch2:checked ~ .check-toggle2::after {
+  left: auto;
+  right: 0;
+}
+
+

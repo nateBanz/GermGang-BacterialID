@@ -1,18 +1,20 @@
-import React, {useState} from "react";
+import React from "react";
 import {Formik, Field, Form, ErrorMessage, FieldArray} from 'formik';
-import {DropdownHelperForDelete} from "./FormHelper"
+import {DropdownHelper} from "./FormHelper"
 import * as Yup from 'yup'
-import {Delete} from "./firebaseUtils"
-import {getName} from "./firebaseUtils";
 
-const DeleteForm = () => {
-    const [arrayState, updateArrayState] = useState([])
+import {getName} from "./firebaseUtils";
+import{Update} from "./firebaseUtils";
+
+const UpdateForm = () => {
+
 
 
     const initialValues = {
         toggle: true,
         location: "",
-        checkboxes: [],
+        name: '',
+        image: ''
 
     }
 
@@ -23,14 +25,13 @@ const DeleteForm = () => {
 
     });
 
-    async function submitHandlerDelete (name, toggle,checkboxes) {
+     function submitHandlerUpdate(location, newName, newImage, bool) {
 
-        let node = await getName(name)
-        let buttons = node.buttonList
-        if(toggle)
-            Delete(name, buttons, true, []).then((r) =>(alert("Operation complete!"))).catch((e) => (alert("Delete not successful, try again with a different button")))
-        else
-            Delete(name, buttons, true, checkboxes).then((r) =>(alert("Operation complete!"))).catch((e) => (alert("Delete not successful, try again with a different button")))
+
+
+            Update(location, newName,newImage, bool).then((r)=>(alert("Successfully updated all items"))).catch(e =>(alert('Refresh and try again, could not update.')))
+
+
     }
 
     //array of objects contained in the initial value object
@@ -44,8 +45,7 @@ const DeleteForm = () => {
 
                             <div className="row justify-content-bottom text-center">
                                 <div className="col">
-                                    <h1 className="top30">Delete Form</h1>
-                                <hr/>
+                                    <h1 className="top30">Update Form</h1>
                                 </div>
                             </div>
 
@@ -56,7 +56,7 @@ const DeleteForm = () => {
                                 validateOnBlur={true}
                                 onSubmit={(values) => {
                                     console.log(values)
-                                    //submitHandlerDelete(values.location,values.toggle,values.checkboxes)
+                                    submitHandlerUpdate(values.location, values.name, values.image,values.toggle)
                                 }}
                             >
 
@@ -65,23 +65,11 @@ const DeleteForm = () => {
 
                                     <Form>
                                         <div className="row">
-                                            <div className="col-sm-6 mx-auto d-flex justify-content-center">
-                                                <div className="form-check form-check-inline top30 ml-3">
-                                                    <label className="form-check-label"
-                                                           htmlFor="inlineCheckbox1">
-
-                                                        <Field name="toggle" id="toggle"  type  = "checkbox"
-                                                           className="check-custom2 toggle-switch2"/>
-
-                                                   {values.toggle ? "Deleting all of the Button" : "Deleting inside the Button"}
-
-                                                        <span className="check-toggle2 form-check"></span>
-
-                                                    </label>
-
-
-
-
+                                            <div className="col">
+                                                <div className="form-group">
+                                                    <Field name="toggle" id="toggle"  type  = "checkbox"
+                                                           className="form-control"/>
+                                                    {`${values.toggle}`}
 
                                                 </div>
                                             </div>
@@ -90,7 +78,7 @@ const DeleteForm = () => {
                                         <div className="row">
                                             <div className="col">
                                                 <div className="form-group">
-                                                    <Field name="location" id="location" component={DropdownHelperForDelete}  arrayUpdater = {updateArrayState}
+                                                    <Field name="location" id="location" component={DropdownHelper}
                                                            className="form-control">
                                                         <ErrorMessage name="location" component="div"
                                                                       className="field-error"/>
@@ -99,32 +87,48 @@ const DeleteForm = () => {
                                             </div>
                                         </div>
 
-                                        <div className="row">
+                                        <div className="row ">
                                             <div className="col">
 
 
-                                                    {(arrayState !== null || true) && arrayState.map((piece, index)=>(
-                                                        <div key = {index} className="form-check form-check-inline">
+                                                <label
+                                                    htmlFor={`name`}
+                                                    className="col-sm-2 col-form-label invisible ">Name</label>
 
+                                                <Field
+                                                    name={`name`}
+                                                    placeholder="Name update - Ex: Streptococcus"
+                                                    type="text"
+                                                    className="form-control round-custom "
+                                                />
+                                                <ErrorMessage
+                                                    name={`name`}
+                                                    component="div"
+                                                    className="field-error"
+                                                />
 
-                                                            <label className="form-check-label"
-                                                                   htmlFor="inlineCheckbox1"> {piece}
-
-                                                                <Field name="checkboxes" type="checkbox"
-                                                                       className="check-custom toggle-switch" value = {piece}/>
-
-                                                                       <span className="check-toggle"></span>
-
-                                                            </label>
-                                                        </div>
-                                                    ))}
-
-
-
-
-                                                </div>
                                             </div>
 
+
+                                            <div className="col">
+                                                <label
+                                                    htmlFor={'image update'}
+                                                    className="col-sm-2 col-form-label invisible">Image</label>
+
+                                                <Field
+                                                    name={`image`}
+                                                    placeholder=""
+                                                    type="file"
+                                                    className="form-control-file rounded"
+                                                />
+                                                <ErrorMessage
+                                                    name={`image`}
+                                                    component="div"
+                                                    className="field-error"
+                                                />
+
+                                            </div>
+                                        </div>
 
 
                                         <div className="row">
@@ -158,6 +162,6 @@ window.React2 = require('react');
 console.log(window.React1 === window.React2);
 
 
-export default DeleteForm
+export default UpdateForm
 
 
