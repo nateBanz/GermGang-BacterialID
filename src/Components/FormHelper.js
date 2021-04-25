@@ -28,32 +28,41 @@ const FormHelper = ({ theHandler, placeholder, form,}) => {
     }
 
     return (
-        <div>
-            <div>
-                <input placeholder={placeholder} type =  "text" value = {input} onChange={ e=> (inputChange(e.target.value))} />
-                <button type = "button" disabled = {input === undefined || input == null || input === ""} onClick={() => {arrayChanges(inputArray =>([...inputArray, input ]));theHandler(input)}}> Add Button Name </button>
+        <div className= "form-group">
+
+            <div className="input-group mb-3">
+                <input placeholder={placeholder} type =  "text" value = {input} onChange={ e=> (inputChange(e.target.value))} className= "form-control" />
+                <div className="input-group-append">
+                    <button type = "button" className= "btnLight" disabled = {input === undefined || input == null || input === ""} onClick={() => {arrayChanges(inputArray =>([...inputArray, input ]));theHandler(input)}}> Add Button Name </button>
+                </div>
             </div>
 
-            <ul>
+            <div className= "row">
 
-                {
-                     inputArray.map((buttonsName, index) => (
+                <div className= "col">
+                    <ul className= "list-group">
+                        <div className= "row">
 
-                        <li key = {index}>
-                            <div>
-                                <span>{buttonsName}</span>
-                            <button type = "button"
-                                onClick={() => {deleteArrayElement(buttonsName)}}> - </button>
-                            </div>
-                       </li>
+                        {
+                             inputArray.map((buttonsName, index) => (
+                                 <div className = "col ">
+                                    <li key = {index} className= "list-group-item d-flex align-items-center" style={{width: "100px"}}>
 
+                                        <span>{buttonsName}</span>
+                                        <button className="badge " type = "button"
+                                            onClick={() => {deleteArrayElement(buttonsName)}}> - </button>
 
+                                   </li>
 
-                        )
-                    )
-                }
-            </ul>
+                                 </div>
+                                )
+                            )
+                        }
+                        </div>
+                    </ul>
 
+                </div>
+            </div>
         </div>
     )
 }
@@ -149,25 +158,49 @@ const DropdownHelper = ({form, index})=> {
 
 
     return (
-        <div>
-            <label htmlFor={`nodeGerms.${index}.buttonList`}>Flowchart Options</label>
+        <div className= "row">
+            <div className= "col">
+                    <div className= "form-group">
+                        <label htmlFor={`nodeGerms.${index}.buttonList`} className= "col-form-label invisible">Where do you want the button to go?</label>
+
+                            <div className= "row align-items-center">
+
+                                <div className= "col">
+
+                                    <div className= "input-group">
+
+                                        <input type =  "text"  onChange={ e=> {(inputChange(e.target.value)); form.setFieldValue('location', input); ShowPreviewHandler(input, groupOfNodes);  }} list = "dropdown" onKeyUp={e=>{(form.setFieldValue("location", input)); ShowPreviewHandler(input, groupOfNodes);}} className= "form-control" placeholder='Button placement?' />
+                                        <datalist id = "dropdown" >  <select>
+                                            {groupOfNodes.map((node, index) => (
+                                                <option key = {index} value={JSON.stringify(node).name} > {(node).name}</option>
+                                            ))}
+                                        </select></datalist>
+                                        <button type = "button" onClick={()=>{( console.log(preview))}}> Check </button>
+
+                                    </div>
+
+                                </div>
 
 
-            <div>
-                <input type =  "text"  onChange={ e=> {(inputChange(e.target.value)); form.setFieldValue('location', input); ShowPreviewHandler(input, groupOfNodes);  }} list = "dropdown" onKeyUp={e=>{(form.setFieldValue("location", input)); ShowPreviewHandler(input, groupOfNodes);}}  />
-                <datalist id = "dropdown" >  <select>
-                    {groupOfNodes.map((node, index) => (
-                        <option key = {index} value={JSON.stringify(node).name} > {(node).name}</option>
-                    ))}
-                </select></datalist>
-                <button type = "button" onClick={()=>{( console.log(preview))}}> Check </button>
-            </div>
 
 
 
-            <div>
-                {preview.buttonList!== undefined? preview.buttonList.join(): "loading"}
-            </div>
+                                <div className= "col">
+                                    <div className= "row">
+                                         <div className= "col justify-content-center pt-4 pl-4">
+                                             <span>{preview.buttonList!== undefined? preview.buttonList.join(): "loading"}</span>
+                                             <label htmlFor={`nodeGerms.${index}.buttonList`} className= "col-sm-12 col-form-label invisible .d-none">Buttons from selection</label>
+
+
+
+                                         </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                    </div>
+                </div>
         </div>
 
     )
