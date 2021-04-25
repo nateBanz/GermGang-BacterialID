@@ -57,47 +57,71 @@ async function Add(arrayOfNodes = [], name = "", location = "") {
 
 }
 
-async function Delete(name, buttons = []){
+async function Delete(location = "" ,buttons = [], onlyNode = true, name = [] ){
 
     let error = ''
 
 
     let con = firebase.database().ref("germs");
 
-    con.orderByChild("name").startAt(name).endAt(name+ '~').on('value', function (snapshot) {
+if(onlyNode) {
+    con.orderByChild("name").startAt(location).endAt(location + '~').once('value').then(function (snapshot) {
 
-        if(validate(snapshot.val())) {
+        if (validate(snapshot.val())) {
             snapshot.forEach(function (childSnap) {
                 childSnap.ref.remove()
             })
-        }
-
-        if(validate() === false && buttons === []) {
+        } else if (validate() === false && buttons === []) {
 
             // this ultimately should return a div or text that says, could not complete
-
+            error = "cannot complete this operation"
             console.log("cannot complete this operation")
+
         }
 
         //if validate returns false (more than one return object so non-unique) and buttons names exist
         else {
-            snapshot.forEach(function (childSnap) {
+            snapshot.forEach((childSnap) => {
 
-                if(validateArrayEquality(childSnap.val().buttonList, buttons)){
+                if (validateArrayEquality(childSnap.val().buttonList, buttons)) {
 
                     childSnap.ref.remove()
 
-                }
-                else
+                } else
 
                     error = "not found, try again"
 
-                    console.log(error) //these need to show up in the dom
+                console.log(error) //these need to show up in the dom
+
 
             })
         }
 
     })
+}
+else {
+    con.orderByChild("name").limitToFirst(1).equalTo(location).once('value').then( function (snapshot) {
+        snapshot.forEach(function (childSnap) {
+            console.log(location)
+            console.log(childSnap.val())
+            let cat = childSnap.child("buttonList")
+            console.log(cat.val())
+            let array = (cat.val()?cat.val().slice() : [])
+            console.log(array)
+            for(let nm of  name){
+
+                let index = array.indexOf(nm)
+                array.slice(index,1)
+
+            }
+
+            console.log(array)
+
+            cat.ref.update(array)
+        })
+    })
+
+}
 
 }
 
@@ -167,6 +191,6 @@ function pusher (array = [], con, name, location) {
     }
 }
 
-export {getName, Update, Add}
+export {getName, Update, Add, Delete, Update}
 
 

@@ -507,8 +507,8 @@ function App() {
     //pusher()
     //germBase.remove()
     //Update("Homepage", "homepager").then(r => console.log(r))
-    Add([], "Grammer 0000", "Gram Negative 0000" ).then(r => console.log(r))
-
+    //Add([], "Grammer 0000", "Gram Negative 0000" ).then(r => console.log(r))
+    //Delete
 
 
 

@@ -206,4 +206,120 @@ const DropdownHelper = ({form, index})=> {
     )
 }
 
+
+const DropdownHelperForDelete = ({form, arrayUpdater })=> {
+
+    const [input, inputChange] = useState(null);
+
+
+    const [groupOfNodes, updateNodes] = useState([])
+
+    const [preview, updatePreview] = useState({buttonList: [""], name: '', image: ''})
+
+    //important! This gets the database reference and finds the list of objects. Then, it updates the state containing the list when it fires
+    async function fetcher() {
+
+        let temp = []
+
+        //reference to firebase
+        let panelbase = firebase.database().ref("germs");
+
+        //gets the part that contains the key 'panels' then returns a snapshot
+        let snapshot = await panelbase.orderByChild("name").once("value");
+
+
+        if (snapshot.exists()) {
+
+
+            //object of objects here
+            let objectList = snapshot.val()
+
+
+            //keys of each
+            let keys = Object.keys(objectList)
+
+            //transforms the object into a list of objects
+            temp = keys.map(key => {
+
+                return objectList[key]
+            })
+
+            console.log(temp)
+
+            //updates the list of objects with the new one
+
+
+            await updateNodes([...groupOfNodes, ...temp])
+
+
+
+        } else {
+            console.log("No data available");
+        }
+
+        //error block
+    }
+
+
+    useEffect(() => {
+        fetcher()
+    }, [])
+
+    const ShowPreviewHandler = (name, nodeArrays)=> {
+
+
+        for(let node in nodeArrays) {
+
+            if(nodeArrays[node].name === name) {
+                console.log(nodeArrays[node])
+                let arrayPiece = (nodeArrays[node]).buttonList
+                arrayUpdater([...arrayPiece])
+                break;
+            }
+        }
+
+
+    }
+
+
+    useEffect(() => {
+        console.log(preview)
+    }, [preview])
+
+
+
+    return (
+        <div className= "row">
+            <div className= "col">
+                <div className= "form-group">
+                    <label htmlFor={`nodeGerms.${index}.buttonList`} className= "col-form-label invisible">Where do you want to Delete?</label>
+
+                    <div className= "row align-items-center">
+
+                        <div className= "col sm-12">
+
+                            <div className= "input-group">
+
+                                <input type =  "text"  onChange={ e=> {(inputChange(e.target.value)); form.setFieldValue('location', input); ShowPreviewHandler(input, groupOfNodes);  }} list = "dropdown" onKeyUp={e=>{(form.setFieldValue("location", input)); ShowPreviewHandler(input, groupOfNodes);}} className= "form-control" placeholder='Button placement?' />
+                                <datalist id = "dropdown" >  <select>
+                                    {groupOfNodes.map((node, index) => (
+                                        <option key = {index} value={JSON.stringify(node).name} > {(node).name}</option>
+                                    ))}
+                                </select></datalist>
+                                <button type = "button" onClick={()=>{( console.log(preview))}}> Check </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    )
+}
+
+
 export {FormHelper, DropdownHelper}
