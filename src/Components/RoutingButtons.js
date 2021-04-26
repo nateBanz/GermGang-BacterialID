@@ -17,16 +17,18 @@ import {Button, Card, Image} from 'react-bootstrap';
 
 // -props.button- is the name of the current germ button. -props.updateGerm- is a function to update the germ in the parent
 const RoutingButton = (props) => {
-    const [state, updateState] = useState("")
+
     const {buttonNameArray, updateArray} = useContext(PersonTracker);
 
     //cut the identifier off of the name so that it can be displayed properly
     let modifiedName = props.button.slice(0,-4)
+    let image = props.image
+
 
 
 try {
 
-        useEffect (()=>{getName(props.button).then((r)=>(updateState(r)))}, [])
+        //useEffect (()=>{getName(props.button).then((r)=>(updateState(r)))}, [])
 
     //if clicked, load the new identifier name into the update function passed into this component. Passing anything to update will launch a rerender
     return (<Card>
@@ -54,7 +56,7 @@ try {
     }}>
 
         {modifiedName} </Button>
-            <Image src= {state.image} />
+            <Image src= {image} />
         </Card>
     )
 

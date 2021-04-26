@@ -10,6 +10,7 @@ import PersonTracker from "./PersonTracker";
 import {useEffect} from "react";
 import Button from 'react-bootstrap/Button';
 import {Image} from 'react-bootstrap';
+import {getName} from "./firebaseUtils";
 
 
 
@@ -32,6 +33,26 @@ const QuestionPage = (props) => {
 
     const image = buttonNameArray[buttonNameArray.length-1].image
 
+    const [images, setImages] = useState([])
+
+
+
+
+    async function getImages() {
+        let tempImage =[];
+        for(let pic of arrays ) {
+            console.log(pic)
+            let obj = await getName(pic)
+            tempImage.push(obj.image)
+        }
+        setImages([...tempImage])
+
+
+}
+    useEffect (()=>{getImages().then((r)=>(console.log(images)))},[buttonNameArray])
+
+
+
     //for every name in the array, create a div containing a button that passes in the name of the node.
     return <div className="center-bottom">
         <p className={"p mt-5"}> Click on the navigation buttons below to identify bacteria.</p>
@@ -42,7 +63,7 @@ const QuestionPage = (props) => {
              <div className="flex"> {
             (arrays.map((list, index)=> <div className= "pages" key = {index}>
 
-                <RoutingButtons button = {list}  > </RoutingButtons>
+                <RoutingButtons button = {list} image = {images[index]} > </RoutingButtons>
 
             </div>))}
 
