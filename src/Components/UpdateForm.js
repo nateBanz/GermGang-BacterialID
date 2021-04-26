@@ -104,7 +104,7 @@ const UpdateForm = () => {
                                                     className="col-sm-2 col-form-label invisible ">Name</label>
 
                                                 <Field
-                                                    name={`name`}
+                                                    name= "name"
                                                     placeholder="New name - Ex: Escherichia coli 1000"
                                                     type="text"
                                                     className="form-control round-custom"
@@ -112,7 +112,7 @@ const UpdateForm = () => {
                                                 <small id="emailHelp" className="form-text text-muted ml-3">Name + space + unique 4 digit ID</small>
                                             </div>
                                             <ErrorMessage
-                                                name={`name`}
+                                                name="name"
                                                 component="div"
                                                 className="field-error"
                                             />
@@ -128,13 +128,13 @@ const UpdateForm = () => {
                                                         className="col-sm-2 col-form-label invisible">Image</label>
 
                                                     <Field
-                                                        name={`image`}
+                                                        name="image"
                                                         placeholder=""
                                                         type="file"
                                                         className="form-control-file rounded"
                                                     />
                                                     <ErrorMessage
-                                                        name={`image`}
+                                                        name="image"
                                                         component="div"
                                                         className="field-error"
                                                     />

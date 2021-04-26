@@ -1015,9 +1015,9 @@ function App() {
         }
     }
 
-    // pusher()
-    // germBase.remove()
-    Update("Homepage", "homepager").then(r => console.log(r))
+    //pusher()
+    //germBase.remove()
+
 
 
 

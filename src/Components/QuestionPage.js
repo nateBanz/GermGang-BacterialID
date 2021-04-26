@@ -39,11 +39,17 @@ const QuestionPage = (props) => {
 
 
     async function getImages() {
+
         let tempImage =[];
         for(let pic of arrays ) {
             console.log(pic)
             let obj = await getName(pic)
-            tempImage.push(obj.image)
+            if(obj !== string) {
+                tempImage.push(obj.image)
+            }
+            else {
+                tempImage.push("nothing")
+            }
         }
         setImages([...tempImage])
 

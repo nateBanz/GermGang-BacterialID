@@ -12,11 +12,18 @@ async function getName(nameOfGerm) {
     //takes the value of that slice and return it
     let germ = snap.val();
 
-    let index = Object.keys(germ)[0]
+    if(germ) {
 
-    let finalGerm = germ[index]
+        let index = Object.keys(germ)[0]
 
-    return finalGerm;
+        let finalGerm = germ[index]
+
+        return finalGerm;
+
+        }
+    else {
+        return "Nothing here"
+    }
 
 }
 
@@ -35,6 +42,33 @@ async function Update(name = '', newName= '', newImage = '' ,toggle = '') {
             })
 
 
+        })
+
+        con.orderByChild("name").once("value").then( function (snapshot) {
+            snapshot.forEach(function (childSnap) {
+
+
+                let cat = childSnap.child("buttonList")
+
+                let array = (cat.val()?cat.val().slice() : [])
+
+
+
+
+                let index = array.indexOf(name)
+
+                if(index !==-1) {
+                    console.log(array)
+                    array[index] = newName
+                    cat.ref.update(array)
+                }
+
+
+
+
+
+
+            })
         })
 
         console.log("all the names were updated to " + newName)
@@ -64,7 +98,7 @@ async function Add(arrayOfNodes = [], name = "", location = "") {
 
     pusher(arrayOfNodes, con, name, location)
 
-    con.on("value", function(snapshot) {
+    con.once("value").then(function(snapshot) {
         console.log("There are "+snapshot.numChildren()+ " records");
     })
 
