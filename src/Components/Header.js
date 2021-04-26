@@ -87,7 +87,7 @@ const Header = (props) => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <NavLink to="/login" className="btn btn-primary">Sign in</NavLink>
+                        <NavLink to="/login" className="btn btn-secondary">Sign in</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
