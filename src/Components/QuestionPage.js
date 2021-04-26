@@ -23,34 +23,43 @@ const QuestionPage = (props) => {
     //array of button objects from the global context.
     const {buttonNameArray, updateArray} = useContext(PersonTracker)
 
-    //see the array being built
-    console.log(buttonNameArray)
-
     //the array of names stored here, gets the most recent name from context
     const arrays = buttonNameArray[buttonNameArray.length-1].buttonList
 
+    //current name of the button
     const currentName = buttonNameArray[buttonNameArray.length-1].name.slice(0,-4);
 
+    //current image of the button
     const image = buttonNameArray[buttonNameArray.length-1].image
 
+    //state of image array
     const [images, setImages] = useState([])
 
 
 
+//gets the images of each button attached to the page
 
     async function getImages() {
 
         let tempImage =[];
+
         for(let pic of arrays ) {
-            console.log(pic)
+
+            //gets the object representation of the button
             let obj = await getName(pic)
+
+            //if the return from getName is an object (returns a string if not)
             if(obj !== string) {
+
                 tempImage.push(obj.image)
             }
             else {
+
                 tempImage.push("nothing")
             }
         }
+        //updates the image state elementwise
+
         setImages([...tempImage])
 
 

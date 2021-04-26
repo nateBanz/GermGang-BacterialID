@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import {Formik, Field, Form, ErrorMessage, FieldArray} from 'formik';
 import {DropdownHelper, FormHelper} from "./FormHelper"
 import * as Yup from 'yup'
 import {Add} from "./firebaseUtils";
 
 const AddForm = () => {
-
 
     const initialValues = {
         location: "",
@@ -54,7 +53,6 @@ const AddForm = () => {
                                     <h1 className="top30">Add Form</h1>
                                 </div>
                             </div>
-
 
                             <Formik
                                 initialValues={initialValues}

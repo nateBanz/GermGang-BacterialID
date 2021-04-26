@@ -8,8 +8,6 @@ import{Update} from "./firebaseUtils";
 
 const UpdateForm = () => {
 
-
-
     const initialValues = {
         toggle: true,
         location: "",
@@ -27,10 +25,7 @@ const UpdateForm = () => {
 
     function submitHandlerUpdate(location, newName, newImage, bool) {
 
-
-
         Update(location, newName,newImage, bool).then((r)=>(alert("Successfully updated all items"))).catch(e =>(alert('Refresh and try again, could not update.')))
-
 
     }
 
@@ -56,8 +51,10 @@ const UpdateForm = () => {
                                 validationSchema={SignUpSchema}
                                 validateOnBlur={true}
                                 onSubmit={(values) => {
+
                                     console.log(values)
                                     submitHandlerUpdate(values.location, values.name, values.image,values.toggle)
+
                                 }}
                             >
 
@@ -142,8 +139,6 @@ const UpdateForm = () => {
                                                 </div>
                                             ) : null
                                         }
-
-
 
 
                                         <div className="row">

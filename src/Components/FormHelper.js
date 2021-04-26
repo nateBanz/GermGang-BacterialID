@@ -1,26 +1,24 @@
 import React, {useEffect} from 'react'
 import {useState} from 'react'
 import firebase from "firebase";
-
+//helps get the form information
 const FormHelper = ({ theHandler, placeholder, form,}) => {
 
-
+    //states for text input and array of inputs
     const [input, inputChange] = useState("");
     const [inputArray, arrayChanges] = useState([])
 
+    //deletes an array element
     function deleteArrayElement(nameer) {
 
+        //find the index of the name you need to remove and remove it
+
         let index = inputArray.indexOf(nameer)
-
         let copyArray = inputArray.slice()
-
         copyArray.splice(index, 1)
-
-        console.log(copyArray)
-
-
         arrayChanges(copyArray)
 
+        //sets the field value with the new array
 
         form.setFieldValue(`nodeGerms.${index}.buttonList`, copyArray)
 
@@ -69,14 +67,13 @@ const FormHelper = ({ theHandler, placeholder, form,}) => {
 
 const DropdownHelper = ({form, index})=> {
 
+    //states of current input, buttons and the preview for the page
+
     const [input, inputChange] = useState(null);
-
-
     const [groupOfNodes, updateNodes] = useState([])
-
     const [preview, updatePreview] = useState({buttonList: ["The preview will show up here"], name: '', image: ''})
 
-    //important! This gets the database reference and finds the list of objects. Then, it updates the state containing the list when it fires
+    //This gets the database reference and finds the list of objects. Then, it updates the state containing the list when it fires
     async function fetcher() {
 
         let temp = []
@@ -89,7 +86,6 @@ const DropdownHelper = ({form, index})=> {
 
 
         if (snapshot.exists()) {
-
 
             //object of objects here
             let objectList = snapshot.val()
@@ -107,15 +103,11 @@ const DropdownHelper = ({form, index})=> {
             console.log(temp)
 
             //updates the list of objects with the new one
-
-
             await updateNodes([...groupOfNodes, ...temp])
 
+        }
 
-
-
-
-        } else {
+        else {
             console.log("No data available");
         }
 
@@ -127,35 +119,28 @@ const DropdownHelper = ({form, index})=> {
         fetcher()
     }, [])
 
+    //this is for the selection of the dropdown. If the selection, sent to this function, matches with the array of object
+    //get the object and return it
+
     const ShowPreviewHandler = (name, nodeArrays)=> {
-
-
-
-
 
         for(let node in nodeArrays) {
 
             if(nodeArrays[node].name === name) {
-                console.log(nodeArrays[node])
+
                 updatePreview(nodeArrays[node])
                 break;
             }
         }
 
-
-
-
-
-
-
     }
-
 
     useEffect(() => {
         console.log(preview)
     }, [preview])
 
 
+//part of the form that includes the dropdown
 
     return (
         <div className= "row">
@@ -182,9 +167,6 @@ const DropdownHelper = ({form, index})=> {
                         </div>
 
 
-
-
-
                         <div className= "col">
                             <div className= "row">
                                 <div className= "col justify-content-center pt-4 pl-4">
@@ -206,34 +188,30 @@ const DropdownHelper = ({form, index})=> {
     )
 }
 
+//same code as the dropdown ~ the difference here is that the preview handler returns a list of checkboxes to delete
 
 const DropdownHelperForDelete = ({form, arrayUpdater })=> {
 
+    //states for the input, grouping of objects, and the preview
+
     const [input, inputChange] = useState(null);
-
-
     const [groupOfNodes, updateNodes] = useState([])
-
     const [preview, updatePreview] = useState({buttonList: [""], name: '', image: ''})
 
-    //important! This gets the database reference and finds the list of objects. Then, it updates the state containing the list when it fires
+    //This gets the database reference and finds the list of objects. Then, it updates the state containing the list when it fires
     async function fetcher() {
 
         let temp = []
-
         //reference to firebase
         let panelbase = firebase.database().ref("germs");
 
         //gets the part that contains the key 'panels' then returns a snapshot
         let snapshot = await panelbase.orderByChild("name").once("value");
 
-
         if (snapshot.exists()) {
-
 
             //object of objects here
             let objectList = snapshot.val()
-
 
             //keys of each
             let keys = Object.keys(objectList)
@@ -248,9 +226,7 @@ const DropdownHelperForDelete = ({form, arrayUpdater })=> {
 
             //updates the list of objects with the new one
 
-
             await updateNodes([...groupOfNodes, ...temp])
-
 
 
         } else {
@@ -267,14 +243,14 @@ const DropdownHelperForDelete = ({form, arrayUpdater })=> {
 
     const ShowPreviewHandler = (name, nodeArrays)=> {
 
-
         for(let node in nodeArrays) {
 
             if(nodeArrays[node].name === name) {
-                console.log(nodeArrays[node])
-                let arrayPiece = (nodeArrays[node]).buttonList
 
-                arrayPiece !== undefined || false ? arrayUpdater([...arrayPiece])  : alert("no buttons here")
+                //if the list of buttons exists, update the array state
+
+                let arrayPiece = (nodeArrays[node]).buttonList
+                arrayPiece !== undefined || false ? arrayUpdater([...arrayPiece])  : alert("No attached buttons here")
                 break;
             }
         }

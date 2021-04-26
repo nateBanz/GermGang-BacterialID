@@ -80,9 +80,6 @@ const DeleteForm = () => {
                                                     </label>
 
 
-
-
-
                                                 </div>
                                             </div>
                                         </div>
