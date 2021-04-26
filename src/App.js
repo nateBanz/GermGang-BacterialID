@@ -20,7 +20,7 @@ function App() {
   //capture the values in an object
   const value = { buttonNameArray, updateArray };
 
-  console.log(buttonNameArray); //testing
+  // console.log(buttonNameArray); //testing
 
   //create a firebase object that contains the entire formatted database
   const germBase = firebase.database().ref();
