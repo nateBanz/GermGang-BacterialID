@@ -8,6 +8,9 @@ import UpdateProfile from "./UpdateProfile"
 import { Container } from "react-bootstrap"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import App from "../App"
+import DeleteForm from "./DeleteForm";
+import AddForm from "./AddForm";
+import UpdateForm from "./UpdateForm";
 
 export default function AdminLogin() {
 
@@ -25,6 +28,9 @@ export default function AdminLogin() {
                             <PrivateRoute path="/update-profile" component={UpdateProfile} />
                             <Route exact path="/login" component={Login} />
                             <Route path="/forgot-password" component={ForgotPassword} />
+                            <Route path="/add-form" component={AddForm} />
+                            <Route path="/delete-form" component={DeleteForm} />
+                            <Route path="/update-form" component={UpdateForm} />
                         </Switch>
                     </AuthProvider>
                 </Router>

@@ -32,6 +32,15 @@ export default function Dashboard() {
           <Link to="/update-profile" className="btn btn-secondary w-100 mt-3">
             Update Profile
           </Link>
+          <Link to="/add-form" className="btn btn-secondary w-100 mt-3">
+            Add Form
+          </Link>
+          <Link to="/update-form" className="btn btn-secondary w-100 mt-3">
+            Update Form
+          </Link>
+          <Link to="/delete-form" className="btn btn-secondary w-100 mt-3">
+            Delete Form
+          </Link>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
