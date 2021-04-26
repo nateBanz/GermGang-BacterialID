@@ -46,6 +46,7 @@ const UpdateForm = () => {
                             <div className="row justify-content-bottom text-center">
                                 <div className="col">
                                     <h1 className="top30">Update Form</h1>
+                                    <hr/>
                                 </div>
                             </div>
 
@@ -65,12 +66,19 @@ const UpdateForm = () => {
 
                                     <Form>
                                         <div className="row">
-                                            <div className="col">
-                                                <div className="form-group">
-                                                    <Field name="toggle" id="toggle"  type  = "checkbox"
-                                                           className="form-control"/>
-                                                    {`${values.toggle}`}
+                                            <div className="col-sm-6 mx-auto d-flex justify-content-center">
+                                                <div className="form-check form-check-inline top30 ml-3">
+                                                    <label className="form-check-label"
+                                                           htmlFor="inlineCheckbox1">
 
+                                                        <Field name="toggle" id="toggle"  type  = "checkbox"
+                                                               className="check-custom3 toggle-switch3"/>
+
+                                                        {values.toggle ? "Update Name" : "Update Image"}
+
+                                                        <span className="check-toggle3 form-check3"></span>
+
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,10 +105,12 @@ const UpdateForm = () => {
 
                                                 <Field
                                                     name={`name`}
-                                                    placeholder="Name update - Ex: Streptococcus"
+                                                    placeholder="New name - Ex: Escherichia coli 1000"
                                                     type="text"
-                                                    className="form-control round-custom "
+                                                    className="form-control round-custom"
                                                 />
+                                                <small id="emailHelp" className="form-text text-muted ml-3">Name + space + unique 4 digit ID</small>
+                                            </div>
                                                 <ErrorMessage
                                                     name={`name`}
                                                     component="div"
@@ -110,39 +120,45 @@ const UpdateForm = () => {
                                             </div>
 
 
-                                            <div className="col">
-                                                <label
-                                                    htmlFor={'image update'}
-                                                    className="col-sm-2 col-form-label invisible">Image</label>
+                                            {!values.toggle?
+                                                (
+                                                <div className="col">
+                                                    <label
+                                                        htmlFor={'image update'}
+                                                        className="col-sm-2 col-form-label invisible">Image</label>
 
-                                                <Field
-                                                    name={`image`}
-                                                    placeholder=""
-                                                    type="file"
-                                                    className="form-control-file rounded"
-                                                />
-                                                <ErrorMessage
-                                                    name={`image`}
-                                                    component="div"
-                                                    className="field-error"
-                                                />
+                                                    <Field
+                                                        name={`image`}
+                                                        placeholder=""
+                                                        type="file"
+                                                        className="form-control-file rounded"
+                                                    />
+                                                    <ErrorMessage
+                                                        name={`image`}
+                                                        component="div"
+                                                        className="field-error"
+                                                    />
 
-                                            </div>
-                                        </div>
+                                                </div>
+                                            ) : null
+                                            }
+
+
 
 
                                         <div className="row">
                                             <div className="col">
-                                                <div className="d-flex justify-content-center mt-4 mb-4">
+                                                <div className="d-flex justify-content-center mrt4 mb-4">
                                                     <button type="submit"
                                                             className="btn btn-primary btn-block font-weight-bold"
                                                             disabled={Formik.isSubmitting || Formik.errors}>
                                                         Submit
                                                     </button>
+
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <hr/>
                                     </Form>
 
                                 )

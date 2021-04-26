@@ -15,8 +15,8 @@ ReactDOM.render(
 
     //<App />
     //< AddForm/>
-    //<UpdateForm/>
-    <DeleteForm/>
+    <UpdateForm/>
+    //<DeleteForm/>
   ,
   document.getElementById('root')
 );

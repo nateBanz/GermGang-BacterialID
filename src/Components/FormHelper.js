@@ -167,7 +167,7 @@ const DropdownHelper = ({form, index})=> {
 
                                 <div className= "col">
 
-                                    <div className= "input-group">
+                                    <div>
 
                                         <input type =  "text"  onChange={ e=> {(inputChange(e.target.value)); form.setFieldValue('location', input); ShowPreviewHandler(input, groupOfNodes);  }} list = "dropdown" onKeyUp={e=>{(form.setFieldValue("location", input)); ShowPreviewHandler(input, groupOfNodes);}} className= "form-control" placeholder='Button placement?' />
                                         <datalist id = "dropdown" >  <select>
@@ -175,7 +175,7 @@ const DropdownHelper = ({form, index})=> {
                                                 <option key = {index} value={JSON.stringify(node).name} > {(node).name}</option>
                                             ))}
                                         </select></datalist>
-                                        <button type = "button" onClick={()=>{( console.log(preview))}}> Check </button>
+
 
                                     </div>
 
@@ -299,7 +299,7 @@ const DropdownHelperForDelete = ({form, arrayUpdater })=> {
 
                         <div className= "col sm-12">
 
-                            <div className= "input-group">
+                            <div >
 
                                 <input type =  "text"  onChange={ e=> {(inputChange(e.target.value)); form.setFieldValue('location', input); ShowPreviewHandler(input, groupOfNodes);  }} list = "dropdown" onKeyUp={e=>{(form.setFieldValue("location", input)); ShowPreviewHandler(input, groupOfNodes);}} className= "form-control" placeholder='Button placement?' />
                                 <datalist id = "dropdown" >  <select>
@@ -307,7 +307,7 @@ const DropdownHelperForDelete = ({form, arrayUpdater })=> {
                                         <option key = {index} value={JSON.stringify(node).name} > {(node).name}</option>
                                     ))}
                                 </select></datalist>
-                                <button type = "button" onClick={()=>{( console.log(preview))}}> Check </button>
+
 
                             </div>
 

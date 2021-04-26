@@ -138,7 +138,7 @@ const DeleteForm = () => {
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <hr/>
                                     </Form>
 
                                 )

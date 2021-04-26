@@ -241,7 +241,7 @@ const AddForm = () => {
                                                 </div>
                                             </div>
                                         </div>
-
+<hr/>
                                     </Form>
 
                                 )
