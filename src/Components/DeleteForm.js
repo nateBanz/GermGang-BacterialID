@@ -56,7 +56,7 @@ const DeleteForm = () => {
                                 validateOnBlur={true}
                                 onSubmit={(values) => {
                                     console.log(values)
-                                    //submitHandlerDelete(values.location,values.toggle,values.checkboxes)
+                                    submitHandlerDelete(values.location,values.toggle,values.checkboxes).then((r)=>(alert("Deleted from the database")))
                                 }}
                             >
 
