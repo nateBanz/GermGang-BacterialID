@@ -5,9 +5,10 @@
 //this function takes in a name and returns a firebase object of the germ
 import {getName} from "./firebaseUtils";
 import PersonTracker from "./PersonTracker";
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button} from 'react-bootstrap';
+import {Button, Card, Image} from 'react-bootstrap';
+
 
 
 
@@ -16,7 +17,7 @@ import {Button} from 'react-bootstrap';
 
 // -props.button- is the name of the current germ button. -props.updateGerm- is a function to update the germ in the parent
 const RoutingButton = (props) => {
-
+    const [state, updateState] = useState("")
     const {buttonNameArray, updateArray} = useContext(PersonTracker);
 
     //cut the identifier off of the name so that it can be displayed properly
@@ -25,13 +26,14 @@ const RoutingButton = (props) => {
 
 try {
 
-
+        useEffect (()=>{getName(props.button).then((r)=>(updateState(r)))}, [])
 
     //if clicked, load the new identifier name into the update function passed into this component. Passing anything to update will launch a rerender
-    return <Button variant = "secondary" onClick={ async () => {
+    return (<Card>
+
+        <Button variant = "secondary" onClick={ async () => {
         //gets the particular germNode object based upon the name of the node
         let fullGerm = await getName(props.button)
-
 
 
         //if the array of buttons exists in the current loaded germNode, update the parent with a new node to the array
@@ -52,14 +54,18 @@ try {
     }}>
 
         {modifiedName} </Button>
+            <Image src= {state.image} />
+        </Card>
+    )
 
 
 }
+
 catch (Exception) {
 
     console.log(Exception)
 }
-}
 
+}
 
 export default RoutingButton

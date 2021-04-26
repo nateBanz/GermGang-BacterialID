@@ -9,6 +9,8 @@ import {useContext} from "react";
 import PersonTracker from "./PersonTracker";
 import {useEffect} from "react";
 import Button from 'react-bootstrap/Button';
+import {Image} from 'react-bootstrap';
+
 
 
 //need some styling here to create the look we are going for
@@ -28,12 +30,15 @@ const QuestionPage = (props) => {
 
     const currentName = buttonNameArray[buttonNameArray.length-1].name.slice(0,-4);
 
+    const image = buttonNameArray[buttonNameArray.length-1].image
 
     //for every name in the array, create a div containing a button that passes in the name of the node.
     return <div className="center-bottom">
-        <h4 className={"h4"}> Directions: </h4>
-        <p className={"p"}> Click on the navigation buttons below to identify bacteria.</p>
+        <p className={"p mt-5"}> Click on the navigation buttons below to identify bacteria.</p>
         <h1 className={"h1"}>{currentName}</h1>
+        <div className="text-center mt-5">
+            <img src= {image} className="mx-auto 100px250"/>
+        </div>
              <div className="flex"> {
             (arrays.map((list, index)=> <div className= "pages" key = {index}>
 

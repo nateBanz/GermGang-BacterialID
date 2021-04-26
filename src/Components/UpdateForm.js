@@ -150,7 +150,7 @@ const UpdateForm = () => {
                                             <div className="col">
                                                 <div className="d-flex justify-content-center mrt4 mb-4">
                                                     <button type="submit"
-                                                            className="btn btn-primary btn-block font-weight-bold"
+                                                            className="btn1 btn1-primary btn-block font-weight-bold"
                                                             disabled={Formik.isSubmitting || Formik.errors}>
                                                         Submit
                                                     </button>
