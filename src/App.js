@@ -15,6 +15,8 @@ import { Container } from "react-bootstrap"
 import { AuthProvider } from "./contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import AdminLogin from "./Components/AdminLogin";
+import {Update} from "./Components/firebaseUtils";
+
 
 
 function App() {
@@ -801,6 +803,7 @@ function App() {
             buttonList: ["Possible Aeromonas"]},
 
 
+
         //end
         //EZEKIELS PART
         //Escherichia coli (non-stool) ID CHART
@@ -1020,8 +1023,11 @@ function App() {
     //
     //     }
     // }
-    //
-    // pusher()
+
+    //pusher()
+    //germBase.remove()
+    Update("Homepage", "homepager").then(r => console.log(r))
+
 
 
 
@@ -1040,6 +1046,7 @@ function App() {
           </div>
 
       </PersonTracker.Provider>
+
   </div>
   );
 

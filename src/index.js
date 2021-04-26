@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AdminLogin from "./Components/AdminLogin";
+import AddForm from "./Components/AddForm";
+
 
 
 ReactDOM.render(

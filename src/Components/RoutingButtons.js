@@ -26,6 +26,7 @@ const RoutingButton = (props) => {
 try {
 
 
+
     //if clicked, load the new identifier name into the update function passed into this component. Passing anything to update will launch a rerender
     return <Button variant = "secondary" onClick={ async () => {
         //gets the particular germNode object based upon the name of the node
@@ -38,6 +39,7 @@ try {
 
             //update the array with the new germ node if clicked
             updateArray([...buttonNameArray, fullGerm])
+
 
         }
         else {

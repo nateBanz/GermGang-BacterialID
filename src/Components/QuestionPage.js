@@ -16,9 +16,12 @@ import Button from 'react-bootstrap/Button';
 //takes a parameter, an object defined below with the name of the germ, a picture and the list of germ names.
 const QuestionPage = (props) => {
 
+
     //array of button objects from the global context.
     const {buttonNameArray, updateArray} = useContext(PersonTracker)
 
+    //see the array being built
+    console.log(buttonNameArray)
 
     //the array of names stored here, gets the most recent name from context
     const arrays = buttonNameArray[buttonNameArray.length-1].buttonList
@@ -37,6 +40,7 @@ const QuestionPage = (props) => {
                 <RoutingButtons button = {list}  > </RoutingButtons>
 
             </div>))}
+
      </div>
     </div>
 
