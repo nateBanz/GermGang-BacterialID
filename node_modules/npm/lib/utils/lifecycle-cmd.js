@@ -1,10 +1,18 @@
 // The implementation of commands that are just "run a script"
-// test, start, stop, restart
+// restart, start, stop, test
 
-const usageUtil = require('./usage.js')
+const BaseCommand = require('../base-command.js')
+class LifecycleCmd extends BaseCommand {
+  static get usage () {
+    return ['[-- <args>]']
+  }
 
-module.exports = (npm, stage) => {
-  const cmd = (args, cb) => npm.commands['run-script']([stage, ...args], cb)
-  const usage = usageUtil(stage, `npm ${stage} [-- <args>]`)
-  return Object.assign(cmd, { usage })
+  exec (args, cb) {
+    this.npm.commands['run-script']([this.constructor.name, ...args], cb)
+  }
+
+  execWorkspaces (args, filters, cb) {
+    this.npm.commands['run-script']([this.constructor.name, ...args], cb)
+  }
 }
+module.exports = LifecycleCmd
