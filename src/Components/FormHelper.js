@@ -168,7 +168,7 @@ const DropdownHelper = ({form, index})=> {
 
 
                         <div className= "col">
-                            <div className= "row">
+                            <div className= "row text-center">
                                 <div className= "col justify-content-center pt-4 pl-4">
                                     <span>{preview.buttonList!== undefined? preview.buttonList.join(): "loading"}</span>
                                     <label htmlFor={`nodeGerms.${index}.buttonList`} className= "col-sm-12 col-form-label invisible .d-none">Buttons from selection</label>

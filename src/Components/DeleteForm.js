@@ -44,7 +44,7 @@ const DeleteForm = () => {
 
                             <div className="row justify-content-bottom text-center">
                                 <div className="col">
-                                    <h1 className="top30">Delete Form</h1>
+                                    <h1 className="top30">Delete</h1>
                                     <hr/>
                                 </div>
                             </div>

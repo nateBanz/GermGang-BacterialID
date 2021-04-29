@@ -8,8 +8,6 @@ import {useState} from 'react';
 import {useContext} from "react";
 import PersonTracker from "./PersonTracker";
 import {useEffect} from "react";
-import Button from 'react-bootstrap/Button';
-import {Image} from 'react-bootstrap';
 import {getName} from "./firebaseUtils";
 
 
@@ -71,9 +69,10 @@ const QuestionPage = (props) => {
     //for every name in the array, create a div containing a button that passes in the name of the node.
     return <div className="center-bottom">
         <p className={"p mt-5"}> Click on the navigation buttons below to identify bacteria.</p>
+        <hr/>
         <h1 className={"h1"}>{currentName}</h1>
         <div className="text-center mt-5">
-            <img src= {image} className="mx-auto 100px250"/>
+            <img src= {image} className="mx-auto" style={{maxWidth: '300px', maxHeight: '300px'}}/>
         </div>
              <div className="flex"> {
             (arrays.map((list, index)=> <div className= "pages" key = {index}>
@@ -92,7 +91,7 @@ const QuestionPage = (props) => {
 //this is what the object passed into props should look like by default
 QuestionPage.defaultProps = {
 name: "Homepage 0000",
-image: "nothing here for now",
+image: "https://images-ext-1.discordapp.net/external/i9Sm7SJlP_Cud2bLMpml0JfaX7QfZi86JvG43TC6hU8/https/www.verywellhealth.com/thmb/-jD_krAWs3AEusH0FN_Mpm3pB3I%3D/2823x2117/smart/filters%3Ano_upscale%28%29/microphotograph-of-example-of-staining-bacteria-using-gram-method--at-x1250-magnification-173288072-ab648ac296f846faaa075a7101f06024.jpg?width=1248&height=936",
 buttonList: ["Gram Positive 0000", "Gram Negative 0000"]
 }
 

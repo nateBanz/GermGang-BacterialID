@@ -39,7 +39,7 @@ try {
     }}>
 
         {modifiedName} </Button>
-            <Image src= {image} />
+            <Image src= {image} className = "card-img img" />
         </Card>
     )
 

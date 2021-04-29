@@ -41,7 +41,7 @@ async function Update(name = '', newName= '', newImage = '' ,toggle = '') {
 
         //uses a location that matches the  string and returns a snapshot
 
-        con.orderByChild("name").startAt(name).endAt(name + '~').on('value', function (snapshot) {
+        con.orderByChild("name").startAt(name).endAt(name + '~').once('value').then( function (snapshot) {
 
             snapshot.forEach(function (childSnap) {
 
@@ -81,7 +81,7 @@ async function Update(name = '', newName= '', newImage = '' ,toggle = '') {
 
     //if the toggle is false, get a location, change the object image value
     else {
-        con.orderByChild("name").startAt(name).endAt(name + '~').on('value', function (snapshot) {
+        con.orderByChild("name").startAt(name).endAt(name + '~').once('value').then( function (snapshot) {
 
             snapshot.forEach(function (childSnap) {
 

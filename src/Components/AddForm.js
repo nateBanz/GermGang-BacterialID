@@ -17,6 +17,7 @@ const AddForm = () => {
 
     }
 
+
     const SignUpSchema = Yup.object().shape({
         location: Yup.string()
             .matches(/.*\d{4}\s*$/gm, "A location is required with a unique ID (4 numbers)")
@@ -28,7 +29,8 @@ const AddForm = () => {
                     .matches(/.*\d{4}\s*$/gm, "A name must have a unique ID (4 numbers)")
                     .trim("Can't be empty")
                     .required("A name is required"),
-                image: Yup.string(),
+                image: Yup.string()
+                    .matches(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+(?:png|jpg|jpeg|gif|svg)+$/gm, "Must be a valid image file path"),
                 buttonList: Yup.array().of(
                     Yup.string()
                         .matches(/.*\d{4}\s*$/gm, "This name must have a unique ID (4 numbers)")
@@ -50,7 +52,8 @@ const AddForm = () => {
 
                             <div className="row justify-content-bottom text-center">
                                 <div className="col">
-                                    <h1 className="top30">Add Form</h1>
+                                    <h1 className="top30">Add</h1>
+                                    <hr/>
                                 </div>
                             </div>
 
@@ -137,8 +140,8 @@ const AddForm = () => {
 
                                                                                     <Field
                                                                                         name={`nodeGerms.${index}.image`}
-                                                                                        placeholder=""
-                                                                                        type="file"
+                                                                                        placeholder="Image url (only accepts common file types)"
+                                                                                        type="text"
                                                                                         className="form-control-file rounded"
                                                                                     />
                                                                                     <ErrorMessage

@@ -35,4 +35,9 @@
   to {
     transform: rotate(360deg);
   }
+
+}
+.img{
+  height: auto;
+  max-width: 500px;
 }

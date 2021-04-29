@@ -20,7 +20,8 @@ const UpdateForm = () => {
         location: Yup.string()
             .matches(/.*\d{4}\s*$/gm, "A location is required with a unique ID (4 numbers)")
             .required("Location is required, select from dropdown or type"),
-
+        image: Yup.string()
+            .matches(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+(?:png|jpg|jpeg|gif|svg)+$/gm, "Must be a valid image file path"),
     });
 
     function submitHandlerUpdate(location, newName, newImage, bool) {
@@ -40,7 +41,7 @@ const UpdateForm = () => {
 
                             <div className="row justify-content-bottom text-center">
                                 <div className="col">
-                                    <h1 className="top30">Update Form</h1>
+                                    <h1 className="top30">Update</h1>
                                     <hr/>
                                 </div>
                             </div>
@@ -91,8 +92,9 @@ const UpdateForm = () => {
                                                 </div>
                                             </div>
                                         </div>
-
+                                        {values.toggle ?(
                                         <div className="row ">
+
                                             <div className="col">
 
 
@@ -115,7 +117,7 @@ const UpdateForm = () => {
                                             />
 
                                         </div>
-
+                                        ): null}
 
                                         {!values.toggle?
                                             (
@@ -126,8 +128,8 @@ const UpdateForm = () => {
 
                                                     <Field
                                                         name="image"
-                                                        placeholder=""
-                                                        type="file"
+                                                        placeholder="Must be a common file type"
+                                                        type="text"
                                                         className="form-control-file rounded"
                                                     />
                                                     <ErrorMessage
