@@ -70,21 +70,6 @@ const Header = (props) => {
                         <Nav.Link onClick={() => {                          //back button for nav bar with on click
                             goBack();
                         }}>Back</Nav.Link>
-                        <NavDropdown title="Go to" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.2">Aerobic Gram Positive Rods</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.1">Aerobic Gram Positive Cocci</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.1">Staphylococci ID</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.1">Alpha or Gamma-Hemolytic
-                                Streptococci</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.1">Beta-Hemolytic Streptococci</NavDropdown.Item>
-                            <NavDropdown.Divider/>
-                            <NavDropdown.Item href="#action/3.1">Gram Negative Rods Non-Stool</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.1">Gram Negative Rods Stool Pathogens</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.1">Escherichia Coli</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.1">GNR Stool Pathogens Lactose Positive</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.1">GNR Stool Pathogens Lactose Negative</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.1">Yersinia Pestis</NavDropdown.Item>
-                        </NavDropdown>
                     </Nav>
                     <Nav>
                         <NavLink to="/login" className="btn btn-secondary">Sign in</NavLink>
