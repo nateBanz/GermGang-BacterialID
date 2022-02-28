@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router, Route} from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AdminLogin from "./Components/AdminLogin";
 import AddForm from "./Components/AddForm";
+import Signup from './Components/Signup';
+import Login from './Components/Login';
 
 
 
 ReactDOM.render(
-    <React.StrictMode>
-        <AdminLogin />
-    </React.StrictMode>,
+  <React.StrictMode>
+  <AdminLogin />
+</React.StrictMode>,
   document.getElementById('root')
 );
 

@@ -4,6 +4,7 @@ import { auth } from "../firebase"
 const AuthContext = React.createContext()
 
 export function useAuth() {
+  
   return useContext(AuthContext)
 }
 
@@ -33,6 +34,15 @@ export function AuthProvider({ children }) {
 
   function updatePassword(password) {
     return currentUser.updatePassword(password)
+  }
+
+  function checkAdmin(email){
+    if(email == "bsarraj@ccc.edu"){
+      return true;
+    }
+   else{
+     return false;
+   }
   }
 
   useEffect(() => {

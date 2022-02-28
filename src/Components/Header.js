@@ -7,12 +7,15 @@ import { BrowserRouter as Router, Switch, Route ,Link, NavLink} from "react-rout
 import Login from "./Login"
 import {getName} from "./firebaseUtils";
 import RoutingButton from "./RoutingButtons";
+import StudentDashboard from './StudentDashboard';
+import PrivateRoute from './PrivateRoute';
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
 //reset button
 
 
 const Header = (props) => {
+
 
     //button/node objects from the context that are being updated
     const {buttonNameArray, updateArray} = useContext(PersonTracker)  //this is the information needed. The array of buttons names and the update array function
@@ -37,6 +40,70 @@ const Header = (props) => {
     }
 
 
+
+  /*  function LoggedStatus(props){
+        const auth = 
+        if (isLoggedIn) {
+          return
+          <div>
+          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+              <Navbar.Brand onClick={() => {                          //resets when you click the germgang icon
+                  reset();
+              }}>Germgang</Navbar.Brand>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+              <Navbar.Collapse id="responsive-navbar-nav">
+                  <Nav className="mr-auto">
+                      <Nav.Link onClick={() => {                          //back button for nav bar with on click
+                          reset();
+                      }}>Reset</Nav.Link>
+                      <Nav.Link onClick={() => {                          //back button for nav bar with on click
+                          goBack();
+                      }}>Back</Nav.Link>
+                  </Nav>
+                  <Nav>
+                      <NavLink to="./StudentDashboard" className= "btn btn-primary">Dashboard</NavLink>
+                  </Nav>
+                  <Nav>
+                      <NavLink to="./login" className="btn btn-secondary">Sign up</NavLink>
+                  </Nav>
+                  
+              </Navbar.Collapse>
+          </Navbar>
+      </div>;
+
+        }
+      return
+
+      <div>
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+          <Navbar.Brand onClick={() => {                          //resets when you click the germgang icon
+              reset();
+          }}>Germgang</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+          <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="mr-auto">
+                  <Nav.Link onClick={() => {                          //back button for nav bar with on click
+                      reset();
+                  }}>Reset</Nav.Link>
+                  <Nav.Link onClick={() => {                          //back button for nav bar with on click
+                      goBack();
+                  }}>Back</Nav.Link>
+              </Nav>
+              <Nav>
+                  <NavLink to="./login" className="btn btn-secondary">Sign up</NavLink>
+              </Nav>
+              
+          </Navbar.Collapse>
+      </Navbar>
+  </div>;
+      }
+      ReactDOM.render(
+        <LoggedStatus isLoggedIn={false} />,
+        document.getElementById('root')
+      )
+    }
+*/
+
     function reset() {
 
         if (buttonNameArray.length > 1) {
@@ -56,11 +123,12 @@ const Header = (props) => {
     }
 
 
-    return (<div>
+    return (
+    <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Navbar.Brand onClick={() => {                          //resets when you click the germgang icon
                     reset();
-                }}>GermGang</Navbar.Brand>
+                }}>Germgang</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
@@ -72,8 +140,12 @@ const Header = (props) => {
                         }}>Back</Nav.Link>
                     </Nav>
                     <Nav>
-                        <NavLink to="/login" className="btn btn-secondary">Sign in</NavLink>
+                        <NavLink to="./StudentDashboard" className= "btn btn-primary">Dashboard</NavLink>
                     </Nav>
+                    <Nav>
+                        <NavLink to="./login" className="btn btn-secondary">Sign up</NavLink>
+                    </Nav>
+                    
                 </Navbar.Collapse>
             </Navbar>
         </div>
@@ -82,6 +154,6 @@ const Header = (props) => {
 
     //use the getname function here to get a germ object.
 
-}
 
+                    }
 export default Header
