@@ -64,8 +64,9 @@ export default function Signup() {
                   ref={passwordConfirmRef}
                   required
                 />
-              </Form.Group>
-              <Button
+            
+              </Form.Group >
+              <Button disabled
                 disabled={loading}
                 className="btn btn-secondary w-100"
                 type="submit"
