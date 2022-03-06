@@ -1,7 +1,7 @@
 
 import {useContext} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown, Container, Card, Form} from 'react-bootstrap';
+import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown, Container, Card, Form, ScrollView} from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route ,Link, NavLink} from "react-router-dom"
 import {getName} from "./firebaseUtils";
 import RoutingButton from "./RoutingButtons";
@@ -73,10 +73,18 @@ export default function CreateExperiment(){
             <p>End Date: </p>
                 <DatePicker selected={startDate} onChange3={date => setEndDate(date)}/>
                 </div>
+                <Form.Group controlId="exampleForm.ControlTextarea1">
+  <Form.Label>Experiment Details/ Instructions </Form.Label>
+  <Form.Control as="textarea" rows="3" />
+</Form.Group>
                 <div>
            <Button disabled={loading} className="btn btn-secondary w-100" type="submit" onSubmit={handleSubmit}>Submit</Button>
            <Button className="btn btn-secondary w-100">Cancel</Button>
            </div>
+
+  
+
+
 
          </div>
        )
