@@ -168,7 +168,12 @@ const Header = (props) => {
                     <Nav>
                         <NavLink hidden={currentUser == null} to="./Logout" className="btn btn-secondary" onClick={handleLogout}>Log Out</NavLink>  
                     </Nav>
-                    
+                    <Nav>
+                        <NavLink hidden={currentUser == null} to="./professorClasses" className= "btn btn-primary">ProfessorClasses</NavLink>
+                    </Nav>
+                    <Nav>
+                        <NavLink hidden={currentUser == null} to="./createExperiment" className= "btn btn-primary">CreateExperiment</NavLink>
+                    </Nav>
                 </Navbar.Collapse>
             </Navbar>
         </div>

@@ -14,6 +14,8 @@ import AddForm from "./AddForm";
 import UpdateForm from "./UpdateForm";
 import UpdatePassword from "./UpdatePassword";
 import StudentDashboard from "./StudentDashboard";
+import ProfessorClasses from "./ProfessorClasses"
+import CreateExperiment from "./CreateExperiment"
 
 export default function AdminLogin() {
     
@@ -37,6 +39,8 @@ export default function AdminLogin() {
                             <Route path="/delete-form" component={DeleteForm} />
                             <Route path="/update-form" component={UpdateForm} />
                             <Route path="/studentdashboard" component={StudentDashboard} />
+                            <Route path="/professorClasses" component={ProfessorClasses} />
+                            <Route path="/createExperiment" component={CreateExperiment} />
                         </Switch>
                     </AuthProvider>
                 </Router>
