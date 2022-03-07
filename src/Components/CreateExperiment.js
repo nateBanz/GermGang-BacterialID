@@ -73,6 +73,7 @@ export default function CreateExperiment(){
             <p>End Date: </p>
                 <DatePicker selected={startDate} onChange3={date => setEndDate(date)}/>
                 </div>
+                <br/>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
   <Form.Label>Experiment Details/ Instructions </Form.Label>
   <Form.Control as="textarea" rows="3" />

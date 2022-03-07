@@ -16,6 +16,7 @@ import UpdatePassword from "./UpdatePassword";
 import StudentDashboard from "./StudentDashboard";
 import ProfessorClasses from "./ProfessorClasses"
 import CreateExperiment from "./CreateExperiment"
+import ProfessorSignUp from "./ProfessorSignUp"
 
 export default function AdminLogin() {
     
