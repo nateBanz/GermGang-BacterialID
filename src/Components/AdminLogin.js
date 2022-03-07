@@ -41,6 +41,8 @@ export default function AdminLogin() {
                             <Route path="/studentdashboard" component={StudentDashboard} />
                             <Route path="/professorClasses" component={ProfessorClasses} />
                             <Route path="/createExperiment" component={CreateExperiment} />
+                            <Route path="/professorSignUp" component ={ProfessorSignUp}/>
+                            
                         </Switch>
                     </AuthProvider>
                 </Router>

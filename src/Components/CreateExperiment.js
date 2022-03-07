@@ -42,7 +42,7 @@ export default function CreateExperiment(){
     
           setError("")
           setLoading(true)
-         // await createAClass(classTitle.current.value, classCode.current.value)
+         //await createAClass(classTitle.current.value, classCode.current.value)
         
        // history.push("/dashboard")
         } 

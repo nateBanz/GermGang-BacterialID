@@ -66,7 +66,7 @@ export default function Signup() {
                 />
             
               </Form.Group >
-              <Button disabled
+              <Button 
                 disabled={loading}
                 className="btn btn-secondary w-100"
                 type="submit"
