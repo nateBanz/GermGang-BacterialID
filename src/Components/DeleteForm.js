@@ -4,8 +4,16 @@ import {DropdownHelperForDelete} from "./FormHelper"
 import * as Yup from 'yup'
 import {Delete} from "./firebaseUtils"
 import {getName} from "./firebaseUtils";
+import { useAuth } from "../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
 
 const DeleteForm = () => {
+    const { currentUser, logout } = useAuth()
+    const history = useHistory()
+    if (currentUser.email != "bsarraj@ccc.edu" && currentUser != null){
+        history.push("/")
+    }
+    
     const [arrayState, updateArrayState] = useState([])
 
 

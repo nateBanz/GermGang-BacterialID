@@ -2,11 +2,19 @@ import React from "react";
 import {Formik, Field, Form, ErrorMessage, FieldArray} from 'formik';
 import {DropdownHelper} from "./FormHelper"
 import * as Yup from 'yup'
-
+import { useAuth } from "../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
 import {getName} from "./firebaseUtils";
 import{Update} from "./firebaseUtils";
 
 const UpdateForm = () => {
+
+    const { currentUser, logout } = useAuth()
+    const history = useHistory()
+    if (currentUser.email != "bsarraj@ccc.edu" && currentUser != null){
+        history.push("/")
+    }
+    
 
     const initialValues = {
         toggle: true,
