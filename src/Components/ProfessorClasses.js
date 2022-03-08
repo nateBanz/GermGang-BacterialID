@@ -8,6 +8,7 @@ import RoutingButton from "./RoutingButtons";
 import PrivateRoute from './PrivateRoute';
 import React, { useRef, useState} from "react"
 import Header from "./Header";
+import {newCode} from './RandomIDCode'
 //import Header from "./Components/Header";
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
@@ -17,8 +18,7 @@ import Header from "./Header";
 
     
 export default function CreateClass(){
-  const text = useState("Class Title")
-  const text2 = useState("Class Code/ID")
+  const codeID = newCode()
   const [classTitle,setClassTitle]= useState("")
   const [classCode,setClassCode] = useState("")
   const [error, setError] = useState("")
@@ -51,24 +51,34 @@ export default function CreateClass(){
       }
       return(
         <div >
-       <Header> </Header>
+          <Header> </Header>
+          <Card>
+            <Card.Body>
+       
           <h1 className="text-center mb-4">Create New Class</h1>
          <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-          {text}<input  size="50" placeholder="classTitle" onChange={onChange}/> 
+          {"Class Title: "}<input  size="50" placeholder="classTitle" onChange={onChange}/> 
          </div>
           <br/>
           <br/> 
           <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-          {text2}  
            </div>
            <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-           <input placeholder="class ID" onChange={onChange2}/> <br/>
+           {"Class Code/ID: " + codeID}
+           <br/>
+           <br/>
            </div>
-          <div>
-          <Button disabled={loading} className="btn btn-secondary w-100" type="submit" onSubmit={handleSubmit}>Submit</Button>
+          <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+          <Button disabled={loading} className="btn btn-secondary" type="submit" onSubmit={handleSubmit}>Submit</Button>
+          <br/>
           <Button>Cancel</Button>
+          <br/>
+          <br/>
           </div>
+          </Card.Body>
+          </Card>
         </div>
+        
     )
 
      
