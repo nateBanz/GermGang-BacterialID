@@ -36,15 +36,6 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
 
-  function checkAdmin(email){
-    if(email == "bsarraj@ccc.edu"){
-      return true;
-    }
-   else{
-     return false;
-   }
-  }
-
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user)

@@ -9,6 +9,7 @@ import PrivateRoute from './PrivateRoute';
 import React, { useRef, useState} from "react"
 import Header from "./Header";
 import DatePicker from 'react-datepicker';
+import {newCode, writeExperiment} from "./RandomIDCode";
 import 'react-datepicker/dist/react-datepicker.css'
 //import Header from "./Components/Header";//you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
@@ -20,12 +21,21 @@ import 'react-datepicker/dist/react-datepicker.css'
 export default function CreateExperiment(){
   const text = useState("Experiment Title")
   const text2 = useState("Experiment Code/ ID")
+  const expcode= newCode()
   const [experimentTitle,setExperimentTitle]= useState("")
   const [experimentCode,setExperimentCode] = useState("")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
-  const [startDate, setStartDate] = useState(null)
-  const [endDate, setEndDate] = useState(null)
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+
+  const divstyle = {
+    display: 'flex',
+    justifyContent:'center',
+    alignItems:'center', 
+    padding: '10px'
+
+  }
   let onChange  = (event) =>{
     const newValue = event.target.value
     setExperimentTitle(newValue);
@@ -53,41 +63,41 @@ export default function CreateExperiment(){
         setLoading(false)
       }
        return(
-         <div >
+         <div>
            <Header> </Header>
+           <Card>
+             <Card.Body>
           <h1 className="text-center mb-4">Create New Experiment</h1>
-          <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-           {text}<input  size="50" placeholder="Experiment Title..." onChange={onChange}/> 
-        </div>
+          <div  style={divstyle}>
+           {"Experiment Title:       "}<input wrapperClassname='Textwrap' size="50" placeholder="Experiment Title..." onChange={onChange} padding-left/> 
+           </div>
         <br/>
-           <br/>
+        <br/>
            <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-            {text2}
-            <input  placeholder="Experiment Code/ ID ...." onChange={onChange2}/> <br/>
+            {"Experiment Code/ID: " + expcode}<br/>
+            </div>
+            <div  className = 'App'>
+            <p>Start Date: </p>
+                <DatePicker wrapperClassName='datepicker' border='0' selected={startDate} onChange3={date => setStartDate(date)}/>
             </div>
             <div className = 'App'>
-            <p>Start Date: </p>
-                <DatePicker selected={startDate} onChange3={date => setStartDate(date)}/>
+            <p>End Date: </p> 
+                <DatePicker class="square border border-dark" selected={startDate} onChange3={date => setEndDate(date)}/>
                 </div>
-                <div className = 'App'>
-            <p>End Date: </p>
-                <DatePicker selected={startDate} onChange3={date => setEndDate(date)}/>
-                </div>
-                <br/>
+        <br/>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
-  <Form.Label>Experiment Details/ Instructions </Form.Label>
-  <Form.Control as="textarea" rows="3" />
-</Form.Group>
-                <div>
-           <Button disabled={loading} className="btn btn-secondary w-100" type="submit" onSubmit={handleSubmit}>Submit</Button>
-           <Button className="btn btn-secondary w-100">Cancel</Button>
+                <Form.Label>Experiment Details/ Instructions </Form.Label>
+                <Form.Control className="textarea w-100"as="textarea" rows="3"/>
+                </Form.Group>
+           <div style={divstyle}>
+           <Button disabled={loading} className="btn btn-secondary w-50" type="submit" onSubmit={handleSubmit}>Submit</Button>
            </div>
-
-  
-
-
-
-         </div>
+           <div style={divstyle}>
+           <Button className="btn btn-secondary w-50">Cancel</Button>
+           </div>
+           </Card.Body>
+          </Card>
+          </div>
        )
 
 
