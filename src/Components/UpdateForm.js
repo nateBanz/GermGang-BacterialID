@@ -32,6 +32,7 @@ const UpdateForm = () => {
             .matches(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+(?:png|jpg|jpeg|gif|svg)+$/gm, "Must be a valid image file path"),
     });
 
+    //Calls the update method in firebaseUtils.js, then displays an alert based on success
     function submitHandlerUpdate(location, newName, newImage, bool) {
 
         Update(location, newName,newImage, bool).then((r)=>(alert("Successfully updated all items"))).catch(e =>(alert('Refresh and try again, could not update.')))

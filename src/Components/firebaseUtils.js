@@ -1,5 +1,6 @@
-import * as React from "react";
-import firebase from "firebase";
+
+import firebase from "firebase"
+
 
 //---Gets the name of the button and return an object from firebase
 
@@ -183,6 +184,7 @@ async function Delete(location = "" ,buttons = [], onlyNode = true, name = [] ){
 
 }
 
+
 //function for validation. if theres only one element, you dont have to worry about duplicates to delete
 function validate (objectNodes = {} ) {
 
@@ -246,4 +248,8 @@ function pusher (array = [], con, name, location) {
     }
 }
 
-export {getName, Update, Add, Delete}
+
+
+    
+
+export {getName, Update, Add, Delete }
