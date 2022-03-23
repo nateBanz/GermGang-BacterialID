@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 export default function ForgotPassword() {
   const emailRef = useRef()
@@ -9,6 +9,7 @@ export default function ForgotPassword() {
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
+  const history = useHistory()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -18,7 +19,7 @@ export default function ForgotPassword() {
       setError("")
       setLoading(true)
       await resetPassword(emailRef.current.value)
-      setMessage("Check your inbox for further instructions")
+      setMessage("Check your email for instructions. \n PLEASE MAKE SURE TO CHECK YOUR SPAM FOLDER.")
     } catch {
       setError("Failed to reset password")
     }

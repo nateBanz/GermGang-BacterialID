@@ -2,13 +2,20 @@ import React, { useState } from "react"
 import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
-import { Container } from "react-bootstrap"
+import { NavLink } from "react-router-dom"
+import { Nav } from "react-bootstrap"
 
 
 export default function Dashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
+    if (currentUser.email !== "bsarraj@ccc.edu" && currentUser != null){
+        history.push("/StudentDashboard")
+    }
+    else if(currentUser.email == null){
+        history.push("/login")
+    };
 
   async function handleLogout() {
     setError("")
@@ -24,23 +31,24 @@ export default function Dashboard() {
   return (
     <>
       <Card>
-
         <Card.Body>
           <h2 className="text-center mb-4">Admin Controls</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <strong>Email:</strong> {currentUser.email}
-          <Link to="/update-profile" className="btn btn-secondary w-100 mt-3">
+          <Nav>
+            <NavLink hidden={currentUser.email == null} to="/update-profile" className="btn btn-secondary w-100 mt-3">
             Update Profile
-          </Link>
-          <Link to="/add-form" className="btn btn-secondary w-100 mt-3">
+            </NavLink>  
+            <NavLink hidden={currentUser.email !== "bsarraj@ccc.edu"} to="/add-form" className="btn btn-secondary w-100 mt-3">
             Add Form
-          </Link>
-          <Link to="/update-form" className="btn btn-secondary w-100 mt-3">
+            </NavLink>  
+            <NavLink hidden={currentUser.email !== "bsarraj@ccc.edu"} to="/update-form" className="btn btn-secondary w-100 mt-3">
             Update Form
-          </Link>
-          <Link to="/delete-form" className="btn btn-secondary w-100 mt-3">
+            </NavLink>  
+            <NavLink hidden={currentUser.email !== "bsarraj@ccc.edu"} to="/delete-form" className="btn btn-secondary w-100 mt-3">
             Delete Form
-          </Link>
+            </NavLink>  
+          </Nav>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
