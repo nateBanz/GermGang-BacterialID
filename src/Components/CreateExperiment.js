@@ -1,15 +1,10 @@
 
-import {useContext} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown, Container, Card, Form, ScrollView} from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route ,Link, NavLink} from "react-router-dom"
-import {getName} from "./firebaseUtils";
-import RoutingButton from "./RoutingButtons";
-import PrivateRoute from './PrivateRoute';
-import React, { useRef, useState} from "react"
+import {Button, Card, Form, } from 'react-bootstrap';
+import React, { useState} from "react"
 import Header from "./Header";
 import DatePicker from 'react-datepicker';
-import {newCode, writeExperiment} from "./RandomIDCode";
+import {newCode} from "./RandomIDCode";
 import 'react-datepicker/dist/react-datepicker.css'
 //import Header from "./Components/Header";//you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 

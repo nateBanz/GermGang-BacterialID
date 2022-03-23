@@ -1,22 +1,26 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
-import { useAuth } from "../contexts/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import { useAuth} from "../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
 import { Container } from "react-bootstrap";
+import { addAdmin, addProfessor, addStudent, addUser } from "./CreateUser";
 
 // import App from "../App";
 
 export default function Signup() {
-//  const nameRef = useRef();
+ const firstnameRef = useRef();
+ const lastnameRef = useRef();
 //  const schoolRef = useRef();
-//  const courseRef = useRef();
+ //const courseRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup, currentUser } = useAuth();
+  const { signup, currentUser} = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+
+  
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -28,7 +32,8 @@ export default function Signup() {
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await signup(emailRef.current.value, passwordRef.current.value)
+      await addUser(emailRef.current.value, "student")
       history.push("/");
     } catch {
       setError("Failed to sign up");
@@ -49,6 +54,14 @@ export default function Signup() {
             {/* {currentUser && currentUser.email} */}
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmit}>
+            <Form.Group id="name">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control type="text" ref={firstnameRef} required />
+              </Form.Group>
+              <Form.Group id="name">
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control type="text" ref={lastnameRef} required />
+              </Form.Group>
               <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" ref={emailRef} required />

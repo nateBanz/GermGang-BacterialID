@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
-import { Container } from "react-bootstrap"
 import { NavLink } from "react-router-dom"
 import { Nav } from "react-bootstrap"
 
@@ -11,7 +10,7 @@ export default function Dashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
-    if (currentUser.email != "bsarraj@ccc.edu" && currentUser != null){
+    if (currentUser.email !== "bsarraj@ccc.edu" && currentUser != null){
         history.push("/StudentDashboard")
     }
     else if(currentUser.email == null){
@@ -40,13 +39,13 @@ export default function Dashboard() {
             <NavLink hidden={currentUser.email == null} to="/update-profile" className="btn btn-secondary w-100 mt-3">
             Update Profile
             </NavLink>  
-            <NavLink hidden={currentUser.email != "bsarraj@ccc.edu"} to="/add-form" className="btn btn-secondary w-100 mt-3">
+            <NavLink hidden={currentUser.email !== "bsarraj@ccc.edu"} to="/add-form" className="btn btn-secondary w-100 mt-3">
             Add Form
             </NavLink>  
-            <NavLink hidden={currentUser.email != "bsarraj@ccc.edu"} to="/update-form" className="btn btn-secondary w-100 mt-3">
+            <NavLink hidden={currentUser.email !== "bsarraj@ccc.edu"} to="/update-form" className="btn btn-secondary w-100 mt-3">
             Update Form
             </NavLink>  
-            <NavLink hidden={currentUser.email != "bsarraj@ccc.edu"} to="/delete-form" className="btn btn-secondary w-100 mt-3">
+            <NavLink hidden={currentUser.email !== "bsarraj@ccc.edu"} to="/delete-form" className="btn btn-secondary w-100 mt-3">
             Delete Form
             </NavLink>  
           </Nav>
