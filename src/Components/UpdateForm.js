@@ -2,11 +2,19 @@ import React from "react";
 import {Formik, Field, Form, ErrorMessage, FieldArray} from 'formik';
 import {DropdownHelper} from "./FormHelper"
 import * as Yup from 'yup'
-
+import { useAuth } from "../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
 import {getName} from "./firebaseUtils";
 import{Update} from "./firebaseUtils";
 
 const UpdateForm = () => {
+
+    const { currentUser, logout } = useAuth()
+    const history = useHistory()
+    if (currentUser.email != "bsarraj@ccc.edu" && currentUser != null){
+        history.push("/")
+    }
+    
 
     const initialValues = {
         toggle: true,
@@ -24,6 +32,7 @@ const UpdateForm = () => {
             .matches(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+(?:png|jpg|jpeg|gif|svg)+$/gm, "Must be a valid image file path"),
     });
 
+    //Calls the update method in firebaseUtils.js, then displays an alert based on success
     function submitHandlerUpdate(location, newName, newImage, bool) {
 
         Update(location, newName,newImage, bool).then((r)=>(alert("Successfully updated all items"))).catch(e =>(alert('Refresh and try again, could not update.')))

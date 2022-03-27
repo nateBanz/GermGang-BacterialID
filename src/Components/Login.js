@@ -74,7 +74,7 @@ export default function Login() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        {/* This feature is for admins only */}
+         This feature is for admins only 
       </div>
         </div>
       </Container>
