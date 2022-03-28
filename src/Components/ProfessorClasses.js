@@ -8,7 +8,7 @@ import PrivateRoute from './PrivateRoute';
 import React, { useRef, useState} from "react"
 import Header from "./Header";
 import {newCode} from './RandomIDCode'
-import { createAClass } from "./professorObjects";
+import { createAClass } from "./ProfessorObjects";
 import { auth } from "../firebase"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
