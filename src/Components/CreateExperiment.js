@@ -67,8 +67,7 @@ export default function CreateExperiment(){
            {"Experiment Title:       "}<input wrapperClassname='Textwrap' size="50" placeholder="Experiment Title..." onChange={onChange} padding-left/> 
            </div>
         <br/>
-        <br/>
-           <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+           <div hidden style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
             {"Experiment Code/ID: " + expcode}<br/>
             </div>
             <div  className = 'App'>

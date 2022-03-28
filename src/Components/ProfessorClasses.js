@@ -30,10 +30,7 @@ export default function CreateClass(){
   const { currentUser, logout } = useAuth()
   const history = useHistory()
   const form = document.querySelector('form');
-  function onAddClass(e){
-    e.preventDefault();
-    alert("thisword");
-  }
+ 
   
 
   let onChange  = (event) =>{
@@ -62,28 +59,23 @@ export default function CreateClass(){
       return(       
         <div>
           <Header> </Header>
-          <form>
           <h1 className="text-center mb-4">Create New Class</h1>
-         <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+          <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
           {"Class Title: "}<input id='classTitle'  size="50" placeholder="classTitle" onChange={onChange}/> 
          </div>
-          <br/>
-          <br/> 
-          <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+         <br/>
+
+         <div hidden style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+           {"Class Code/ID: " + codeID} 
+          
            </div>
-           <div hidden style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-           <input>{"Class Code/ID: " + codeID} </input>
-           <br/>
-           <br/>
-           </div>
-          <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+           <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
           <Button disabled={loading} className="btn btn-secondary" type="submit" onClick={handleSubmit}>Submit</Button>
           <br/>
           <Button>Cancel</Button>
           <br/>
           <br/>
           </div>
-          </form> 
           <div style={{display: 'flex', justifyContent:'center', alignItems:'center', color:'gray'}}>
           <table width='600' border='1px'>
       <thead>
@@ -97,5 +89,6 @@ export default function CreateClass(){
     </table>
     </div>
         </div>
+        
         
     )}
