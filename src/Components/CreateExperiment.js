@@ -6,6 +6,8 @@ import Header from "./Header";
 import DatePicker from 'react-datepicker';
 import {newCode} from "./RandomIDCode";
 import 'react-datepicker/dist/react-datepicker.css'
+import { createAnExperiment } from "./ProfessorObjects";
+
 //import Header from "./Components/Header";//you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
 //reset button

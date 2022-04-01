@@ -12,3 +12,14 @@ import { firestore } from '../firebase';
             classCode: classCode
             });
         }
+
+        export function createAnExperiment(title, startDate, endDate, Details){
+            const docRef = db.collection('users').doc("roles").collection("professors").doc(email).collection("experiments");
+
+            docRef.set({
+            ExperimentTitle: title,
+            StartDate: startDate,
+            EndDate: endDate,
+            Details: Details
+            });
+        }
