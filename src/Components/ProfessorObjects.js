@@ -4,11 +4,10 @@ import { firestore } from '../firebase';
         /*
         this function creates a new doc reference for the email, then "sets" the information needed.
         */
-        export function createAClass(className, classCode,email){
+        export function createAClass(className, classCode){
             const docRef = db.collection('classes').doc(classCode);
     
             docRef.set({
-            AssociatedProfessor: email, 
             className: className,
             classCode: classCode
             });

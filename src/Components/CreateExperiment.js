@@ -21,8 +21,9 @@ export default function CreateExperiment(){
   const [experimentCode,setExperimentCode] = useState("")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
+  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState(null)
+  const [experimentDetails,setExperimentDetails]= useState("");
 
   const divstyle = {
     display: 'flex',
@@ -35,9 +36,17 @@ export default function CreateExperiment(){
     const newValue = event.target.value
     setExperimentTitle(newValue);
   }
-  let onChange2  = (event) =>{
+  // let onChange2  = (event) =>{
+  //   const newValue = event.target.value
+  //   setExperimentCode(newValue);
+  // }
+  let onChange3 = (event) =>{
     const newValue = event.target.value
-    setExperimentCode(newValue);
+    setStartDate(newValue);
+  }
+  let onChange4 = (event) =>{
+    const newValue = event.target.value
+    setExperimentDetails(newValue);
   }
 
     async function handleSubmit(e) {
@@ -47,7 +56,7 @@ export default function CreateExperiment(){
     
           setError("")
           setLoading(true)
-         //await createAClass(classTitle.current.value, classCode.current.value)
+         await createAnExperiment(experimentTitle, startDate, endDate, experimentDetails)
         
        // history.push("/dashboard")
         } 
@@ -72,19 +81,19 @@ export default function CreateExperiment(){
             </div>
             <div  className = 'App'>
             <p>Start Date: </p>
-                <DatePicker wrapperClassName='datepicker' border='0' selected={startDate} onChange3={date => setStartDate(date)}/>
+                <DatePicker wrapperClassName='datepicker' border='0' selected={startDate} onChange={date =>setStartDate(date)}/>
             </div>
             <div className = 'App'>
             <p>End Date: </p> 
-                <DatePicker class="square border border-dark" selected={startDate} onChange3={date => setEndDate(date)}/>
+                <DatePicker class="square border border-dark" selected={endDate} onChange={date => setEndDate(date)}/>
                 </div>
         <br/>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Experiment Details/ Instructions </Form.Label>
-                <Form.Control className="textarea w-100"as="textarea" rows="3"/>
+                <Form.Control onChange={onChange4} className="textarea w-100"as="textarea" rows="3"/>
                 </Form.Group>
            <div style={divstyle}>
-           <Button disabled={loading} className="btn btn-secondary w-50" type="submit" onSubmit={handleSubmit}>Submit</Button>
+           <Button disabled={loading} className="btn btn-secondary w-50" type="submit" onClick={handleSubmit}>Submit</Button>
            </div>
            <div style={divstyle}>
            <Button className="btn btn-secondary w-50">Cancel</Button>
