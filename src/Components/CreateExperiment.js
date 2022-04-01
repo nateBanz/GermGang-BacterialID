@@ -7,6 +7,8 @@ import DatePicker from 'react-datepicker';
 import {newCode} from "./RandomIDCode";
 import 'react-datepicker/dist/react-datepicker.css'
 import { createAnExperiment } from "./ProfessorObjects";
+import { useAuth } from "../contexts/AuthContext"
+
 
 //import Header from "./Components/Header";//you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
@@ -25,8 +27,10 @@ export default function CreateExperiment(){
   const [loading, setLoading] = useState(false)
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
-  const [experimentDetails,setExperimentDetails]= useState("");
+ 
 
+  const [experimentDetails,setExperimentDetails]= useState("");
+  const { currentUser, logout } = useAuth()
   const divstyle = {
     display: 'flex',
     justifyContent:'center',
@@ -38,14 +42,8 @@ export default function CreateExperiment(){
     const newValue = event.target.value
     setExperimentTitle(newValue);
   }
-  // let onChange2  = (event) =>{
-  //   const newValue = event.target.value
-  //   setExperimentCode(newValue);
-  // }
-  let onChange3 = (event) =>{
-    const newValue = event.target.value
-    setStartDate(newValue);
-  }
+
+ 
   let onChange4 = (event) =>{
     const newValue = event.target.value
     setExperimentDetails(newValue);
@@ -58,7 +56,7 @@ export default function CreateExperiment(){
     
           setError("")
           setLoading(true)
-         await createAnExperiment(experimentTitle, startDate, endDate, experimentDetails)
+         await createAnExperiment(experimentTitle, startDate, endDate, experimentDetails, currentUser.email)
         
        // history.push("/dashboard")
         } 
@@ -87,12 +85,12 @@ export default function CreateExperiment(){
             </div>
             <div className = 'App'>
             <p>End Date: </p> 
-                <DatePicker class="square border border-dark" selected={endDate} onChange={date => setEndDate(date)}/>
+                <DatePicker selected={endDate} onChange={date => setEndDate(date)}/>
                 </div>
         <br/>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group  onChange={onChange4} controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Experiment Details/ Instructions </Form.Label>
-                <Form.Control onChange={onChange4} className="textarea w-100"as="textarea" rows="3"/>
+                <Form.Control  className="textarea w-100"as="textarea" rows="3"/>
                 </Form.Group>
            <div style={divstyle}>
            <Button disabled={loading} className="btn btn-secondary w-50" type="submit" onClick={handleSubmit}>Submit</Button>

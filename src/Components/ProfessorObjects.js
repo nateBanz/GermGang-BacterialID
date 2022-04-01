@@ -1,6 +1,10 @@
 import { firestore } from '../firebase'; 
+
+
         //call the firestore database
         const db = firestore
+        
+
         /*
         this function creates a new doc reference for the email, then "sets" the information needed.
         */
@@ -13,9 +17,10 @@ import { firestore } from '../firebase';
             });
         }
 
-        export function createAnExperiment(title, startDate, endDate, Details){
-            const docRef = db.collection('users').doc("roles").collection("professors").doc(email).collection("experiments");
-
+        export function createAnExperiment(title, startDate, endDate, Details, email){
+           
+            const docRef = db.collection('users').doc("roles").collection("professors").doc(email).collection("experiments").doc(title);
+              
             docRef.set({
             ExperimentTitle: title,
             StartDate: startDate,
