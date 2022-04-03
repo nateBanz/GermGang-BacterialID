@@ -4,13 +4,20 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { Nav } from "react-bootstrap"
+import firebase from "firebase"
+
+const db = firebase.firestore()
+
+const makeAdmin = () => {
+  console.log("#professor-email" + "is a professor")
+}
 
 
 export default function Dashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
-    if (currentUser.email !== "bsarraj@ccc.edu" && currentUser != null || currentUser.email !== "anthonyletran@gmail.com" && currentUser != null ){
+    if (currentUser.email !== "bsarraj@ccc.edu" && currentUser != null ){
         history.push("/StudentDashboard")
     }
     else if(currentUser.email == null){
@@ -49,6 +56,10 @@ export default function Dashboard() {
             Delete Form
             </NavLink>  
           </Nav>
+          <div className="w-100 text-center mt-3">
+            <input type="email" placeholder="User email" id="professor-email" size = "50" required />
+            <button type="button" onClick={makeAdmin}>Make Professor</button>
+          </div>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">

@@ -50,10 +50,10 @@ export default function ProfessorDashboard() {
         </Card.Body>
       </Card>
 
-      <div className="w-100 text-center mt-3">
+      {/* <div className="w-100 text-center mt-3">
       <input type="email" placeholder="User email" id="professor-email" size = "50" required />
     <button type="button" onClick={makeAdmin}>Make Professor</button>
-      </div>
+      </div> */}
 
       
       <div className="w-100 text-center mt-3">
