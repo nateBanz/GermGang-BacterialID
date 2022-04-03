@@ -56,7 +56,7 @@ export default function CreateExperiment(){
     
           setError("")
           setLoading(true)
-         await createAnExperiment(experimentTitle, startDate, endDate, experimentDetails, currentUser.email)
+         await createAnExperiment(experimentTitle, startDate, endDate, experimentDetails, currentUser.uid)
         
        // history.push("/dashboard")
         } 

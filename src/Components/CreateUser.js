@@ -15,11 +15,10 @@ import { firestore } from '../firebase';
         }
         
        export function addProfessor(email){
-        const docRef = db.collection('users').doc("roles").collection("professors").doc(email);
+        const docRef = db.collection('users').doc(email);
 
         docRef.set({
         UserRole: "Professor",
-        UserEmail: email
         });
     }
 
