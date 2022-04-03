@@ -8,8 +8,8 @@ import { firestore } from '../firebase';
         /*
         this function creates a new doc reference for the email, then "sets" the information needed.
         */
-        export function createAClass(className, classCode){
-            const docRef = db.collection('classes').doc(classCode);
+        export function createAClass(className, classCode,email){
+            const docRef = db.collection('users').doc(email).collection('classes').doc(classCode);
     
             docRef.set({
             className: className,

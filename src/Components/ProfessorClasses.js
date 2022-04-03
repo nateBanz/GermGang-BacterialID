@@ -13,11 +13,11 @@ import { auth } from "../firebase"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 
+
 //import Header from "./Components/Header";
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
 //reset button
-
 
 
     
@@ -29,8 +29,16 @@ export default function CreateClass(){
   const [loading, setLoading] = useState(false)
   const { currentUser, logout } = useAuth()
   const history = useHistory()
-  const form = document.querySelector('form');
  
+
+  const [classes,setClasses] = useState ([
+    
+
+  ]);
+ 
+  
+
+
   
 
   let onChange  = (event) =>{
@@ -39,16 +47,18 @@ export default function CreateClass(){
   }
     async function handleSubmit(e) {
         e.preventDefault()
-    
+        
         try {
+          let nCObj = {cc: codeID, cn: classTitle};
+          let arr = classes.concat(nCObj);
+         setClasses(arr);
+          
           console.log(classTitle)
           console.log(codeID)
           setError("")
           setLoading(true)
-          await createAClass(classTitle, codeID);
-          const classTitleSet = document.getElementById("classTitle").value;
-          const classCodeSet = document.getElementById("classCode").value;
-          history.push("/");
+          await createAClass(classTitle, codeID, currentUser.email);
+          //history.push("/");
         } 
         catch {
           setError("Failed To Create New Class")
@@ -76,18 +86,30 @@ export default function CreateClass(){
           <br/>
           <br/>
           </div>
-          <div style={{display: 'flex', justifyContent:'center', alignItems:'center', color:'gray'}}>
-          <table width='600' border='1px'>
-      <thead>
-        <tr>
-          <th>Class Name</th>
-          <th>Class Code</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    </div>
+          <div >
+            <br/>
+          <h1 >Classes</h1>
+          
+          <div >
+          <br/>
+          <table color="blue" border='1'> 
+          <thead>
+          <tr>
+            <th>Class Name</th>
+            <th>Class Code</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+          <tbody>
+          
+          {
+            classes.map(cObj =>(<tr ><td>{cObj.cn}</td><td>{cObj.cc}</td><td><button>View</button></td> </tr>
+            )
+            )}
+            </tbody>
+          </table>
+          </div>
+            </div>
         </div>
         
         
