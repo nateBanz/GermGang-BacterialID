@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card, Alert, Dropdown, DropdownButton } from "react-bootstrap";
 import { useAuth} from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { Container } from "react-bootstrap";
@@ -20,6 +20,8 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
+  const role = useRef();
+ 
   
 
   async function handleSubmit(e) {
@@ -77,8 +79,17 @@ export default function Signup() {
                   ref={passwordConfirmRef}
                   required
                 />
-            
+
+             
               </Form.Group >
+
+              {/* Drop down for roles */}
+              {/* <DropdownButton id="dropdown-basic-button" title="Role">
+                <Dropdown.Item href="#/action-1">Student</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Professor</Dropdown.Item>
+              </DropdownButton>
+
+              <br></br> */}
               <Button 
                 disabled={loading}
                 className="btn btn-secondary w-100"
@@ -91,5 +102,6 @@ export default function Signup() {
         </Card>
       </div>
     </Container>
+    
   );
 }

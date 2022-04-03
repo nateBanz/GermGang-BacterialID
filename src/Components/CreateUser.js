@@ -1,6 +1,6 @@
 
 import { firestore } from '../firebase';
-import { doc, setDoc } from "firebase/firestore/lite"; 
+
         //call the firestore database
         const db = firestore
         /*

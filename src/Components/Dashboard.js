@@ -10,7 +10,7 @@ export default function Dashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
-    if (currentUser.email !== "bsarraj@ccc.edu" && currentUser != null){
+    if (currentUser.email !== "bsarraj@ccc.edu" && currentUser != null || currentUser.email !== "anthonyletran@gmail.com" && currentUser != null ){
         history.push("/StudentDashboard")
     }
     else if(currentUser.email == null){
