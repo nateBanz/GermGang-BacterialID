@@ -5,7 +5,7 @@ import { firestore } from "../firebase";
 export function writeClass(classTitle, email, uuid) {
     
     const db = firestore
-      const docRef = db.collection('users').doc('roles').collection('professors').doc(email).collection('classes').doc(classTitle);
+      const docRef = db.collection('users').doc(email).collection('classes').doc(classTitle);
 
       docRef.set({
       ClassTitle: classTitle,
@@ -30,24 +30,38 @@ export function writeExperiment(expTitle, email, uuid, classID) {
 
     export async function isStudent(email){
       //gets the snapshot of the firestores 'users'
-      const doc = firestore.collection('users').doc('roles').collection("student").doc(email)
+      const db = firestore;
+      const doc = db.collection('users').doc(email);
       let result = await doc.get("UserRole")
-      
-      return result.exists
+      if(result.get("UserRole") === "student"){
+        return true
+      }
+      else{
+        return false
+      }
       }
 
     export async function isProfessor(email){
         //gets the snapshot of the firestores 'users'
-        const doc = firestore.collection('users').doc('roles').collection("professors").doc(email)
+        const doc = firestore.collection('users').doc(email)
         let result = await doc.get("UserRole")
-        
-        return result.exists
+        if(result.get("UserRole") === "professor"){
+          return true
+        }
+        else{
+          return false
+        }
         }
 
     export async function isAdmin(email){
         //gets the snapshot of the firestores 'users'
-        const doc = firestore.collection('users').doc('roles').collection("admins").doc(email)
+        const doc = firestore.collection('users').doc(email)
         let result = await doc.get("UserRole")
-        
+        if(result.get("UserRole") === "admin"){
+          return true
+        }
+        else{
+          return false
+        }
         return result.exists
         }

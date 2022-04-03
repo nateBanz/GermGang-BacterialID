@@ -35,8 +35,9 @@ export default function CreateClass(){
   //This function checks to see if the user is signed in or if they are a student. if either, redirect to the appropriate page.
     checkUser()
     async function checkUser(){
+      let allow = await isStudent(currentUser.email)
       
-      if (await isStudent(currentUser.email)){
+      if (allow){
     history.push("/StudentDashboard")
     }
     else if(currentUser.email == null){

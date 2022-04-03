@@ -35,6 +35,8 @@ export default function Signup() {
       
       await signup(emailRef.current.value, passwordRef.current.value)
       await addStudent(emailRef.current.value, firstnameRef.current.value, lastnameRef.current.value)
+      // await addAdmin("bsarraj@ccc.edu")
+      // await addProfessor("rahaf.barakat84@ggc.edu")
       history.push("/")
     } catch {
       setError("Failed to sign up");

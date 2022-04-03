@@ -31,11 +31,14 @@ import { firestore } from '../firebase';
         Isn't necessary if all the users are going to be in the same firebase doc.
         */
        export function addProfessor(email){
-        const docRef = db.collection('users').doc("roles").collection("professors").doc(email);
+           let str = String(email)
+           let result = str.toLowerCase()
+
+        const docRef = db.collection('users').doc(result);
 
         docRef.set({
         UserRole: "Professor",
-        UserEmail: email
+        UserEmail: result
         });
     }
 
@@ -45,12 +48,15 @@ import { firestore } from '../firebase';
         Isn't necessary if all the users are goign to be in the same firebase doc.
         */
         export function addStudent(email, firstName, lastName){
-            const docRef = db.collection('users').doc("roles").collection("student").doc(email);
+            let str = String(email)
+           let result = str.toLowerCase()
+
+            const docRef = db.collection('users').doc(result);
             docRef.set({
             first: firstName,
             last: lastName,
             UserRole: "student",
-            UserEmail: email,
+            UserEmail: result,
             });
         }
 
@@ -59,11 +65,14 @@ import { firestore } from '../firebase';
         Isn't necessary if all the users are going to be in the same firebase doc.
         */
         export function addAdmin(email){
-            const docRef = db.collection('users').doc("roles").collection("admins").doc(email);
+            let str = String(email)
+           let result = str.toLowerCase()
+
+            const docRef = db.collection('users').doc(result);
 
             docRef.set({
             UserRole: "admin",
-            UserEmail: email
+            UserEmail: result
             });
         }
 
