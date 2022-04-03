@@ -5,6 +5,7 @@ import PersonTracker from "./PersonTracker";
 import {useContext, useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Card, Image} from 'react-bootstrap';
+import React from 'react';
 
 // -props.button- is the name of the current germ button. -props.updateGerm- is a function to update the germ in the parent
 const RoutingButton = (props) => {
