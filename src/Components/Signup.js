@@ -24,7 +24,7 @@ export default function Signup() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
+    
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match");
     }
@@ -32,14 +32,26 @@ export default function Signup() {
     try {
       setError("");
       setLoading(true);
+      
       await signup(emailRef.current.value, passwordRef.current.value)
-      await addUser(emailRef.current.value, "student")
-      history.push("/");
+      await addStudent(emailRef.current.value, firstnameRef.current.value, lastnameRef.current.value)
+      history.push("/")
     } catch {
       setError("Failed to sign up");
     }
-
+    
     setLoading(false);
+    
+    
+  }
+  async function handleSignup(){
+    try{
+      setError("")
+      
+      await addStudent(emailRef.current.value, firstnameRef.current.value, lastnameRef.current.value, currentUser)
+    } catch {
+      setError("Failed to add User to database.")
+    }
   }
 
   return (
