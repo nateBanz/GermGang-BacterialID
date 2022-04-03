@@ -4,6 +4,17 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { Nav } from "react-bootstrap"
+import { firestore } from "../firebase"
+const db = firestore
+
+const makeProfessor = () => {
+  console.log("make professor")
+  // const docRef = db.collection('users').doc("roles").collection("professors");
+
+  //       docRef.set({
+  //       UserRole: "Professor"
+  //       });
+    }
 
 
 export default function Dashboard() {
@@ -49,6 +60,10 @@ export default function Dashboard() {
             Delete Form
             </NavLink>  
           </Nav>
+          <div className="w-100 text-center mt-3">
+            <input type="email" placeholder="Professor email" id="professor-email" size = "50" />
+            <button onClick={makeProfessor}>Make Professor</button>
+          </div>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">

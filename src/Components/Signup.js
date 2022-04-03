@@ -4,6 +4,7 @@ import { useAuth} from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { addAdmin, addProfessor, addStudent, addUser } from "./CreateUser";
+import { firestore } from "../firebase";
 
 // import App from "../App";
 
@@ -19,7 +20,7 @@ export default function Signup() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-
+  const db = firestore;
   
 
   async function handleSubmit(e) {
@@ -34,6 +35,10 @@ export default function Signup() {
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value)
       await addUser(emailRef.current.value, "student")
+      // db.collection('people').doc(Credential.user.uid).set({
+      //   FirstName: firstnameRef.current.value,
+      //   LastName: lastnameRef.current.value,
+      // })
       history.push("/");
     } catch {
       setError("Failed to sign up");
