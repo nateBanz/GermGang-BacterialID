@@ -5,6 +5,8 @@ import { Link, useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { Nav } from "react-bootstrap"
 import { addProfessor } from "./CreateUser";
+import Header from "./Header";
+
 
 export default function Dashboard() {
   const [error, setError] = useState("")
@@ -40,6 +42,9 @@ export default function Dashboard() {
   return (
     <>
       <Card>
+        <Header>
+          
+        </Header>
         <Card.Body>
           <h2 className="text-center mb-4">Admin Controls</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -61,7 +66,7 @@ export default function Dashboard() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        <input onChange={onChange}/>
+        <input onChange={onChange} size = "50"/>
         <button onClick={handleSubmit}>Make Professor</button>
       
           
