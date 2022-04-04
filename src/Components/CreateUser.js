@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { firestore } from '../firebase';
+
 //import { doc, setDoc } from "firebase/firestore/lite"; 
 
 
@@ -10,7 +11,6 @@ import { firestore } from '../firebase';
         addStudent()
         history.push("/")
     }
-
         //call the firestore database
         const db = firestore
         

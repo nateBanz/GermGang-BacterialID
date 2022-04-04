@@ -2,8 +2,9 @@
 import "firebase-auth";
 
 import firebase from "firebase"
-//import initializeApp from "firebase/app"
-//import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore } from "@firebase/firestore";
+import 'firebase/firestore';
+
 //const APIKEY = require("./secert");
 
 const app = firebase.initializeApp({
@@ -17,8 +18,9 @@ const app = firebase.initializeApp({
     measurementId: "G-8SKCLJXLN3"
 });
 
+
+
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 export default firebase;
-
-
