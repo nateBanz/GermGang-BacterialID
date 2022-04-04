@@ -12,6 +12,7 @@ import { createAClass } from "./ProfessorObjects";
 import { auth } from "../firebase"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
+import { isStudent } from "./firestoreUtils";
 
 
 //import Header from "./Components/Header";
@@ -39,7 +40,18 @@ export default function CreateClass(){
   
 
 
-  
+  //This function checks to see if the user is signed in or if they are a student. if either, redirect to the appropriate page.
+  checkUser()
+  async function checkUser(){
+    let allow = await isStudent(currentUser.email)
+    
+    if (allow){
+  history.push("/StudentDashboard")
+  }
+  else if(currentUser.email == null){
+      history.push("/login")
+  }
+  }
 
   let onChange  = (event) =>{
     const newValue = event.target.value

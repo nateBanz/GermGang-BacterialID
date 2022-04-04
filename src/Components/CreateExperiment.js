@@ -8,6 +8,9 @@ import {newCode} from "./RandomIDCode";
 import 'react-datepicker/dist/react-datepicker.css'
 import { createAnExperiment } from "./ProfessorObjects";
 import { useAuth } from "../contexts/AuthContext"
+import { useHistory } from "react-router-dom"
+import { isStudent } from './firestoreUtils';
+
 
 
 //import Header from "./Components/Header";//you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
@@ -27,10 +30,23 @@ export default function CreateExperiment(){
   const [loading, setLoading] = useState(false)
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
+  const history = useHistory()
  
 
   const [experimentDetails,setExperimentDetails]= useState("");
   const { currentUser, logout } = useAuth()
+  //This function checks to see if the user is signed in or if they are a student. if either, redirect to the appropriate page.
+  checkUser()
+  async function checkUser(){
+    let allow = await isStudent(currentUser.email)
+    
+    if (allow){
+  history.push("/StudentDashboard")
+  }
+  else if(currentUser.email == null){
+      history.push("/login")
+  }
+  }
   const divstyle = {
     display: 'flex',
     justifyContent:'center',
@@ -38,6 +54,7 @@ export default function CreateExperiment(){
     padding: '10px'
 
   }
+
   let onChange  = (event) =>{
     const newValue = event.target.value
     setExperimentTitle(newValue);
