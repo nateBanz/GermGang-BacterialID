@@ -2,8 +2,8 @@
 import "firebase-auth";
 
 import firebase from "firebase"
-import initializeApp from "firebase/app"
-
+//import initializeApp from "firebase/app"
+//import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 //const APIKEY = require("./secert");
 
 const app = firebase.initializeApp({
