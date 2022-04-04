@@ -4,35 +4,37 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { Nav } from "react-bootstrap"
-import firebase from "firebase"
-
-const db = firebase.firestore()
-
-const makeAdmin = () => {
-  console.log("#professor-email" + "is a professor")
-}
-
+import { addProfessor } from "./CreateUser";
 
 export default function Dashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
-    if (currentUser.email !== "bsarraj@ccc.edu" && currentUser != null ){
+  const [email, setEmail]= useState("");
+  let onChange  = (event) =>{
+    const newValue = event.target.value
+    setEmail(newValue);
+  }
+    if (currentUser.email !== "bsarraj@ccc.edu" && currentUser != null){
         history.push("/StudentDashboard")
     }
     else if(currentUser.email == null){
         history.push("/login")
     };
 
-  async function handleLogout() {
-    setError("")
+  // async function handleLogout() {
+  //   setError("")
 
-    try {
-      await logout()
-      history.push("/login")
-    } catch {
-      setError("Failed to log out")
-    }
+  //   try {
+  //     await logout()
+  //     history.push("/login")
+  //   } catch {
+  //     setError("Failed to log out")
+  //   }
+  // }
+  async function handleSubmit(){
+    console.log(email)
+        await addProfessor(email);
   }
 
   return (
@@ -56,16 +58,14 @@ export default function Dashboard() {
             Delete Form
             </NavLink>  
           </Nav>
-          <div className="w-100 text-center mt-3">
-            <input type="email" placeholder="User email" id="professor-email" size = "50" required />
-            <button type="button" onClick={makeAdmin}>Make Professor</button>
-          </div>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        <Button variant="link" onClick={handleLogout}>
-          Log Out
-        </Button>
+        <input onChange={onChange}/>
+        <button onClick={handleSubmit}>Make Professor</button>
+      
+          
+       
       </div>
     </>
   )
