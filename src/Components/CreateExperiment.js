@@ -56,8 +56,12 @@ export default function CreateExperiment(){
     
           setError("")
           setLoading(true)
-         await createAnExperiment(experimentTitle, startDate, endDate, experimentDetails, currentUser.uid)
-        
+          console.log(experimentTitle);
+          console.log(experimentDetails);
+          console.log(experimentCode);
+          console.log(startDate);
+          console.log(endDate)
+         await createAnExperiment(experimentTitle, startDate, endDate, experimentDetails, currentUser.email, expcode)        
        // history.push("/dashboard")
         } 
         catch {

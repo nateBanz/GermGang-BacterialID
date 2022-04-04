@@ -57,7 +57,7 @@ export default function CreateClass(){
           console.log(codeID)
           setError("")
           setLoading(true)
-          await createAClass(classTitle, codeID, currentUser.uid);
+          await createAClass(classTitle, codeID, currentUser.email);
           //history.push("/");
         } 
         catch {

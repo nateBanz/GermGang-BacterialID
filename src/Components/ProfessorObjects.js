@@ -1,4 +1,5 @@
 import { firestore } from '../firebase'; 
+import RandomExperimentCode from './RandomIDCode';
 
 
         //call the firestore database
@@ -8,8 +9,8 @@ import { firestore } from '../firebase';
         /*
         this function creates a new doc reference for the email, then "sets" the information needed.
         */
-        export function createAClass(className, classCode,uid){
-            const docRef = db.collection('users').doc(uid).collection('classes').doc(classCode);
+        export function createAClass(className, classCode,email){
+            const docRef = db.collection('users').doc(email).collection('classes').doc(classCode);
     
             docRef.set({
             className: className,
@@ -17,9 +18,9 @@ import { firestore } from '../firebase';
             });
         }
 
-        export function createAnExperiment(title, startDate, endDate, Details, uid){
+        export function createAnExperiment(title, startDate, endDate, Details, email, code){
            
-            const docRef = db.collection('users').doc(uid).collection('experiments');
+            const docRef = db.collection('users').doc(email).collection('experiments').doc(code);
               
             docRef.set({
             ExperimentTitle: title,
