@@ -1,7 +1,16 @@
-
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { firestore } from '../firebase';
+
+//import { doc, setDoc } from "firebase/firestore/lite"; 
+
+
+    export default function CreateUser(){
+        const currentUser = useAuth()
+        const history = useHistory();
+        addStudent()
+        history.push("/")
+    }
         //call the firestore database
         const db = firestore
         
@@ -27,11 +36,12 @@ import { firestore } from '../firebase';
 
         const docRef = db.collection('users').doc(result);
 
-        docRef.set({
+        docRef.update({
         UserRole: "Professor",
         UserEmail: result
         });
     }
+ 
 
 
         /*
