@@ -14,17 +14,16 @@ import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 
 
-
 //import Header from "./Components/Header";
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
 //reset button
 
+
+    
 export default function CreateClass(){
-  const {currentUser} = useAuth()
-  const history = useHistory()
   const codeID = newCode()
-  const classTitle = useRef();
+  const [classTitle,setClassTitle]= useState("")
   const [classCode,setClassCode] = useState("")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -33,6 +32,8 @@ export default function CreateClass(){
  
 
   const [classes,setClasses] = useState ([
+    
+
   ]);
  
   
@@ -44,29 +45,6 @@ export default function CreateClass(){
     const newValue = event.target.value
     setClassTitle(newValue);
   }
-    
-    
-  
-  //This function checks to see if the user is signed in or if they are a student. if either, redirect to the appropriate page.
-    checkUser()
-    async function checkUser(){
-      let allow = await isStudent(currentUser.email)
-      
-      if (allow){
-    history.push("/StudentDashboard")
-    }
-    else if(currentUser.email == null){
-        history.push("/login")
-    }
-    }
-
-    //function that handles the cancel button
-    async function handleCancel(){
-      history.push("/")
-    }
-
-    //function that handles the submit button. calls the writeClass function to create a class in the professors file.
-
     async function handleSubmit(e) {
         e.preventDefault()
         
@@ -79,19 +57,15 @@ export default function CreateClass(){
           console.log(codeID)
           setError("")
           setLoading(true)
-          if (!(await isStudent(currentUser.email))){
-          await writeClass(classTitle.current.value, currentUser.email, codeID);
-          }
-        
-          history.push("/")
+          await createAClass(classTitle, codeID, currentUser.email);
+          //history.push("/");
         } 
         catch {
-          setError("Failed To Create New Class:" + classTitle.current.value + " " + currentUser.email + " " + codeID)
+          setError("Failed To Create New Class")
         }
     
         setLoading(false)
       }
-
       return(       
         <div>
           <Header> </Header>
@@ -140,4 +114,3 @@ export default function CreateClass(){
         
         
     )}
-
