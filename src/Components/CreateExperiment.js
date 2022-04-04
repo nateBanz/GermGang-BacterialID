@@ -6,6 +6,10 @@ import Header from "./Header";
 import DatePicker from 'react-datepicker';
 import {newCode} from "./RandomIDCode";
 import 'react-datepicker/dist/react-datepicker.css'
+import { createAnExperiment } from "./ProfessorObjects";
+import { useAuth } from "../contexts/AuthContext"
+
+
 //import Header from "./Components/Header";//you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
 //reset button
@@ -21,9 +25,12 @@ export default function CreateExperiment(){
   const [experimentCode,setExperimentCode] = useState("")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
+  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState(null)
+ 
 
+  const [experimentDetails,setExperimentDetails]= useState("");
+  const { currentUser, logout } = useAuth()
   const divstyle = {
     display: 'flex',
     justifyContent:'center',
@@ -35,9 +42,11 @@ export default function CreateExperiment(){
     const newValue = event.target.value
     setExperimentTitle(newValue);
   }
-  let onChange2  = (event) =>{
+
+ 
+  let onChange4 = (event) =>{
     const newValue = event.target.value
-    setExperimentCode(newValue);
+    setExperimentDetails(newValue);
   }
 
     async function handleSubmit(e) {
@@ -47,8 +56,12 @@ export default function CreateExperiment(){
     
           setError("")
           setLoading(true)
-         //await createAClass(classTitle.current.value, classCode.current.value)
-        
+          console.log(experimentTitle);
+          console.log(experimentDetails);
+          console.log(experimentCode);
+          console.log(startDate);
+          console.log(endDate)
+         await createAnExperiment(experimentTitle, startDate, endDate, experimentDetails, currentUser.email, expcode)        
        // history.push("/dashboard")
         } 
         catch {
@@ -67,25 +80,24 @@ export default function CreateExperiment(){
            {"Experiment Title:       "}<input wrapperClassname='Textwrap' size="50" placeholder="Experiment Title..." onChange={onChange} padding-left/> 
            </div>
         <br/>
-        <br/>
-           <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+           <div hidden style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
             {"Experiment Code/ID: " + expcode}<br/>
             </div>
             <div  className = 'App'>
             <p>Start Date: </p>
-                <DatePicker wrapperClassName='datepicker' border='0' selected={startDate} onChange3={date => setStartDate(date)}/>
+                <DatePicker wrapperClassName='datepicker' border='0' selected={startDate} onChange={date =>setStartDate(date)}/>
             </div>
             <div className = 'App'>
             <p>End Date: </p> 
-                <DatePicker class="square border border-dark" selected={startDate} onChange3={date => setEndDate(date)}/>
+                <DatePicker selected={endDate} onChange={date => setEndDate(date)}/>
                 </div>
         <br/>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group  onChange={onChange4} controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Experiment Details/ Instructions </Form.Label>
-                <Form.Control className="textarea w-100"as="textarea" rows="3"/>
+                <Form.Control  className="textarea w-100"as="textarea" rows="3"/>
                 </Form.Group>
            <div style={divstyle}>
-           <Button disabled={loading} className="btn btn-secondary w-50" type="submit" onSubmit={handleSubmit}>Submit</Button>
+           <Button disabled={loading} className="btn btn-secondary w-50" type="submit" onClick={handleSubmit}>Submit</Button>
            </div>
            <div style={divstyle}>
            <Button className="btn btn-secondary w-50">Cancel</Button>

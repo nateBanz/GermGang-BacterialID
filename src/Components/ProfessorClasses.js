@@ -1,4 +1,3 @@
-
 import {useContext} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown, Container, Card, Form} from 'react-bootstrap';
@@ -9,17 +8,17 @@ import PrivateRoute from './PrivateRoute';
 import React, { useRef, useState} from "react"
 import Header from "./Header";
 import {newCode} from './RandomIDCode'
-import { useHistory } from "react-router-dom";
-import { isProfessor, writeClass, isStudent } from "./firestoreUtils";
-import { useAuth } from "../contexts/AuthContext";
+import { createAClass } from "./ProfessorObjects";
+import { auth } from "../firebase"
+import { useAuth } from "../contexts/AuthContext"
+import { useHistory } from "react-router-dom"
+
+
+
 //import Header from "./Components/Header";
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
 //reset button
-
-
-
-
 
 export default function CreateClass(){
   const {currentUser} = useAuth()
@@ -29,6 +28,22 @@ export default function CreateClass(){
   const [classCode,setClassCode] = useState("")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const { currentUser, logout } = useAuth()
+  const history = useHistory()
+ 
+
+  const [classes,setClasses] = useState ([
+  ]);
+ 
+  
+
+
+  
+
+  let onChange  = (event) =>{
+    const newValue = event.target.value
+    setClassTitle(newValue);
+  }
     
     
   
@@ -51,11 +66,17 @@ export default function CreateClass(){
     }
 
     //function that handles the submit button. calls the writeClass function to create a class in the professors file.
+
     async function handleSubmit(e) {
         e.preventDefault()
-    
+        
         try {
-    
+          let nCObj = {cc: codeID, cn: classTitle};
+          let arr = classes.concat(nCObj);
+         setClasses(arr);
+          
+          console.log(classTitle)
+          console.log(codeID)
           setError("")
           setLoading(true)
           if (!(await isStudent(currentUser.email))){
@@ -70,75 +91,53 @@ export default function CreateClass(){
     
         setLoading(false)
       }
-    //   return(
-    //     <div >
-    //       <Header> </Header>
-    //       <Card>
-    //         <Card.Body>
-       
-    //       <h1 className="text-center mb-4">Create New Class</h1>
-    //      <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-    //       {"Class Title: "}<input  size="50" placeholder="classTitle"/> 
-    //      </div>
-    //       <br/>
-    //       <br/> 
-    //       <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-    //        </div>
-    //        <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-    //        {"Class Code/ID: " + codeID}
-    //        <br/>
-    //        <br/>
-    //        </div>
-    //       <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-    //       <Button disabled={loading} className="btn btn-secondary" type="submit" onSubmit={handleSubmit}>Submit</Button>
-    //       <br/>
-    //       <Button>Cancel</Button>
-    //       <br/>
-    //       <br/>
-    //       </div>
-    //       </Card.Body>
-    //       </Card>
-    //     </div>
+
+      return(       
+        <div>
+          <Header> </Header>
+          <h1 className="text-center mb-4">Create New Class</h1>
+          <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+          {"Class Title: "}<input id='classTitle'  size="50" placeholder="classTitle" onChange={onChange}/> 
+         </div>
+         <br/>
+
+         <div hidden style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+           {"Class Code/ID: " + codeID} 
+          
+           </div>
+           <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+          <Button disabled={loading} className="btn btn-secondary" type="submit" onClick={handleSubmit}>Submit</Button>
+          <br/>
+          <Button>Cancel</Button>
+          <br/>
+          <br/>
+          </div>
+          <div >
+            <br/>
+          <h1 >Classes</h1>
+          
+          <div >
+          <br/>
+          <table color="blue" border='1'> 
+          <thead>
+          <tr>
+            <th>Class Name</th>
+            <th>Class Code</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+          <tbody>
+          
+          {
+            classes.map(cObj =>(<tr ><td>{cObj.cn}</td><td>{cObj.cc}</td><td><button>View</button></td> </tr>
+            )
+            )}
+            </tbody>
+          </table>
+          </div>
+            </div>
+        </div>
         
-    // )
-
-     
-    return (
-      <>
-        <Header></Header>
         
-      <br /><Container className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: "50vh", width: "1000px" }}>
+    )}
 
-          <Card style = {{width: "1000px"}}>
-            <Card.Body>
-              {error && <Alert variant="danger">{error}</Alert>}
-              <Form onSubmit={handleSubmit}>
-                <h2>Create New Class</h2>
-                <Form.Group>
-                  <Form.Label>Class Title:</Form.Label>
-                  <Form.Control type="text" ref={classTitle} required maxLength={"50"} />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Class code: {codeID}</Form.Label>
-                  <br />
-                  <Form.Label>(Give this code to Students you want to join this Class)</Form.Label>
-                </Form.Group>
-                <Button className="btn btn-secondary w-100" type="submit">
-                  Submit
-                </Button>
-                <br/>
-                <Button className="btn btn-secondary w-100" type="cancel" onClickCapture={handleCancel}>
-                 Cancel
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Container></>
-     )
-
-    }
-    //use the getname function here to get a germ object.
-
-
-                    
