@@ -63,7 +63,7 @@ export default function Dashboard() {
       <div className="w-100 text-center mt-2">
         <input onChange={onChange}/>
         <button onClick={handleSubmit}>Make Professor</button>
-      
+        
           
        
       </div>

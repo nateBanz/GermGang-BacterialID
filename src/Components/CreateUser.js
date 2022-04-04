@@ -21,6 +21,7 @@ import { firestore } from '../firebase';
         UserRole: "Professor",
         });
     }
+ 
 
         export function addStudent(email, firstName, lastName){
             const docRef = db.collection('users').doc("roles").collection("students").doc(email);
