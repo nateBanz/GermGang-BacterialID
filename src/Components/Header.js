@@ -174,6 +174,7 @@ const Header = (props) => {
                     <Nav>
                         <NavLink hidden={currentUser == null} to="./createExperiment" className= "btn btn-primary">CreateExperiment</NavLink>
                     </Nav>
+
                 </Navbar.Collapse>
             </Navbar>
         </div>

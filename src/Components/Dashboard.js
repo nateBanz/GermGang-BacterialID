@@ -5,7 +5,9 @@ import { Link, useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { Nav } from "react-bootstrap"
 import { addProfessor } from "./CreateUser";
+
 import Header from "./Header";
+
 
 
 export default function Dashboard() {
@@ -71,7 +73,6 @@ export default function Dashboard() {
       <div className="w-100 text-center mt-2">
         <input id = "professorinput" onChange={onChange} size = "50" />
         <button onClick={handleSubmit}>Make Professor</button>
-      
           
        
       </div>
