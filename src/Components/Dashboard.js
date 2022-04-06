@@ -39,6 +39,7 @@ export default function Dashboard() {
   // }
   async function handleSubmit(){
     const pmail = document.getElementById('professorinput').value
+    const amail = document.getElementById('adminInput').value
     console.log(email)
         await addProfessor(email);
         document.getElementById('professorinput').value = "";
@@ -48,6 +49,8 @@ export default function Dashboard() {
   async function handleSubmit2(){
     console.log(email)
         await addAdmin(email);
+        document.getElementById('adminInput').value = "";
+        alert(pmail + ' has been made a professor')
   }
 
   return (
@@ -84,7 +87,7 @@ export default function Dashboard() {
       </div>
 
       <div className="w-100 text-center mt-2">
-
+      <input id = "adminInput" onChange={onChange} size = "50" />
         <input onChange={onChange} size = "50"/>
         <button onClick={handleSubmit2}>Make Admin</button>
 
