@@ -98,6 +98,7 @@ export default function CreateExperiment(){
             </div>
             <Card.Body>
             <h1 className="text-center mb-4">Create New Experiment</h1>
+            <br/>
           <div  style={divstyle}>
            {"Experiment Title:       "}<input wrapperClassname='Textwrap' size="50" placeholder="Experiment Title..." onChange={onChange} padding-left/> 
            </div>
