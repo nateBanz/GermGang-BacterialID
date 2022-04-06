@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { Nav } from "react-bootstrap"
 import { addProfessor } from "./CreateUser";
+import { isAdmin } from "./firestoreUtils"
 
 import Header from "./Header";
 
@@ -15,16 +16,24 @@ export default function Dashboard() {
   const { currentUser, logout } = useAuth()
   const history = useHistory()
   const [email, setEmail]= useState("");
+
   let onChange  = (event) =>{
     const newValue = event.target.value
     setEmail(newValue);
   }
-    if (currentUser.email !== "bsarraj@ccc.edu" && currentUser != null){
-        history.push("/StudentDashboard")
-    }
-    else if(currentUser.email == null){
-        history.push("/login")
-    };
+
+  checkUser()
+  async function checkUser(){
+    let allow = await isAdmin(currentUser.email)
+    
+    if (!allow){
+      history.push("/")
+  }
+  else if(currentUser.email == null){
+      history.push("/login")
+  }
+
+  }
 
   // async function handleLogout() {
   //   setError("")
