@@ -35,8 +35,11 @@ export default function Dashboard() {
   //   }
   // }
   async function handleSubmit(){
+    const pmail = document.getElementById('professorinput').value
     console.log(email)
         await addProfessor(email);
+        document.getElementById('professorinput').value = "";
+        alert(pmail + ' has been made a professor')
   }
 
   return (
@@ -66,7 +69,7 @@ export default function Dashboard() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        <input onChange={onChange} size = "50"/>
+        <input id = "professorinput" onChange={onChange} size = "50" />
         <button onClick={handleSubmit}>Make Professor</button>
       
           
