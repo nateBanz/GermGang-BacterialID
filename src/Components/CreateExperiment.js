@@ -1,6 +1,5 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button, Card, Form, } from 'react-bootstrap';
 import React, { useState} from "react"
 import Header from "./Header";
 import DatePicker from 'react-datepicker';
@@ -10,7 +9,7 @@ import { createAnExperiment } from "./ProfessorObjects";
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import { isStudent } from './firestoreUtils';
-
+import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown, Container, Card, Form} from 'react-bootstrap';
 
 
 //import Header from "./Components/Header";//you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
@@ -88,11 +87,17 @@ export default function CreateExperiment(){
         setLoading(false)
       }
        return(
-         <div>
-           <Header> </Header>
-           <Card>
-             <Card.Body>
-          <h1 className="text-center mb-4">Create New Experiment</h1>
+        <>
+        <Header></Header>
+        
+      <br /><Container className="d-flex align-items-center justify-content-center"
+        style={{ minHeight: "50vh", width: "1000px" }}>
+        
+          <Card style = {{width: "1000px"}}>
+            <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+            </div>
+            <Card.Body>
+            <h1 className="text-center mb-4">Create New Experiment</h1>
           <div  style={divstyle}>
            {"Experiment Title:       "}<input wrapperClassname='Textwrap' size="50" placeholder="Experiment Title..." onChange={onChange} padding-left/> 
            </div>
@@ -119,10 +124,45 @@ export default function CreateExperiment(){
            <div style={divstyle}>
            <Button className="btn btn-secondary w-50">Cancel</Button>
            </div>
-           </Card.Body>
+            </Card.Body>
           </Card>
-          </div>
-       )
+        </Container></>
+     )
+      //    <div>
+      //      <Header> </Header>
+      //      <Card>
+      //        <Card.Body>
+        //   <h1 className="text-center mb-4">Create New Experiment</h1>
+        //   <div  style={divstyle}>
+        //    {"Experiment Title:       "}<input wrapperClassname='Textwrap' size="50" placeholder="Experiment Title..." onChange={onChange} padding-left/> 
+        //    </div>
+        // <br/>
+        //    <div hidden style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+        //     {"Experiment Code/ID: " + expcode}<br/>
+        //     </div>
+        //     <div  className = 'App'>
+        //     <p>Start Date: </p>
+        //         <DatePicker wrapperClassName='datepicker' border='0' selected={startDate} onChange={date =>setStartDate(date)}/>
+        //     </div>
+        //     <div className = 'App'>
+        //     <p>End Date: </p> 
+        //         <DatePicker selected={endDate} onChange={date => setEndDate(date)}/>
+        //         </div>
+        // <br/>
+        //         <Form.Group  onChange={onChange4} controlId="exampleForm.ControlTextarea1">
+        //         <Form.Label>Experiment Details/ Instructions </Form.Label>
+        //         <Form.Control  className="textarea w-100"as="textarea" rows="3"/>
+        //         </Form.Group>
+        //    <div style={divstyle}>
+        //    <Button disabled={loading} className="btn btn-secondary w-50" type="submit" onClick={handleSubmit}>Submit</Button>
+        //    </div>
+        //    <div style={divstyle}>
+        //    <Button className="btn btn-secondary w-50">Cancel</Button>
+        //    </div>
+      //      </Card.Body>
+      //     </Card>
+      //     </div>
+      //  )
 
 
 
