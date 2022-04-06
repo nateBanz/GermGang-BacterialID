@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { Nav } from "react-bootstrap"
-import { addProfessor } from "./CreateUser";
+import { addProfessor, addAdmin } from "./CreateUser";
 
 import Header from "./Header";
 
@@ -41,6 +41,12 @@ export default function Dashboard() {
         await addProfessor(email);
   }
 
+  async function handleSubmit2(){
+    console.log(email)
+        await addAdmin(email);
+  }
+
+
   return (
     <>
       <Card>
@@ -68,12 +74,21 @@ export default function Dashboard() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-
+        <label className="w-100">Make professor</label>
         <input onChange={onChange} size = "50"/>
-        <button onClick={handleSubmit}>Make Professor</button>
+        <button onClick={handleSubmit}>Submit</button>
           
        
       </div>
+      
+      <div className="w-100 text-center mt-2">
+        <label className="w-100"> Make Admin</label>
+        <input onChange={onChange} size = "50" align="right"/>
+        <button onClick={handleSubmit2}>Submit</button>
+
+
+      </div>
+
     </>
   )
 }
