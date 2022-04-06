@@ -1,16 +1,26 @@
 //for testing! Connects the app to firebase
-import "firebase/auth";
-import firebase from "firebase";
-const APIKEY = require("./secert");
+import "firebase-auth";
 
-firebase.initializeApp({
-  apiKey: APIKEY.GOOGLE_API_KEY,
-  authDomain: "germgangpractice.firebaseapp.com",
-  projectId: "germgangpractice",
-  storageBucket: "germgangpractice.appspot.com",
-  messagingSenderId: "1060499409594",
-  appId: "1:1060499409594:web:dbc946b85a2c5231e01083",
+import firebase from "firebase"
+import { getFirestore } from "@firebase/firestore";
+import 'firebase/firestore';
+
+//const APIKEY = require("./secert");
+
+const app = firebase.initializeApp({
+    apiKey: "AIzaSyApiE--Kil_974EnweIny4y_m9sFmVv8gQ",
+    authDomain: "microbemusketeers.firebaseapp.com",
+    databaseURL: "https://microbemusketeers-default-rtdb.firebaseio.com",
+    projectId: "microbemusketeers",
+    storageBucket: "microbemusketeers.appspot.com",
+    messagingSenderId: "979790454601",
+    appId: "1:979790454601:web:d5355ce80cdb7a03348498",
+    measurementId: "G-8SKCLJXLN3"
 });
 
+
+
+
 export const auth = firebase.auth();
+export const firestore = firebase.firestore();
 export default firebase;
