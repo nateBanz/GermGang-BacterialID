@@ -4,9 +4,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { Nav } from "react-bootstrap"
-import { addProfessor } from "./CreateUser";
-import { isAdmin } from "./firestoreUtils"
-import { addAdmin } from "./CreateUser"
+import { addProfessor, addAdmin } from "./CreateUser";
 
 import Header from "./Header";
 
@@ -17,24 +15,16 @@ export default function Dashboard() {
   const { currentUser, logout } = useAuth()
   const history = useHistory()
   const [email, setEmail]= useState("");
-
   let onChange  = (event) =>{
     const newValue = event.target.value
     setEmail(newValue);
   }
-
-  checkUser()
-  async function checkUser(){
-    let allow = await isAdmin(currentUser.email)
-    
-    if (!allow){
-      history.push("/")
-  }
-  else if(currentUser.email == null){
-      history.push("/login")
-  }
-
-  }
+    if (currentUser.email !== "bsarraj@ccc.edu" && currentUser != null){
+        history.push("/StudentDashboard")
+    }
+    else if(currentUser.email == null){
+        history.push("/login")
+    };
 
   // async function handleLogout() {
   //   setError("")
@@ -47,17 +37,20 @@ export default function Dashboard() {
   //   }
   // }
   async function handleSubmit(){
-    const pmail = document.getElementById('professorinput').value
     console.log(email)
-        await addProfessor(email);
-        document.getElementById('professorinput').value = "";
-        alert(pmail + ' has been made a professor')
+        if(window.confirm("Do you want to add " + email + " as a professor?")){
+          await addProfessor(email);
+        }
+        
   }
 
   async function handleSubmit2(){
     console.log(email)
+    if(prompt("Do you want to add " + email + " as an Admin? \n This will give them access to editing, deleting, adding the flowchart \n as well as User permissions. \n\n Please re-type the email so we are sure you want to do this.") == email){
         await addAdmin(email);
+    }
   }
+
 
   return (
     <>
@@ -86,18 +79,19 @@ export default function Dashboard() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        <input id = "professorinput" onChange={onChange} size = "50" />
-        <button onClick={handleSubmit}>Make Professor</button>
-
+        <label className="w-100">Make professor</label>
+        <input onChange={onChange} size = "50"/>
+        <button onClick={handleSubmit}>Submit</button>
+          
        
       </div>
-
+      
       <div className="w-100 text-center mt-2">
-
+        <label className="w-100"> Make Admin</label>
         <input onChange={onChange} size = "50"/>
-        <button onClick={handleSubmit2}>Make Admin</button>
+        <button onClick={handleSubmit2}>Submit</button>
 
-       
+
       </div>
 
     </>

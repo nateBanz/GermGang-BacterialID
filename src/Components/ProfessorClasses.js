@@ -13,6 +13,7 @@ import { auth } from "../firebase"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import { isStudent } from "./firestoreUtils";
+import Content from "./Content";
 
 
 //import Header from "./Components/Header";
@@ -78,51 +79,108 @@ export default function CreateClass(){
     
         setLoading(false)
       }
-      return(       
-        <div>
-          <Header> </Header>
-          <h1 className="text-center mb-4">Create New Class</h1>
-          <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-          {"Class Title: "}<input id='classTitle'  size="50" placeholder="classTitle" onChange={onChange}/> 
-         </div>
-         <br/>
-
-         <div hidden style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-           {"Class Code/ID: " + codeID} 
-          
-           </div>
-           <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-          <Button disabled={loading} className="btn btn-secondary" type="submit" onClick={handleSubmit}>Submit</Button>
-          <br/>
-          <Button>Cancel</Button>
-          <br/>
-          <br/>
-          </div>
-          <div >
+      return(    <>
+        <Header></Header>
+        
+      <br /><Container className="d-flex align-items-center justify-content-center"
+        style={{ minHeight: "50vh", width: "1000px" }}>
+        
+          <Card style = {{width: "1000px"}}>
+            <Card.Body>
+            <h1 className="text-center mb-4">Create New Class</h1>
             <br/>
-          <h1 >Classes</h1>
-          
-          <div >
+              {error && <Alert variant="danger">{error}</Alert>}
+              <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+           {"Class Title: "}<input id='classTitle'  size="50" placeholder="classTitle" onChange={onChange}/> 
+          </div>
           <br/>
-          <table color="blue" border='1'> 
-          <thead>
-          <tr>
-            <th>Class Name</th>
-            <th>Class Code</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-          <tbody>
+
+          <div hidden style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+          {"Class Code/ID: " + codeID} 
           
-          {
-            classes.map(cObj =>(<tr ><td>{cObj.cn}</td><td>{cObj.cc}</td><td><button>View</button></td> </tr>
-            )
-            )}
-            </tbody>
-          </table>
+          </div>
+           <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+           <Button disabled={loading} className="btn btn-secondary" type="submit" onClick={handleSubmit}>Submit</Button>
+           <br/>
+          <Button>Cancel</Button>
+           <br/>
+           <br/>
+           </div>
+           < label>Classes: </label>
+           <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+            <br/>
+         
+            <br/>
+         <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+           <br/>
+               <table color="blue" border='1'> 
+               <thead>
+            <tr>
+                 <th>Class Name</th>
+                 <th>Class Code</th>
+                 <th>Action</th>
+               </tr>
+             </thead>
+               <tbody>
+              
+               {
+                classes.map(cObj =>(<tr ><td>{cObj.cn}</td><td>{cObj.cc}</td><td><button>View</button></td> </tr>
+                )
+                )}
+                </tbody>
+              </table>
           </div>
             </div>
-        </div>
+            </Card.Body>
+          </Card>
+        </Container></>
+     )
+
+    //     <div>
+    //       <Header> </Header>
+    //       <h1 className="text-center mb-4">Create New Class</h1>
+    //       <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+    //       {"Class Title: "}<input id='classTitle'  size="50" placeholder="classTitle" onChange={onChange}/> 
+    //      </div>
+    //      <br/>
+
+    //      <div hidden style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+    //        {"Class Code/ID: " + codeID} 
+          
+    //        </div>
+    //        <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+    //       <Button disabled={loading} className="btn btn-secondary" type="submit" onClick={handleSubmit}>Submit</Button>
+    //       <br/>
+    //       <Button>Cancel</Button>
+    //       <br/>
+    //       <br/>
+    //       </div>
+    //       <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+    //         <br/>
+    //       <h1 >Classes</h1>
+    //         <br/>
+    //       <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+    //       <br/>
+    //           <table color="blue" border='1'> 
+    //           <thead>
+    //           <tr>
+    //             <th>Class Name</th>
+    //             <th>Class Code</th>
+    //             <th>Action</th>
+    //           </tr>
+    //         </thead>
+    //           <tbody>
+              
+    //           {
+    //             classes.map(cObj =>(<tr ><td>{cObj.cn}</td><td>{cObj.cc}</td><td><button>View</button></td> </tr>
+    //             )
+    //             )}
+    //             </tbody>
+    //           </table>
+    //       </div>
+    //         </div>
+    //     </div>
         
         
-    )}
+    // )
+              }
