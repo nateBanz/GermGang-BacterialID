@@ -37,13 +37,14 @@ export default function Dashboard() {
   //   }
   // }
   async function handleSubmit(){
+    const pmail = document.getElementById('professorinput').value
     console.log(email)
+
         if(window.confirm("Do you want to add " + email + " as a professor?")){
           await addProfessor(email);
         }
-        
   }
-
+  
   async function handleSubmit2(){
     console.log(email)
     if(prompt("Do you want to add " + email + " as an Admin? \n This will give them access to editing, deleting, adding the flowchart \n as well as User permissions. \n\n Please re-type the email so we are sure you want to do this.") == email){
@@ -79,6 +80,7 @@ export default function Dashboard() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
+
         <label className="w-100">Make professor</label>
         <input onChange={onChange} size = "50"/>
         <button onClick={handleSubmit}>Submit</button>
@@ -93,6 +95,7 @@ export default function Dashboard() {
 
 
       </div>
+
 
     </>
   )
