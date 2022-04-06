@@ -32,6 +32,7 @@ export default function AdminLogin() {
                     <AuthProvider>
                         <Switch>
                             <Route exact path = "/" component ={App}/>
+                            
                             <PrivateRoute exact path="/dashboard" component={Dashboard} />
                             <PrivateRoute path="/update-profile" component={UpdateProfile} />
                             <Route exact path="/login" component={Login} />

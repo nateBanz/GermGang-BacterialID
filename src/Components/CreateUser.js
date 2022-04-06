@@ -34,12 +34,15 @@ import { firestore } from '../firebase';
            let str = String(email)
            let result = str.toLowerCase()
 
+       
         const docRef = db.collection('users').doc(result);
-
+        
         docRef.update({
-        UserRole: "Professor",
+        UserRole: "professor",
         UserEmail: result
         });
+        
+        
     }
  
 
@@ -52,14 +55,17 @@ import { firestore } from '../firebase';
             let str = String(email)
            let result = str.toLowerCase()
 
-            const docRef = db.collection('users').doc(result);
-            docRef.set({
+           const docRef = db.collection('users').doc(result);
+           
+              docRef.set({
             first: firstName,
             last: lastName,
             UserRole: "student",
             UserEmail: result,
             });
-        }
+           }
+            
+        
 
         /*
         This funciton creates a "student collection in the "users" collection.
@@ -70,11 +76,12 @@ import { firestore } from '../firebase';
            let result = str.toLowerCase()
 
             const docRef = db.collection('users').doc(result);
-
-            docRef.set({
+            
+            docRef.update({
             UserRole: "admin",
             UserEmail: result
             });
+            
         }
 
     

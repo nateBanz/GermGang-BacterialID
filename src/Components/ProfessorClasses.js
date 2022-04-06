@@ -13,7 +13,6 @@ import { auth } from "../firebase"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import { isStudent } from "./firestoreUtils";
-import Content from "./Content";
 
 
 //import Header from "./Components/Header";

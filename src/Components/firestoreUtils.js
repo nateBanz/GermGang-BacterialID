@@ -63,5 +63,17 @@ export function writeExperiment(expTitle, email, uuid, classID) {
         else{
           return false
         }
-        return result.exists
+        
         }
+
+    export async function updateProfile(oldemail, newemail){
+        const doc = firestore.collection('users').doc(oldemail)
+        const docRef = firestore.collection('users').doc(newemail);
+        let result = await doc.get()
+            docRef.set(result);
+      
+
+
+
+    }
+    
