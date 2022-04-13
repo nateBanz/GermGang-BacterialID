@@ -90,7 +90,7 @@ export default function CreateClass(){
             <br/>
               {error && <Alert variant="danger">{error}</Alert>}
               <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-           {"Class Title: "}<input id='classTitle'  size="50" placeholder="classTitle" onChange={onChange}/> 
+           {"Class Title: "}<input id='classTitle'  size="50" placeholder="classTitle" onChange={onChange} maxLength={30}/> 
           </div>
           <br/>
 
