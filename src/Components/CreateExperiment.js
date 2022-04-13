@@ -100,7 +100,7 @@ export default function CreateExperiment(){
             <h1 className="text-center mb-4">Create New Experiment</h1>
             <br/>
           <div  style={divstyle}>
-           {"Experiment Title:       "}<input wrapperClassname='Textwrap' size="50" placeholder="Experiment Title..." onChange={onChange} padding-left/> 
+           {"Experiment Title:       "}<input wrapperClassname='Textwrap' size="50" placeholder="Experiment Title..." onChange={onChange} maxLength={50} padding-left/> 
            </div>
         <br/>
            <div hidden style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
@@ -117,7 +117,7 @@ export default function CreateExperiment(){
         <br/>
                 <Form.Group  onChange={onChange4} controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Experiment Details/ Instructions </Form.Label>
-                <Form.Control  className="textarea w-100"as="textarea" rows="3"/>
+                <Form.Control  className="textarea w-100"as="textarea" rows="3"maxLength={500}/>
                 </Form.Group>
            <div style={divstyle}>
            <Button disabled={loading} className="btn btn-secondary w-50" type="submit" onClick={handleSubmit}>Submit</Button>
