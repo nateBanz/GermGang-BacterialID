@@ -3,8 +3,17 @@ import {Formik, Field, Form, ErrorMessage, FieldArray} from 'formik';
 import {DropdownHelper, FormHelper} from "./FormHelper"
 import * as Yup from 'yup'
 import {Add} from "./firebaseUtils";
+import Login from "./Login";
+import { useAuth } from "../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
 
 const AddForm = () => {
+    const { currentUser, logout } = useAuth()
+    const history = useHistory()
+
+    if (currentUser.email != "bsarraj@ccc.edu"){
+        history.push("/")
+    }
 
     const initialValues = {
         location: "",
