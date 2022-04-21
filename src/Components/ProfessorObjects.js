@@ -12,10 +12,16 @@ import RandomExperimentCode from './RandomIDCode';
         export function createAClass(className, classCode,email){
             const docRef = db.collection('users').doc(email).collection('classes').doc(classCode);
     
+            let newClass= {
+                className: className,
+            classCode: classCode
+            }
             docRef.set({
             className: className,
-            classCode: classCode
+            classCode: classCode,
+            professor: email
             });
+            return newClass;
         }
 
         export function createAnExperiment(title, startDate, endDate, Details, email, code){

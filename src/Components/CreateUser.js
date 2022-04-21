@@ -8,7 +8,6 @@ import { firestore } from '../firebase';
     export default function CreateUser(){
         const currentUser = useAuth()
         const history = useHistory();
-        addStudent()
         history.push("/")
     }
         //call the firestore database

@@ -1,17 +1,17 @@
 import React from "react";
-import {Formik, Field, Form, ErrorMessage, FieldArray} from 'formik';
+import {Formik, Field, Form, ErrorMessage} from 'formik';
 import {DropdownHelper} from "./FormHelper"
 import * as Yup from 'yup'
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
-import {getName} from "./firebaseUtils";
-import{Update} from "./firebaseUtils";
+import { isAdmin } from "./firestoreUtils";
+import { Update } from "./firebaseUtils";
 
 const UpdateForm = () => {
 
-    const { currentUser, logout } = useAuth()
+    const { currentUser} = useAuth()
     const history = useHistory()
-    if (currentUser.email != "bsarraj@ccc.edu" && currentUser != null){
+    if (!isAdmin(currentUser)){
         history.push("/")
     }
     
@@ -29,7 +29,7 @@ const UpdateForm = () => {
             .matches(/.*\d{4}\s*$/gm, "A location is required with a unique ID (4 numbers)")
             .required("Location is required, select from dropdown or type"),
         image: Yup.string()
-            .matches(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+(?:png|jpg|jpeg|gif|svg)+$/gm, "Must be a valid image file path"),
+.matches(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w-]+)+[\w\-_~:?#[\]@!&',;=.]+(?:png|jpg|jpeg|gif|svg)+$/gm, "Must be a valid image file path"),
     });
 
     //Calls the update method in firebaseUtils.js, then displays an alert based on success

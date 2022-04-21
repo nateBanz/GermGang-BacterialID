@@ -5,12 +5,13 @@ import { Link, useHistory } from "react-router-dom"
 import { Container } from "react-bootstrap"
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Signup from "./Signup"
+import { setUser } from "./firestoreUtils"
 
 
 export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
-  const { login, checkAdmin} = useAuth()
+  const { login } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
@@ -23,11 +24,16 @@ export default function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      if(emailRef.current.value == "bsarraj@ccc.edu"){
+      let user = await setUser(emailRef.current.value)
+
+      if(user.role == "admin"){
           history.push("/dashboard")
       }
-      else{
-          history.push("/studentdashboard")
+      else if(user.role == "Professor"){
+          history.push("/ProfessorDashboard")
+      }
+      else if(user.role == "student"){
+        history.push("/StudentDashboard")
       }
    // history.push("/dashboard")
     } 

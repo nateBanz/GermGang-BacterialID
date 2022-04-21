@@ -2,7 +2,7 @@
 //this function takes in a name and returns a firebase object of the germ
 import {getName} from "./firebaseUtils";
 import PersonTracker from "./PersonTracker";
-import {useContext, useEffect, useState} from "react";
+import {useContext} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Card, Image} from 'react-bootstrap';
 import React from 'react';

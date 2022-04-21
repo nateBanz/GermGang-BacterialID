@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Card, Button, Alert } from "react-bootstrap"
+import { Card, Button, Alert, Container, Dropdown } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
@@ -7,10 +7,14 @@ import { Nav } from "react-bootstrap"
 import { addProfessor, addAdmin } from "./CreateUser";
 
 import Header from "./Header";
+import ProfessorDashboard, { ProfessorButtons } from "./ProfessorDashboard"
+import { getUserInfo } from "./firestoreUtils"
+import DropdownMenu from "react-bootstrap/esm/DropdownMenu"
 
 
 
 export default function Dashboard() {
+  let user = getUserInfo()
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
@@ -19,12 +23,13 @@ export default function Dashboard() {
     const newValue = event.target.value
     setEmail(newValue);
   }
-    if (currentUser.email !== "bsarraj@ccc.edu" && currentUser != null){
-        history.push("/StudentDashboard")
+    if (user.role != "admin" && currentUser != null){
+        history.push("/")
     }
     else if(currentUser.email == null){
         history.push("/login")
     };
+
 
   // async function handleLogout() {
   //   setError("")
@@ -41,8 +46,8 @@ export default function Dashboard() {
         if(window.confirm("Do you want to add " + email + " as a professor?")){
           await addProfessor(email);
         }
+      }
         
-  }
 
   async function handleSubmit2(){
     console.log(email)
@@ -50,49 +55,61 @@ export default function Dashboard() {
         await addAdmin(email);
     }
   }
+  
 
 
   return (
     <>
-      <Card>
-        <Header>
-          
+     <Header>
         </Header>
-        <Card.Body>
-          <h2 className="text-center mb-4">Admin Controls</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong> {currentUser.email}
-          <Nav>
-            <NavLink hidden={currentUser.email == null} to="/update-profile" className="btn btn-secondary w-100 mt-3">
-            Update Profile
-            </NavLink>  
-            <NavLink hidden={currentUser.email !== "bsarraj@ccc.edu"} to="/add-form" className="btn btn-secondary w-100 mt-3">
-            Add Form
-            </NavLink>  
-            <NavLink hidden={currentUser.email !== "bsarraj@ccc.edu"} to="/update-form" className="btn btn-secondary w-100 mt-3">
-            Update Form
-            </NavLink>  
-            <NavLink hidden={currentUser.email !== "bsarraj@ccc.edu"} to="/delete-form" className="btn btn-secondary w-100 mt-3">
-            Delete Form
-            </NavLink>  
-          </Nav>
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
-        <label className="w-100">Make professor</label>
-        <input onChange={onChange} size = "50"/>
-        <button onClick={handleSubmit}>Submit</button>
-          
-       
-      </div>
+        
+        <Container className="d-flex"
+        style={{ minHeight: "50vh", width: "1500px"}}>
+          <Card style = {{width: "1200px"}}>
+            <br/>
+            <br/>
+                        <h2 className="text-center m-4">Admin Controls</h2>
+                        {error && <Alert variant="danger">{error}</Alert>}
+                        <div className="p">
+                        <strong >Email: </strong>{currentUser.email}
+                        </div>
+                <Card.Body className="w-100">
+                  <br/>
+                  <Nav>
+                    <NavLink hidden={user.role != "admin"} to="/update-profile" className="btn btn-secondary w-100 mt-3">
+                    Update Profile
+                    </NavLink>  
+                    <NavLink hidden={user.role != "admin"} to="/add-form" className="btn btn-secondary w-100 mt-3">
+                    Add Form
+                    </NavLink>  
+                    <NavLink hidden={user.role != "admin"} to="/update-form" className="btn btn-secondary w-100 mt-3">
+                    Update Form
+                    </NavLink>  
+                    <NavLink hidden={user.role != "admin"} to="/delete-form" className="btn btn-secondary w-100 mt-3">
+                    Delete Form
+                    </NavLink>  
+                  </Nav>
+                  <br/>
+              <div className="w-100 text-center mt-2">
+                <label className="w-100">Make professor</label>
+                <input onChange={onChange} size = "50" style={{border: "solid"}}/>
+                <button onClick={handleSubmit}>Submit</button>
+              </div>
+              
+              <div className="w-100 text-center mt-2">
+                <label className="w-100"> Make Admin</label>
+                <input onChange={onChange} size = "50" style={{border: "solid"}}/>
+                <button onClick={handleSubmit2}>Submit</button>
+              </div>
+              <br/>
+              
+                </Card.Body>
+                  <ProfessorDashboard ></ProfessorDashboard>
+           </Card>
+           
+      </Container>
       
-      <div className="w-100 text-center mt-2">
-        <label className="w-100"> Make Admin</label>
-        <input onChange={onChange} size = "50"/>
-        <button onClick={handleSubmit2}>Submit</button>
-
-
-      </div>
+      
 
     </>
   )
