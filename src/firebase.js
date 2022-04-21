@@ -2,12 +2,11 @@
 import "firebase-auth";
 
 import firebase from "firebase"
-import { getFirestore } from "@firebase/firestore";
 import 'firebase/firestore';
 
 //const APIKEY = require("./secert");
 
-const app = firebase.initializeApp({
+firebase.initializeApp({
     apiKey: "AIzaSyApiE--Kil_974EnweIny4y_m9sFmVv8gQ",
     authDomain: "microbemusketeers.firebaseapp.com",
     databaseURL: "https://microbemusketeers-default-rtdb.firebaseio.com",

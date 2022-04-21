@@ -6,7 +6,7 @@ import { Link, useHistory } from "react-router-dom"
 export default function UpdatePassword() {
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const { currentUser, updatePassword} = useAuth()
+  const {updatePassword} = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()

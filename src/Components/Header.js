@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PersonTracker from "./PersonTracker";
 import {useContext} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -11,6 +11,8 @@ import StudentDashboard from './StudentDashboard';
 import PrivateRoute from './PrivateRoute';
 import Logout from "./Logout"
 import { useAuth } from "../contexts/AuthContext"
+import { isAdmin, isProfessor, isStudent } from './firestoreUtils';
+import { clear } from 'console';
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
 
 //reset button
@@ -20,17 +22,46 @@ const Header = (props) => {
     const [error, setError] = useState("")
     const { currentUser, logout } = useAuth()
     const history = useHistory()
-    let user = JSON.parse(localStorage.getItem('currentUser'))
-    
+    let user = JSON.parse(sessionStorage.getItem('currentUser'))
+
+        const [clearance, setClearance] = useState({});
+      
+        useEffect(() => {
+          checkUser()
+          .then(data =>
+            setClearance(data)
+          );
+        }, [])
+
+     async function checkUser(){
+      let student = await isStudent(currentUser.email)
+      let professor = await isProfessor(currentUser.email)
+      let admin = await isAdmin(currentUser.email);
+
+      if(student){
+          return 1
+      }
+      if(professor){
+          return 2
+      }
+      if(admin){
+          return 3
+        }
+        alert(clearance)
+        return clearance;
+    }
+   
 
     async function handleLogout() {
         setError("")
     
+
         try {
           await logout()
           history.push("/login")
         } catch {
           setError("Failed to log out")
+
         }
       }
     
@@ -141,13 +172,13 @@ const Header = (props) => {
         }
     }
 
-
+    //alert("last clearance:" + clearance)
     return (
        
     <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Navbar.Brand onClick={() => {                          //resets when you click the germgang icon
-                    reset();
+                    history.push("/")
                 }}>Germgang</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -160,7 +191,9 @@ const Header = (props) => {
                         }}>Back</Nav.Link>
                     </Nav>
                     <Nav>
-                        <NavLink hidden={currentUser == null} to="./StudentDashboard" className= "btn btn-primary">Dashboard</NavLink>
+                        <NavLink hidden={(clearance != 1)} to= "./StudentDashboard" className= "btn btn-primary">Dashboard</NavLink>
+                        <NavLink hidden={(clearance != 2)} to= "./ProfessorDashboard" className= "btn btn-primary">Dashboard</NavLink>
+                        <NavLink hidden={(clearance != 3)} to= "./Dashboard" className= "btn btn-primary">Dashboard</NavLink>
                     </Nav>
                     <Nav>
                         <NavLink hidden={currentUser} to="./login" className="btn btn-secondary">Sign In</NavLink>

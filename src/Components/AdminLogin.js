@@ -18,6 +18,7 @@ import ProfessorClasses from "./ProfessorClasses"
 import CreateExperiment from "./CreateExperiment"
 import ProfessorSignUp from "./ProfessorSignUp"
 import ProfessorDashboard from "./ProfessorDashboard"
+import ViewClass from "./ViewClass"
 
 
 export default function AdminLogin() {
@@ -47,7 +48,7 @@ export default function AdminLogin() {
                             <Route path="/createExperiment" component={CreateExperiment} />
                             <Route path="/professorSignUp" component ={ProfessorSignUp}/>
                             <Route path="/ProfessorDashboard" component={ProfessorDashboard} />
-                            
+                            <Route path="/ViewClass" component={ViewClass} />
                         </Switch>
                     </AuthProvider>
                 </Router>

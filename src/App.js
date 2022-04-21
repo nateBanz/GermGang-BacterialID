@@ -27,7 +27,7 @@ function App() {
     const germBase = firebase.database().ref();
 
     //get or create a reference to the germs child/object in the database
-    const germs = germBase.child("germs");
+   // const germs = germBase.child("germs");
 
 
 //if you need to reset the database, copy the external file here and uncomment out the REMOVE function . Reload the webpage once and comment back out.

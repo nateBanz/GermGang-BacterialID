@@ -12,7 +12,7 @@ import { createAClass } from "./ProfessorObjects";
 import { auth } from "../firebase"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
-import { isStudent } from "./firestoreUtils";
+import { getUserInfo, isStudent, setUserClass } from "./firestoreUtils";
 
 
 //import Header from "./Components/Header";
@@ -30,16 +30,9 @@ export default function CreateClass(){
   const [loading, setLoading] = useState(false)
   const { currentUser, logout } = useAuth()
   const history = useHistory()
+  const [classes,setClasses] = useState([]);
+  let cObj = {}
  
-
-  const [classes,setClasses] = useState ([
-    
-
-  ]);
- 
-  
-
-
   //This function checks to see if the user is signed in or if they are a student. if either, redirect to the appropriate page.
   checkUser()
   async function checkUser(){
@@ -57,31 +50,43 @@ export default function CreateClass(){
     const newValue = event.target.value
     setClassTitle(newValue);
   }
+
     async function handleSubmit(e) {
         e.preventDefault()
         
         try {
-          let nCObj = {cc: codeID, cn: classTitle};
+          let nCObj = {className: classTitle, classCode: codeID, professor: currentUser.email}; //nCObj stands for "New Class Object"
           let arr = classes.concat(nCObj);
-         setClasses(arr);
-          
+          setClasses(arr);
           console.log(classTitle)
           console.log(codeID)
           setError("")
           setLoading(true)
           await createAClass(classTitle, codeID, currentUser.email);
+          alert("Class created.")
           //history.push("/");
         } 
         catch {
           setError("Failed To Create New Class")
         }
-    
         setLoading(false)
       }
+
+      function handleCancel(){
+        alert("cancelled")
+      }
+
+      function handleView(cObj){
+        setUserClass(cObj)
+        history.push("/ViewClass")
+      }
+
+
       return(    <>
         <Header></Header>
         
-      <br /><Container className="d-flex align-items-center justify-content-center"
+      <br />
+      <Container className="d-flex align-items-center justify-content-center"
         style={{ minHeight: "50vh", width: "1000px" }}>
         
           <Card style = {{width: "1000px"}}>
@@ -101,7 +106,7 @@ export default function CreateClass(){
            <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
            <Button disabled={loading} className="btn btn-secondary" type="submit" onClick={handleSubmit}>Submit</Button>
            <br/>
-          <Button>Cancel</Button>
+          <Button onClick={handleCancel}>Cancel</Button>
            <br/>
            <br/>
            </div>
@@ -121,13 +126,14 @@ export default function CreateClass(){
                </tr>
              </thead>
                <tbody>
-              
                {
-                classes.map(cObj =>(<tr ><td>{cObj.cn}</td><td>{cObj.cc}</td><td><button>View</button></td> </tr>
-                )
-                )}
+                classes.map(cObj =>(<tr><td>{cObj.className}</td><td>{cObj.classCode}</td><td><Button onClick={() => handleView(cObj)}>View</Button></td></tr>))
+                }
                 </tbody>
               </table>
+              
+              
+              
           </div>
             </div>
             </Card.Body>
