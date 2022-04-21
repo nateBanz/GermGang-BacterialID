@@ -1,8 +1,6 @@
-module.exports = {
-  root: true,
-  env: {
+module.exports = {root: true,env: {
     es6: true,
-    node: true,
+    node:true,
   },
   extends: [
     "eslint:recommended",
