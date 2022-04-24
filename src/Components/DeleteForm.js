@@ -6,13 +6,19 @@ import {Delete} from "./firebaseUtils"
 import {getName} from "./firebaseUtils";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
+import { getUserInfo } from "./firestoreUtils";
 
 const DeleteForm = () => {
     const { currentUser, logout } = useAuth()
     const history = useHistory()
-    if (currentUser.email != "bsarraj@ccc.edu" && currentUser != null){
+    let user = getUserInfo()
+    if (user.role != "admin" && currentUser != null){
         history.push("/")
     }
+    else if(currentUser.email == null){
+        history.push("/login")
+    };
+
     
     const [arrayState, updateArrayState] = useState([])
 
