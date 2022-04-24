@@ -179,7 +179,7 @@ const Header = (props) => {
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Navbar.Brand onClick={() => {                          //resets when you click the germgang icon
                     history.push("/")
-                }}>Germgang</Navbar.Brand>
+                }}style={{cursor:'pointer'}}>Home</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
@@ -201,12 +201,12 @@ const Header = (props) => {
                     <Nav>
                         <NavLink hidden={currentUser == null} to="./Logout" className="btn btn-secondary" onClick={handleLogout}>Log Out</NavLink>  
                     </Nav>
-                    <Nav>
+                    {/* <Nav>
                         <NavLink hidden={currentUser == null} to="./professorClasses" className= "btn btn-primary">ProfessorClasses</NavLink>
                     </Nav>
                     <Nav>
                         <NavLink hidden={currentUser == null} to="./createExperiment" className= "btn btn-primary">CreateExperiment</NavLink>
-                    </Nav>
+                    </Nav> */}
 
                 </Navbar.Collapse>
             </Navbar>
