@@ -14,7 +14,7 @@ import DropdownMenu from "react-bootstrap/esm/DropdownMenu"
 
 
 export default function Dashboard() {
-  let user = getUserInfo()
+  
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
@@ -23,6 +23,7 @@ export default function Dashboard() {
     const newValue = event.target.value
     setEmail(newValue);
   }
+    let user = getUserInfo()
     if (user.role != "admin" && currentUser != null){
         history.push("/")
     }

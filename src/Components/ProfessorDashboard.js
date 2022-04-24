@@ -15,7 +15,15 @@ export default function ProfessorDashboard() {
 
 
 
+  
   let user = getUserInfo()
+    if (user.role === "student" && currentUser != null){
+        history.push("/")
+    }
+    else if(currentUser.email == null){
+        history.push("/login")
+    };
+
 // alert(" ProfessorDashboard: " + user)
 // alert(" userRole: " + user.role)
 

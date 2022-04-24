@@ -6,14 +6,20 @@ import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { isAdmin } from "./firestoreUtils";
 import { Update } from "./firebaseUtils";
+import { getUserInfo } from "./firestoreUtils";
 
 const UpdateForm = () => {
 
     const { currentUser} = useAuth()
     const history = useHistory()
-    if (!isAdmin(currentUser)){
+    let user = getUserInfo()
+    if (user.role != "admin" && currentUser != null){
         history.push("/")
     }
+    else if(currentUser.email == null){
+        history.push("/login")
+    };
+
     
 
     const initialValues = {
