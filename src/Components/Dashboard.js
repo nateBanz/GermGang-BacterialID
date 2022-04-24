@@ -43,7 +43,7 @@ export default function Dashboard() {
   // }
   async function handleSubmit(){
     console.log(email)
-        if(window.confirm("Do you want to add " + email + " as a professor?")){
+        if(email &&window.confirm("Do you want to add " + email + " as a professor?")){
           await addProfessor(email);
         }
       }
@@ -51,7 +51,7 @@ export default function Dashboard() {
 
   async function handleSubmit2(){
     console.log(email)
-    if(prompt("Do you want to add " + email + " as an Admin? \n This will give them access to editing, deleting, adding the flowchart \n as well as User permissions. \n\n Please re-type the email so we are sure you want to do this.") == email){
+    if(email && prompt("Do you want to add " + email + " as an Admin? \n This will give them access to editing, deleting, adding the flowchart \n as well as User permissions. \n\n Please re-type the email so we are sure you want to do this.") == email){
         await addAdmin(email);
     }
   }
