@@ -111,6 +111,10 @@ export default function CreateExperiment(){
     
         setLoading(false)
       }
+
+      function handleCancel(){
+        history.goBack()
+      }
        return(
         <>
         <Header></Header>
@@ -163,7 +167,7 @@ export default function CreateExperiment(){
            <Button disabled={loading} className="btn btn-secondary w-50" type="submit" onClick={handleSubmit}>Submit</Button>
            </div>
            <div style={divstyle}>
-           <Button className="btn btn-secondary w-50">Cancel</Button>
+           <Button className="btn btn-secondary w-50" onClick={handleCancel}>Cancel</Button>
            </div>
             </Card.Body>
           </Card>

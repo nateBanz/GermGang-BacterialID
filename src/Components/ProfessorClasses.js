@@ -97,6 +97,10 @@ export default function CreateClass(){
         setUserClass(cObj)
         history.push("/ViewClass")
       }
+
+      function handleCancel(){
+        history.goBack()
+      }
       return(    <>
         <Header></Header>
         
@@ -120,7 +124,7 @@ export default function CreateClass(){
            <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
            <Button disabled={loading} className="btn btn-secondary" type="submit" onClick={handleSubmit}>Submit</Button>
            <br/>
-          <Button>Cancel</Button>
+          <Button onClick={handleCancel}>Cancel</Button>
            <br/>
            <br/>
            </div>
