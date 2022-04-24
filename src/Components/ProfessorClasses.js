@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown, Container, Card, Form} from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route ,Link, NavLink} from "react-router-dom"
@@ -12,8 +12,9 @@ import { createAClass } from "./ProfessorObjects";
 import { auth } from "../firebase"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
-import { getUserInfo, isStudent, setUserClass } from "./firestoreUtils";
-
+import { isStudent } from "./firestoreUtils";
+import { firestore } from '../firebase';
+import { getUserInfo, setUserClass } from "./firestoreUtils";
 
 //import Header from "./Components/Header";
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
@@ -27,53 +28,69 @@ export default function CreateClass(){
   const [classTitle,setClassTitle]= useState("")
   const [classCode,setClassCode] = useState("")
   const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const { currentUser, logout } = useAuth()
   const history = useHistory()
-  const [classes,setClasses] = useState([]);
-  let cObj = {}
- 
-  //This function checks to see if the user is signed in or if they are a student. if either, redirect to the appropriate page.
-  checkUser()
-  async function checkUser(){
-    let allow = await isStudent(currentUser.email)
+  const db = firestore
+  const [classes,setClasses] = useState ([
     
-    if (allow){
-  history.push("/StudentDashboard")
-  }
-  else if(currentUser.email == null){
-      history.push("/login")
-  }
-  }
+
+  ]);
+ 
+  
+  useEffect(() => {
+    const getClassesFromFirebase = [];
+    const classInfo = db
+      .collection('users').doc(currentUser.email).collection('classes')
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          getClassesFromFirebase.push({
+            ...doc.data(), //spread operator
+            key: doc.data().codeID,
+            // `id` given to us by Firebase
+          });
+        });
+        setClasses(getClassesFromFirebase);
+        setLoading(false);
+      });
+      return () => classInfo();
+    }, [loading]); // empty dependencies array => useEffect only called once
+  //This function checks to see if the user is signed in or if they are a student. if either, redirect to the appropriate page.
+
+  let user = getUserInfo()
+    if (user.role === "student" && currentUser != null){
+        history.push("/")
+    }
+    else if(currentUser.email == null){
+        history.push("/login")
+    };
+
 
   let onChange  = (event) =>{
     const newValue = event.target.value
     setClassTitle(newValue);
   }
-
     async function handleSubmit(e) {
         e.preventDefault()
         
+  
         try {
-          let nCObj = {className: classTitle, classCode: codeID, professor: currentUser.email}; //nCObj stands for "New Class Object"
+          let nCObj = {cc: codeID, cn: classTitle};
           let arr = classes.concat(nCObj);
-          setClasses(arr);
+         setClasses(arr);
+          
           console.log(classTitle)
           console.log(codeID)
           setError("")
           setLoading(true)
           await createAClass(classTitle, codeID, currentUser.email);
-          alert("Class created.")
           //history.push("/");
         } 
         catch {
           setError("Failed To Create New Class")
         }
-        setLoading(false)
-      }
-
-      function handleCancel(){
-        alert("cancelled")
+    
+        setLoading(true)
       }
 
       function handleView(cObj){
@@ -81,12 +98,13 @@ export default function CreateClass(){
         history.push("/ViewClass")
       }
 
-
+      function handleCancel(){
+        history.goBack()
+      }
       return(    <>
         <Header></Header>
         
-      <br />
-      <Container className="d-flex align-items-center justify-content-center"
+      <br /><Container className="d-flex align-items-center justify-content-center"
         style={{ minHeight: "50vh", width: "1000px" }}>
         
           <Card style = {{width: "1000px"}}>
@@ -126,14 +144,18 @@ export default function CreateClass(){
                </tr>
              </thead>
                <tbody>
-               {
-                classes.map(cObj =>(<tr><td>{cObj.className}</td><td>{cObj.classCode}</td><td><Button onClick={() => handleView(cObj)}>View</Button></td></tr>))
-                }
+               {classes.length > 0 ? (
+        classes.map((classess) => <tr> <td>{classess.className}</td><td> {classess.classCode}</td> <td><button onClick={()=>handleView(classess)}>View</button></td></tr>)
+      ) : (
+        <h1>no classes yet :(</h1>
+      )}
+              
+               {/* { 
+                classes.map(cObj =>(<tr ><td>{cObj.cn}</td><td>{cObj.cc}</td><td><button>View</button></td> </tr>
+                )
+                )} */}
                 </tbody>
               </table>
-              
-              
-              
           </div>
             </div>
             </Card.Body>

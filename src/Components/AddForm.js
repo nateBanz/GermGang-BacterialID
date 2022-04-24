@@ -5,14 +5,20 @@ import * as Yup from 'yup'
 import {Add} from "./firebaseUtils";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
+import { getUserInfo } from "./firestoreUtils";
 
 const AddForm = () => {
     const { currentUser, logout } = useAuth()
     const history = useHistory()
 
-    if (currentUser.email != "bsarraj@ccc.edu"){
+    let user = getUserInfo()
+    if (user.role != "admin" && currentUser != null){
         history.push("/")
     }
+    else if(currentUser.email == null){
+        history.push("/login")
+    };
+
 
     const initialValues = {
         location: "",
