@@ -14,6 +14,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import { isStudent } from "./firestoreUtils";
 import { firestore } from '../firebase';
+import { getUserInfo } from "./firestoreUtils";
 
 //import Header from "./Components/Header";
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
