@@ -1,7 +1,6 @@
 import './App.css';
 import QuestionPage from "./Components/QuestionPage";
 import {useState} from "react";
-import firebase from './firebase';
 import Header from "./Components/Header";
 import * as React from "react";
 import PersonTracker from "./Components/PersonTracker"; //context (global variables essentially) that can be used anywhere and trigger a refresh on updates
@@ -24,10 +23,10 @@ function App() {
     console.log(buttonNameArray) //testing
 
     //create a firebase object that contains the entire formatted database
-    const germBase = firebase.database().ref();
+    //const germBase = firebase.database().ref();
 
     //get or create a reference to the germs child/object in the database
-   // const germs = germBase.child("germs");
+    // const germs = germBase.child("germs");
 
 
 //if you need to reset the database, copy the external file here and uncomment out the REMOVE function . Reload the webpage once and comment back out.

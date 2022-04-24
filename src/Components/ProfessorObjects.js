@@ -1,5 +1,4 @@
 import { firestore } from '../firebase'; 
-import RandomExperimentCode from './RandomIDCode';
 
 
         //call the firestore database

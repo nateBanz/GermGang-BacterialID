@@ -1,16 +1,18 @@
 import React, {useState} from "react";
-import {Formik, Field, Form, ErrorMessage, FieldArray} from 'formik';
+import {Formik, Field, Form, ErrorMessage} from 'formik';
 import {DropdownHelperForDelete} from "./FormHelper"
 import * as Yup from 'yup'
 import {Delete} from "./firebaseUtils"
 import {getName} from "./firebaseUtils";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
+import { getUserInfo } from "./firestoreUtils";
 
 const DeleteForm = () => {
-    const { currentUser, logout } = useAuth()
+    const { currentUser } = useAuth()
     const history = useHistory()
-    if (currentUser.email != "bsarraj@ccc.edu" && currentUser != null){
+    const user = getUserInfo()
+    if (user.role !== "admin" && currentUser != null){
         history.push("/")
     }
     

@@ -63,7 +63,7 @@ export default function CreateClass(){
           setError("")
           setLoading(true)
           await createAClass(classTitle, codeID, currentUser.email);
-          alert("Class created.")
+          //alert("Class created.")
           //history.push("/");
         } 
         catch {

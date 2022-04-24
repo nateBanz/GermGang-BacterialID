@@ -117,7 +117,7 @@ const DropdownHelper = ({form, index})=> {
 
     useEffect(() => {
         fetcher()
-    }, [])
+    })
 
     //this is for the selection of the dropdown. If the selection, sent to this function, matches with the array of object
     //get the object and return it
@@ -196,7 +196,7 @@ const DropdownHelperForDelete = ({form, arrayUpdater })=> {
 
     const [input, inputChange] = useState(null);
     const [groupOfNodes, updateNodes] = useState([])
-    const [preview, updatePreview] = useState({buttonList: [""], name: '', image: ''})
+    const [preview] = useState({buttonList: [""], name: '', image: ''})
 
     //This gets the database reference and finds the list of objects. Then, it updates the state containing the list when it fires
     async function fetcher() {
@@ -239,7 +239,7 @@ const DropdownHelperForDelete = ({form, arrayUpdater })=> {
 
     useEffect(() => {
         fetcher()
-    }, [])
+    })
 
     const ShowPreviewHandler = (name, nodeArrays)=> {
 

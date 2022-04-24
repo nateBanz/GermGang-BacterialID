@@ -6,7 +6,6 @@ import Login from "./Login"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
 import Signup from "./Signup"
-import { Container } from "react-bootstrap"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import App from "../App"
 import DeleteForm from "./DeleteForm";
@@ -23,9 +22,6 @@ import ViewClass from "./ViewClass"
 
 export default function AdminLogin() {
     
-    async function handleSubmit(e) {
-        e.preventDefault()
-    }
 
     return (
             <div className="w-100">

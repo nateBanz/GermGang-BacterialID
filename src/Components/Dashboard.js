@@ -1,32 +1,31 @@
 import React, { useState } from "react"
-import { Card, Button, Alert, Container, Dropdown } from "react-bootstrap"
+import { Card, Alert, Container} from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
+import {useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { Nav } from "react-bootstrap"
 import { addProfessor, addAdmin } from "./CreateUser";
 
 import Header from "./Header";
-import ProfessorDashboard, { ProfessorButtons } from "./ProfessorDashboard"
+import ProfessorDashboard from "./ProfessorDashboard"
 import { getUserInfo } from "./firestoreUtils"
-import DropdownMenu from "react-bootstrap/esm/DropdownMenu"
 
 
 
 export default function Dashboard() {
   let user = getUserInfo()
-  const [error, setError] = useState("")
-  const { currentUser, logout } = useAuth()
+  const [error ] = useState("")
+  const { currentUser  } = useAuth()
   const history = useHistory()
   const [email, setEmail]= useState("");
   let onChange  = (event) =>{
     const newValue = event.target.value
     setEmail(newValue);
   }
-    if (user.role != "admin" && currentUser != null){
+    if (user.role !== "admin" && currentUser != null){
         history.push("/")
     }
-    else if(currentUser.email == null){
+    else if(currentUser.email === null){
         history.push("/login")
     };
 
@@ -51,7 +50,7 @@ export default function Dashboard() {
 
   async function handleSubmit2(){
     console.log(email)
-    if(prompt("Do you want to add " + email + " as an Admin? \n This will give them access to editing, deleting, adding the flowchart \n as well as User permissions. \n\n Please re-type the email so we are sure you want to do this.") == email){
+    if(prompt("Do you want to add " + email + " as an Admin? \n This will give them access to editing, deleting, adding the flowchart \n as well as User permissions. \n\n Please re-type the email so we are sure you want to do this.") === email){
         await addAdmin(email);
     }
   }
@@ -76,16 +75,16 @@ export default function Dashboard() {
                 <Card.Body className="w-100">
                   <br/>
                   <Nav>
-                    <NavLink hidden={user.role != "admin"} to="/update-profile" className="btn btn-secondary w-100 mt-3">
+                    <NavLink hidden={user.role !== "admin"} to="/update-profile" className="btn btn-secondary w-100 mt-3">
                     Update Profile
                     </NavLink>  
-                    <NavLink hidden={user.role != "admin"} to="/add-form" className="btn btn-secondary w-100 mt-3">
+                    <NavLink hidden={user.role !== "admin"} to="/add-form" className="btn btn-secondary w-100 mt-3">
                     Add Form
                     </NavLink>  
-                    <NavLink hidden={user.role != "admin"} to="/update-form" className="btn btn-secondary w-100 mt-3">
+                    <NavLink hidden={user.role !== "admin"} to="/update-form" className="btn btn-secondary w-100 mt-3">
                     Update Form
                     </NavLink>  
-                    <NavLink hidden={user.role != "admin"} to="/delete-form" className="btn btn-secondary w-100 mt-3">
+                    <NavLink hidden={user.role !== "admin"} to="/delete-form" className="btn btn-secondary w-100 mt-3">
                     Delete Form
                     </NavLink>  
                   </Nav>

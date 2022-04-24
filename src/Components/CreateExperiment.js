@@ -9,7 +9,7 @@ import { createAnExperiment } from "./ProfessorObjects";
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import { isStudent } from './firestoreUtils';
-import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown, Container, Card, Form} from 'react-bootstrap';
+import {Button, Container, Card, Form} from 'react-bootstrap';
 
 
 //import Header from "./Components/Header";//you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
@@ -20,11 +20,9 @@ import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown, Container, Card, Fo
 
     
 export default function CreateExperiment(){
-  const text = useState("Experiment Title")
-  const text2 = useState("Experiment Code/ ID")
   const expcode= newCode()
   const [experimentTitle,setExperimentTitle]= useState("")
-  const [experimentCode,setExperimentCode] = useState("")
+  const [experimentCode] = useState("")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const [startDate, setStartDate] = useState(null)
@@ -33,7 +31,7 @@ export default function CreateExperiment(){
  
 
   const [experimentDetails,setExperimentDetails]= useState("");
-  const { currentUser, logout } = useAuth()
+  const { currentUser} = useAuth()
   //This function checks to see if the user is signed in or if they are a student. if either, redirect to the appropriate page.
   checkUser()
   async function checkUser(){
@@ -82,6 +80,7 @@ export default function CreateExperiment(){
         } 
         catch {
           setError("Failed To Create New Class")
+          alert(error)
         }
     
         setLoading(false)

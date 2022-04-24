@@ -1,12 +1,10 @@
 import { useHistory } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
 import { firestore } from '../firebase';
 
 //import { doc, setDoc } from "firebase/firestore/lite"; 
 
 
     export default function CreateUser(){
-        const currentUser = useAuth()
         const history = useHistory();
         history.push("/")
     }
