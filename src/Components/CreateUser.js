@@ -37,7 +37,7 @@ import { firestore } from '../firebase';
         const docRef = db.collection('users').doc(result);
         
         docRef.update({
-        UserRole: "professor",
+        UserRole: "Professor",
         UserEmail: result
         });
         
