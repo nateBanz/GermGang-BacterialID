@@ -88,9 +88,12 @@ export default function CreateExperiment(){
 
     async function handleSubmit(e) {
         e.preventDefault()
-        // if (
-        //   !form.className
-        // )
+        if (
+          !classTitle
+        ) {
+          alert("Please fill out class name")
+      return
+        }
     
         try {
     
