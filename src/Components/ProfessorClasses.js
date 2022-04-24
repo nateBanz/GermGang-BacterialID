@@ -1,18 +1,12 @@
 import {useContext, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown, Container, Card, Form} from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route ,Link, NavLink} from "react-router-dom"
-import {getName} from "./firebaseUtils";
-import RoutingButton from "./RoutingButtons";
-import PrivateRoute from './PrivateRoute';
+import {Button, Alert, Container, Card, Form} from 'react-bootstrap';
 import React, { useRef, useState} from "react"
 import Header from "./Header";
 import {newCode} from './RandomIDCode'
 import { createAClass } from "./ProfessorObjects";
-import { auth } from "../firebase"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
-import { isStudent } from "./firestoreUtils";
 import { firestore } from '../firebase';
 import { getUserInfo, setUserClass } from "./firestoreUtils";
 
@@ -33,8 +27,6 @@ export default function CreateClass(){
   const history = useHistory()
   const db = firestore
   const [classes,setClasses] = useState ([
-    
-
   ]);
  
   

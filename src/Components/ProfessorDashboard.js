@@ -13,9 +13,6 @@ export default function ProfessorDashboard() {
   const { currentUser, logout } = useAuth()
   const history = useHistory()
 
-
-
-  
   let user = getUserInfo()
     if (user.role === "student" && currentUser != null){
         history.push("/")
@@ -53,15 +50,15 @@ export default function ProfessorDashboard() {
           <br></br>
           <strong>Name:</strong> {currentUser.name}
 
-          <Link hidden= {user.role != "Professor"}to="/update-profile" className="btn btn-secondary w-100 mt-3">
+          <Link hidden= {user.role != "Professor"}to="/update-profile" className="text-center w-100 mt-3">
             Update Profile
           </Link>
           <br/>
           <br/>
-          <NavLink hidden={currentUser == null} to="./professorClasses" className= "btn btn-primary w-100">ProfessorClasses</NavLink>
+          <NavLink hidden={currentUser == null} to="./professorClasses" className= "btn btn-primary w-100">Your Classes</NavLink>
           <br/>
           <br/>
-          <NavLink hidden={currentUser == null} to="./createExperiment" className= "btn btn-primary w-100">CreateExperiment</NavLink>
+          <NavLink hidden={currentUser == null} to="./createExperiment" className= "btn btn-primary w-100">Create New Experiments</NavLink>
           
         </Card.Body>
       </Card>

@@ -100,7 +100,7 @@ export default function CreateExperiment(){
           console.log(endDate);
           console.log(classExperiment);
           
-         await createAnExperiment(experimentTitle, startDate, endDate, experimentDetails, currentUser.email, expcode, classExperiment) 
+         await createAnExperiment(experimentTitle, startDate.toLocaleDateString(), endDate.toLocaleDateString(), experimentDetails, currentUser.email, expcode, classExperiment) 
          alert("Created Experiment")
             
        // history.push("/dashboard")
