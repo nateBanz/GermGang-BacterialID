@@ -50,6 +50,7 @@ export default function Dashboard() {
         
 
   async function handleSubmit2(){
+    const amail = document.getElementById('adminInput').value
     console.log(email)
     if(prompt("Do you want to add " + email + " as an Admin? \n This will give them access to editing, deleting, adding the flowchart \n as well as User permissions. \n\n Please re-type the email so we are sure you want to do this.") == email){
         await addAdmin(email);
