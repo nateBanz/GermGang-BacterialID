@@ -88,7 +88,16 @@ export default function CreateExperiment(){
 
     async function handleSubmit(e) {
         e.preventDefault()
-    
+        if (
+          !experimentTitle
+          ^
+          !startDate
+          ^
+          !endDate
+        ) {
+          alert("You are missing some information")
+      return
+        }
         try {
     
           setError("")

@@ -63,7 +63,12 @@ export default function CreateClass(){
   }
     async function handleSubmit(e) {
         e.preventDefault()
-        
+        if (
+          !classTitle
+        ) {
+          alert("Please fill out class name")
+      return
+        }
   
         try {
           let nCObj = {cc: codeID, cn: classTitle};
@@ -105,7 +110,7 @@ export default function CreateClass(){
             <br/>
               {error && <Alert variant="danger">{error}</Alert>}
               <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-           {"Class Title: "}<input id='classTitle'  size="50" placeholder="classTitle" onChange={onChange} maxLength={30}/> 
+           {"Class Title: "}<input id='classTitle'  size="50" placeholder="classTitle" onChange={onChange} required maxLength={30}/> 
           </div>
           <br/>
 
