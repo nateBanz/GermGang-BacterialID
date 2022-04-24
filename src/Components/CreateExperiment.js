@@ -88,6 +88,9 @@ export default function CreateExperiment(){
 
     async function handleSubmit(e) {
         e.preventDefault()
+        // if (
+        //   !form.className
+        // )
     
         try {
     

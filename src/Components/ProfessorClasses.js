@@ -32,6 +32,10 @@ export default function CreateClass(){
   const { currentUser, logout } = useAuth()
   const history = useHistory()
   const db = firestore
+
+  // const cc = db.instance.collection('users').doc(currentUser.email).collection('classes').doc(classCode)
+  // const doc = cc.get();
+
   const [classes,setClasses] = useState ([
     
 
@@ -72,8 +76,13 @@ export default function CreateClass(){
   }
     async function handleSubmit(e) {
         e.preventDefault()
-        
-  
+        if (
+          !classTitle
+        ) {
+          alert("Please fill out class name")
+      return
+        }
+
         try {
           let nCObj = {cc: codeID, cn: classTitle};
           let arr = classes.concat(nCObj);
@@ -85,6 +94,7 @@ export default function CreateClass(){
           setLoading(true)
           await createAClass(classTitle, codeID, currentUser.email);
           //history.push("/");
+          alert(classTitle + (" created"))
         } 
         catch {
           setError("Failed To Create New Class")
