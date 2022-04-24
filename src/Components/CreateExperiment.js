@@ -103,7 +103,7 @@ export default function CreateExperiment(){
          await createAnExperiment(experimentTitle, startDate.toLocaleDateString(), endDate.toLocaleDateString(), experimentDetails, currentUser.email, expcode, classExperiment) 
          alert("Created Experiment")
             
-       // history.push("/dashboard")
+        history.goBack()
         } 
         catch {
           setError("Failed To Create New Class")
@@ -167,7 +167,7 @@ export default function CreateExperiment(){
            <Button disabled={loading} className="btn btn-secondary w-50" type="submit" onClick={handleSubmit}>Submit</Button>
            </div>
            <div style={divstyle}>
-           <Button className="btn btn-secondary w-50" onClick={handleCancel}>Cancel</Button>
+           <Button className="btn btn-secondary w-50" onClick={handleCancel}>Back</Button>
            </div>
             </Card.Body>
           </Card>

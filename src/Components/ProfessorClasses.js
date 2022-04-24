@@ -26,8 +26,7 @@ export default function CreateClass(){
   const { currentUser, logout } = useAuth()
   const history = useHistory()
   const db = firestore
-  const [classes,setClasses] = useState ([
-  ]);
+  const [classes,setClasses] = useState([]);
  
   
   useEffect(() => {
@@ -46,7 +45,7 @@ export default function CreateClass(){
         setLoading(false);
       });
       return () => classInfo();
-    }, [loading]); // empty dependencies array => useEffect only called once
+    }); // empty dependencies array => useEffect only called once
   //This function checks to see if the user is signed in or if they are a student. if either, redirect to the appropriate page.
 
   let user = getUserInfo()
@@ -68,21 +67,22 @@ export default function CreateClass(){
   
         try {
           let nCObj = {cc: codeID, cn: classTitle};
-          let arr = classes.concat(nCObj);
-         setClasses(arr);
+          console.log()
+          let arr = classes.push(nCObj);
+          setClasses(arr);
           
           console.log(classTitle)
           console.log(codeID)
           setError("")
           setLoading(true)
           await createAClass(classTitle, codeID, currentUser.email);
+          
           //history.push("/");
         } 
         catch {
           setError("Failed To Create New Class")
         }
     
-        setLoading(true)
       }
 
       function handleView(cObj){

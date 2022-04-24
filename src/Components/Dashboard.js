@@ -5,7 +5,6 @@ import { Link, useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { Nav } from "react-bootstrap"
 import { addProfessor, addAdmin } from "./CreateUser";
-
 import Header from "./Header";
 import ProfessorDashboard, { ProfessorButtons } from "./ProfessorDashboard"
 import { getUserInfo } from "./firestoreUtils"
@@ -72,7 +71,9 @@ export default function Dashboard() {
                         <h2 className="text-center m-4">Admin Controls</h2>
                         {error && <Alert variant="danger">{error}</Alert>}
                         <div className="p">
-                        <strong >Email: </strong>{currentUser.email}
+                        <strong>Email:</strong> {currentUser.email}
+                        <br></br>
+                        <strong className="text-center mb-4">Name:</strong> {user.firstname + " " + user.lastname}
                         </div>
                 <Card.Body className="w-100">
                   <br/>

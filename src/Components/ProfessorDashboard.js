@@ -48,8 +48,9 @@ export default function ProfessorDashboard() {
           {error && <Alert variant="danger">{error}</Alert>}
           <strong>Email:</strong> {currentUser.email}
           <br></br>
-          <strong>Name:</strong> {currentUser.name}
+          <strong className="text-center mb-4">Name:</strong> {user.firstname + " " + user.lastname}
 
+          <br/>
           <Link hidden= {user.role != "Professor"}to="/update-profile" className="text-center w-100 mt-3">
             Update Profile
           </Link>

@@ -9,6 +9,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import { firestore } from '../firebase';
 import { getUserInfo, setUserClass } from "./firestoreUtils";
+import { NavLink } from "react-router-dom";
 
 //import Header from "./Components/Header";
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
@@ -60,8 +61,8 @@ export default function ViewClass(){
 
 
   
-      function handleView(cObj){
-        setUserClass(cObj)
+      function handleView(exp){
+        
         history.push("/ViewClass")
       }
 
@@ -79,11 +80,14 @@ export default function ViewClass(){
             <h1 className="text-center mb-4">View Class</h1>
             <br/>
               {error && <Alert variant="danger">{error}</Alert>}
-              <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-         
-          </div>
+              
+              <strong>Title:</strong> {classTitle}
+               <br/>
+              <strong>Code:</strong> {classCode}
+              <br/>
+          
           <br/>
-           < label>Classes: </label>
+           < label>Experiments for this class: </label>
            <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
             <br/>
          
@@ -101,19 +105,17 @@ export default function ViewClass(){
              </thead>
                <tbody>
                {classes.length > 0 ? (
-        classes.map((classess) => <tr><td>{classess.ExperimentTitle}</td><td>{classess.StartDate}</td><td>{classess.EndDate}</td><td>{classess.Details}</td></tr>)
+        classes.map((classess) => <tr><td>{classess.ExperimentTitle}</td><td>{classess.StartDate}</td><td>{classess.EndDate}</td><td>{classess.Details.substring(0, 50) + "..."}</td></tr>)
       ) : (
-        <h1>no classes yet :(</h1>
+        <h1>No Experiments yet :(</h1>
       )}
-              
-               {/* { 
-                classes.map(cObj =>(<tr ><td>{cObj.cn}</td><td>{cObj.cc}</td><td><button>View</button></td> </tr>
-                )
-                )} */}
                 </tbody>
               </table>
           </div>
             </div>
+            <br/>
+            <br/>
+            <NavLink hidden={currentUser == null} to="./createExperiment" className= "btn btn-primary w-100">Create New Experiments</NavLink>
             </Card.Body>
           </Card>
         </Container></>
