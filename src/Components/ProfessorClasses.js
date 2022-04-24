@@ -14,7 +14,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import { isStudent } from "./firestoreUtils";
 import { firestore } from '../firebase';
-import { getUserInfo } from "./firestoreUtils";
+import { getUserInfo, setUserClass } from "./firestoreUtils";
 
 //import Header from "./Components/Header";
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
@@ -73,6 +73,7 @@ export default function CreateClass(){
     async function handleSubmit(e) {
         e.preventDefault()
         
+  
         try {
           let nCObj = {cc: codeID, cn: classTitle};
           let arr = classes.concat(nCObj);
@@ -90,6 +91,11 @@ export default function CreateClass(){
         }
     
         setLoading(true)
+      }
+
+      function handleView(cObj){
+        setUserClass(cObj)
+        history.push("/ViewClass")
       }
       return(    <>
         <Header></Header>
@@ -135,7 +141,7 @@ export default function CreateClass(){
              </thead>
                <tbody>
                {classes.length > 0 ? (
-        classes.map((classess) => <tr> <td>{classess.className}</td><td> {classess.classCode}</td> <td><button>View</button></td></tr>)
+        classes.map((classess) => <tr> <td>{classess.className}</td><td> {classess.classCode}</td> <td><button onClick={()=>handleView(classess)}>View</button></td></tr>)
       ) : (
         <h1>no classes yet :(</h1>
       )}

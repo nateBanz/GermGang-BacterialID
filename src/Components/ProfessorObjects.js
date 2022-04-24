@@ -24,9 +24,11 @@ import RandomExperimentCode from './RandomIDCode';
             return newClass;
         }
 
-        export function createAnExperiment(title, startDate, endDate, Details, email, code){
+        export function createAnExperiment(title, startDate, endDate, Details, email, expcode, clscode){
            
-            const docRef = db.collection('users').doc(email).collection('experiments').doc(code);
+            console.log("createExperiment cls: " + clscode)
+            console.log("createExperiment exp:" + expcode)
+            const docRef = db.collection('users').doc(email).collection("classes").doc(clscode).collection('experiments').doc(expcode);
               
             docRef.set({
             ExperimentTitle: title,

@@ -7,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { createAnExperiment } from "./ProfessorObjects";
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
-import { isStudent } from './firestoreUtils';
+import { isStudent, getUserInfo } from './firestoreUtils';
 import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown, Container, Card, Form} from 'react-bootstrap';
 import { firestore } from '../firebase';
 import {useContext, useEffect} from "react";
@@ -60,17 +60,13 @@ export default function CreateExperiment(){
     }, [loading]);
 
   //This function checks to see if the user is signed in or if they are a student. if either, redirect to the appropriate page.
-  checkUser()
-  async function checkUser(){
-    let allow = await isStudent(currentUser.email)
-    
-    if (allow){
-  history.push("/StudentDashboard")
-  }
-  else if(currentUser.email == null){
-      history.push("/login")
-  }
-  }
+  let user = getUserInfo()
+    if (user.role == "student" && currentUser != null){
+        history.push("/")
+    }
+    else if(currentUser.email == null){
+        history.push("/login")
+    };
   const divstyle = {
     display: 'flex',
     justifyContent:'center',
@@ -103,7 +99,10 @@ export default function CreateExperiment(){
           console.log(startDate);
           console.log(endDate);
           console.log(classExperiment);
-         await createAnExperiment(experimentTitle, startDate, endDate, experimentDetails, currentUser.email, expcode)        
+          
+         await createAnExperiment(experimentTitle, startDate, endDate, experimentDetails, currentUser.email, expcode, classExperiment) 
+         alert("Created Experiment")
+            
        // history.push("/dashboard")
         } 
         catch {
