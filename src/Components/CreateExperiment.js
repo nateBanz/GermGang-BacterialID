@@ -7,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { createAnExperiment } from "./ProfessorObjects";
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
-import { isStudent, getUserInfo } from './firestoreUtils';
+import { isStudent, getUserInfo, setUserClass } from './firestoreUtils';
 import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown, Container, Card, Form} from 'react-bootstrap';
 import { firestore } from '../firebase';
 import {useContext, useEffect} from "react";
@@ -30,16 +30,13 @@ export default function CreateExperiment(){
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
   const history = useHistory()
-  const [classExperiment,setClassExperiment]= useState("");
-
+  let [classExperiment,setClassExperiment]= useState("");
   const [experimentDetails,setExperimentDetails]= useState("");
   const { currentUser, logout } = useAuth()
   const db = firestore
   const [classes,setClasses] = useState ([
-    
-
   ]);
- 
+  const [changeClass, setchangeClass] = useState()
   
   useEffect(() => {
     const getClassesFromFirebase = [];
@@ -61,6 +58,8 @@ export default function CreateExperiment(){
 
   //This function checks to see if the user is signed in or if they are a student. if either, redirect to the appropriate page.
   let user = getUserInfo()
+  let selectedClass = user.selectedClass
+  classExperiment = selectedClass.classCode
     if (user.role == "student" && currentUser != null){
         history.push("/")
     }
@@ -86,6 +85,12 @@ export default function CreateExperiment(){
     setExperimentDetails(newValue);
   }
 
+  function setClass(exp, userclass){
+    setClassExperiment(exp)
+    setUserClass(userclass)
+    user = getUserInfo()
+
+  }
     async function handleSubmit(e) {
         e.preventDefault()
         if (
@@ -109,7 +114,7 @@ export default function CreateExperiment(){
           console.log(endDate);
           console.log(classExperiment);
           
-         await createAnExperiment(experimentTitle, startDate.toLocaleDateString(), endDate.toLocaleDateString(), experimentDetails, currentUser.email, expcode, classExperiment) 
+         await createAnExperiment(experimentTitle, startDate.toLocaleDateString(), endDate.toLocaleDateString(), experimentDetails, currentUser.email, expcode, selectedClass.classCode) 
          alert("Created Experiment")
             
         history.goBack()
@@ -124,6 +129,19 @@ export default function CreateExperiment(){
       function handleCancel(){
         history.goBack()
       }
+
+      function handleChange(){
+        if(changeClass){
+          setchangeClass(false)
+        }
+        else{
+          return setchangeClass(true)
+        }
+      }
+
+
+
+
        return(
         <>
         <Header></Header>
@@ -136,6 +154,7 @@ export default function CreateExperiment(){
             </div>
             <Card.Body>
             <h1 className="text-center mb-4">Create New Experiment</h1>
+            <h2 className="text-center mb-4">Class: {classExperiment}</h2>
             <br/>
           <div  style={divstyle}>
            {"Experiment Title:       "}<input wrapperClassname='Textwrap' size="50" placeholder="Experiment Title..." onChange={onChange} maxLength={50} padding-left/> 
@@ -153,20 +172,24 @@ export default function CreateExperiment(){
                 <DatePicker selected={endDate} onChange={date => setEndDate(date)}/>
                 </div>
         <br/>
-        <div>
+        <Button className="btn btn-secondary w-100" onClick={handleChange}>Change Class?</Button>
+        <div className='' hidden={changeClass}>
         
         <h1> List of Current Classes</h1>
-       </div>
-       <div>
+      
+       <div > 
+         Select a Class
+         <br/>
        {classes.length > 0 ? (
        classes.map((classess) =>  <React.Fragment>
-       <label htmlFor={classess.id}>{classess.className}</label>
-       <input onChange={e => setClassExperiment(e.target.value)} value={classess.classCode} selected={classExperiment} name="classExperiment" key={classess.className} id={classess.id} type="radio" /> <br/>
+      
+       <input onChange={e => setClass(e.target.value, classess)} value={classess.classCode} selected={classExperiment} name="classExperiment" key={classess.className} id={classess.id} type="radio" /> {classess.className} <br/>
    </React.Fragment> ) 
      ) : (
        <h1></h1>
      )}
      </div>
+      </div>
       
                 <Form.Group  onChange={onChange4} controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Experiment Details/ Instructions </Form.Label>
