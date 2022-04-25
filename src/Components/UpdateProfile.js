@@ -48,7 +48,9 @@ export default function UpdateProfile() {
           <h2 className="text-center mb-4">Update Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
+            <Form.Group
+             hidden 
+             id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"

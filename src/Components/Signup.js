@@ -4,6 +4,7 @@ import { useAuth} from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { addStudent } from "./CreateUser";
+import { setUser } from "./firestoreUtils";
 
 // import App from "../App";
 
@@ -33,6 +34,7 @@ export default function Signup() {
       
       await signup(emailRef.current.value, passwordRef.current.value)
       await addStudent(emailRef.current.value, firstnameRef.current.value, lastnameRef.current.value)
+      setUser(emailRef.current.value)
       // await addAdmin("bsarraj@ccc.edu")
       // await addProfessor("rahaf.barakat84@ggc.edu")
       history.push("/")

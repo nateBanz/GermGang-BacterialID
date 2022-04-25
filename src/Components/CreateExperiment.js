@@ -89,12 +89,15 @@ export default function CreateExperiment(){
     async function handleSubmit(e) {
         e.preventDefault()
         if (
-          !classTitle
+          !experimentTitle
+          ^
+          !startDate
+          ^
+          !endDate
         ) {
-          alert("Please fill out class name")
+          alert("You are missing some information")
       return
         }
-    
         try {
     
           setError("")
@@ -106,10 +109,10 @@ export default function CreateExperiment(){
           console.log(endDate);
           console.log(classExperiment);
           
-         await createAnExperiment(experimentTitle, startDate, endDate, experimentDetails, currentUser.email, expcode, classExperiment) 
+         await createAnExperiment(experimentTitle, startDate.toLocaleDateString(), endDate.toLocaleDateString(), experimentDetails, currentUser.email, expcode, classExperiment) 
          alert("Created Experiment")
             
-       // history.push("/dashboard")
+        history.goBack()
         } 
         catch {
           setError("Failed To Create New Class")
@@ -173,7 +176,7 @@ export default function CreateExperiment(){
            <Button disabled={loading} className="btn btn-secondary w-50" type="submit" onClick={handleSubmit}>Submit</Button>
            </div>
            <div style={divstyle}>
-           <Button className="btn btn-secondary w-50" onClick={handleCancel}>Cancel</Button>
+           <Button className="btn btn-secondary w-50" onClick={handleCancel}>Back</Button>
            </div>
             </Card.Body>
           </Card>

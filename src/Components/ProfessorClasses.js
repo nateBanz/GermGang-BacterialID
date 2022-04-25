@@ -1,18 +1,12 @@
 import {useContext, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button, Alert, Breadcrumb, Navbar, Nav, NavDropdown, Container, Card, Form} from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route ,Link, NavLink} from "react-router-dom"
-import {getName} from "./firebaseUtils";
-import RoutingButton from "./RoutingButtons";
-import PrivateRoute from './PrivateRoute';
+import {Button, Alert, Container, Card, Form} from 'react-bootstrap';
 import React, { useRef, useState} from "react"
 import Header from "./Header";
 import {newCode} from './RandomIDCode'
 import { createAClass } from "./ProfessorObjects";
-import { auth } from "../firebase"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
-import { isStudent } from "./firestoreUtils";
 import { firestore } from '../firebase';
 import { getUserInfo, setUserClass } from "./firestoreUtils";
 
@@ -32,14 +26,7 @@ export default function CreateClass(){
   const { currentUser, logout } = useAuth()
   const history = useHistory()
   const db = firestore
-
-  // const cc = db.instance.collection('users').doc(currentUser.email).collection('classes').doc(classCode)
-  // const doc = cc.get();
-
-  const [classes,setClasses] = useState ([
-    
-
-  ]);
+  const [classes,setClasses] = useState([]);
  
   
   useEffect(() => {
@@ -58,7 +45,7 @@ export default function CreateClass(){
         setLoading(false);
       });
       return () => classInfo();
-    }, [loading]); // empty dependencies array => useEffect only called once
+    }); // empty dependencies array => useEffect only called once
   //This function checks to see if the user is signed in or if they are a student. if either, redirect to the appropriate page.
 
   let user = getUserInfo()
@@ -82,17 +69,19 @@ export default function CreateClass(){
           alert("Please fill out class name")
       return
         }
-
+  
         try {
           let nCObj = {cc: codeID, cn: classTitle};
-          let arr = classes.concat(nCObj);
-         setClasses(arr);
+          console.log()
+          let arr = classes.push(nCObj);
+          setClasses(arr);
           
           console.log(classTitle)
           console.log(codeID)
           setError("")
           setLoading(true)
           await createAClass(classTitle, codeID, currentUser.email);
+          
           //history.push("/");
           alert(classTitle + (" created"))
         } 
@@ -100,7 +89,6 @@ export default function CreateClass(){
           setError("Failed To Create New Class")
         }
     
-        setLoading(true)
       }
 
       function handleView(cObj){
@@ -123,7 +111,7 @@ export default function CreateClass(){
             <br/>
               {error && <Alert variant="danger">{error}</Alert>}
               <div  style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-           {"Class Title: "}<input id='classTitle'  size="50" placeholder="classTitle" onChange={onChange} maxLength={30}/> 
+           {"Class Title: "}<input id='classTitle'  size="50" placeholder="classTitle" onChange={onChange} required maxLength={30}/> 
           </div>
           <br/>
 

@@ -3,12 +3,13 @@ import { Card, Alert, Button } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import Header from "./Header"
+import { getUserInfo } from "./firestoreUtils"
 
 export default function StudentDashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
-
+  let user = getUserInfo()
   async function handleLogout() {
     setError("")
 
@@ -29,10 +30,8 @@ export default function StudentDashboard() {
           {error && <Alert variant="danger">{error}</Alert>}
           <strong>Email:</strong> {currentUser.email}
           <br></br>
-          <strong>Name:</strong> {currentUser.name}
-          <Link to="/update-profile" className="btn btn-secondary w-100 mt-3">
-            Update Profile
-          </Link>
+          <strong className="text-center mb-4">Name:</strong> {user.firstname + " " + user.lastname}
+          
           <br/>
           <br/>
           <Button className="btn btn-primary w-100" type="logout" onClick={handleLogout}>

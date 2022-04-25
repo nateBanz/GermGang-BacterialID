@@ -5,7 +5,6 @@ import { Link, useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { Nav } from "react-bootstrap"
 import { addProfessor, addAdmin } from "./CreateUser";
-
 import Header from "./Header";
 import ProfessorDashboard, { ProfessorButtons } from "./ProfessorDashboard"
 import { getUserInfo } from "./firestoreUtils"
@@ -44,7 +43,7 @@ export default function Dashboard() {
   // }
   async function handleSubmit(){
     console.log(email)
-        if(window.confirm("Do you want to add " + email + " as a professor?")){
+        if(email &&window.confirm("Do you want to add " + email + " as a professor?")){
           await addProfessor(email);
         }
       }
@@ -53,7 +52,7 @@ export default function Dashboard() {
   async function handleSubmit2(){
     const amail = document.getElementById('adminInput').value
     console.log(email)
-    if(prompt("Do you want to add " + email + " as an Admin? \n This will give them access to editing, deleting, adding the flowchart \n as well as User permissions. \n\n Please re-type the email so we are sure you want to do this.") == email){
+    if(email && prompt("Do you want to add " + email + " as an Admin? \n This will give them access to editing, deleting, adding the flowchart \n as well as User permissions. \n\n Please re-type the email so we are sure you want to do this.") == email){
         await addAdmin(email);
     }
   }
@@ -73,7 +72,9 @@ export default function Dashboard() {
                         <h2 className="text-center m-4">Admin Controls</h2>
                         {error && <Alert variant="danger">{error}</Alert>}
                         <div className="p">
-                        <strong >Email: </strong>{currentUser.email}
+                        <strong>Email:</strong> {currentUser.email}
+                        <br></br>
+                        <strong className="text-center mb-4">Name:</strong> {user.firstname + " " + user.lastname}
                         </div>
                 <Card.Body className="w-100">
                   <br/>
