@@ -69,7 +69,16 @@ export default function CreateClass(){
           alert("Please fill out class name")
       return
         }
-  
+        classes.forEach((element)=>{
+          if(element.className==classTitle){
+            alert("Class \"" + classTitle +"\" already exists."+
+            " Please fill out new class name.");
+            return;
+          }
+
+        });
+
+
         try {
           let nCObj = {cc: codeID, cn: classTitle};
           console.log()
@@ -208,3 +217,4 @@ export default function CreateClass(){
         
     // )
               }
+
