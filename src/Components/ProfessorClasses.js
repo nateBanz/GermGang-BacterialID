@@ -8,7 +8,11 @@ import { createAClass } from "./ProfessorObjects";
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import { firestore } from '../firebase';
-import { getUserInfo, setUserClass } from "./firestoreUtils";
+import { deleteClass, getUserInfo, setUserClass } from "./firestoreUtils";
+import { collection, query, getDocs, deleteDoc } from 'firebase/firestore';
+
+
+
 
 //import Header from "./Components/Header";
 //you can make this dynamic and turn into something based on some outside factors. Ex: If I move past the first screen (more than one is the array), change the header to include the reset/logout
@@ -27,6 +31,7 @@ export default function CreateClass(){
   const history = useHistory()
   const db = firestore
   const [classes,setClasses] = useState([]);
+  const [classDelete,setClassDelete] = useState([]);
  
   
   useEffect(() => {
@@ -92,6 +97,7 @@ export default function CreateClass(){
           await createAClass(classTitle, codeID, currentUser.email);
           
           //history.push("/");
+          alert(classTitle + (" created"))
         } 
         catch {
           setError("Failed To Create New Class")
@@ -107,6 +113,14 @@ export default function CreateClass(){
       function handleCancel(){
         history.goBack()
       }
+
+      function handleDelete(nCObj) {
+        const docRef = db.collection('users').doc(user.email).collection('classes')
+        docRef.doc(nCObj.classCode).delete();
+        }
+
+ 
+      
       return(    <>
         <Header></Header>
         
@@ -147,14 +161,20 @@ export default function CreateClass(){
                  <th>Class Name</th>
                  <th>Class Code</th>
                  <th>Action</th>
+                 <th>Delete</th>
                </tr>
              </thead>
                <tbody>
                {classes.length > 0 ? (
-        classes.map((classess) => <tr> <td>{classess.className}</td><td> {classess.classCode}</td> <td><button onClick={()=>handleView(classess)}>View</button></td></tr>)
-      ) : (
+        classes.map((classess) => <tr> <td>{classess.className}</td><td> {classess.classCode}</td>
+         <td><button onClick={()=>handleView(classess)}>View</button></td>
+         <td><button onClick={()=>handleDelete(classess)}>Delete</button></td></tr>)
+      )
+       :
+       (
         <h1>no classes yet :(</h1>
       )}
+      
               
                {/* { 
                 classes.map(cObj =>(<tr ><td>{cObj.cn}</td><td>{cObj.cc}</td><td><button>View</button></td> </tr>
