@@ -1,4 +1,3 @@
-
 import './App.css';
 import QuestionPage from "./Components/QuestionPage";
 import {useState} from "react";
@@ -6,11 +5,13 @@ import firebase from './firebase';
 import Header from "./Components/Header";
 import * as React from "react";
 import PersonTracker from "./Components/PersonTracker"; //context (global variables essentially) that can be used anywhere and trigger a refresh on updates
-
+import { useAuth } from './contexts/AuthContext';
 
 
 
 function App() {
+    
+    
     //set a state to use for updating array
    const [buttonNameArray, updateArray]= useState([{
        name: "Homepage 0000",
@@ -28,7 +29,7 @@ function App() {
     const germBase = firebase.database().ref();
 
     //get or create a reference to the germs child/object in the database
-    const germs = germBase.child("germs");
+   // const germs = germBase.child("germs");
 
 
 //if you need to reset the database, copy the external file here and uncomment out the REMOVE function . Reload the webpage once and comment back out.
@@ -53,6 +54,8 @@ function App() {
           </div>
 
       </PersonTracker.Provider>
+
+
 
   </div>
   );

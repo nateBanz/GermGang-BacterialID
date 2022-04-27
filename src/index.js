@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AdminLogin from "./Components/AdminLogin";
-import AddForm from "./Components/AddForm";
+import App from "./App"
 
 
 
 ReactDOM.render(
-    <React.StrictMode>
-        <AdminLogin />
-    </React.StrictMode>,
+  <React.StrictMode>
+    <AdminLogin>
+      <App/>
+    </AdminLogin>
+</React.StrictMode>,
   document.getElementById('root')
 );
 
